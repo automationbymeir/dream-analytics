@@ -221,17 +221,20 @@
 
   M.AutoInit();
 
-  // PayPal Plan IDs — populated by calling /setupPayPalPlans once.
-  // After running setup, paste the returned IDs here:
-  let MONTHLY_PLAN_ID = '';
-  let YEARLY_PLAN_ID  = '';
+  // PayPal Plan IDs (set by setupPayPalPlans, Firestore overrides if available)
+  let MONTHLY_PLAN_ID = 'P-1GD73035X2279093SNHNJPZA';
+  let YEARLY_PLAN_ID  = 'P-53V92962U66334250NHNJPZA';
 
-  // Try to load plan IDs from Firestore (set by setupPayPalPlans function)
+  // Try to load plan IDs from Firestore (overrides hardcoded defaults if set)
   async function loadPlanIds() {
-    const snap = await getDoc(doc(db, 'config', 'paypal'));
-    if (snap.exists()) {
-      MONTHLY_PLAN_ID = snap.data().monthlyPlanId || '';
-      YEARLY_PLAN_ID  = snap.data().yearlyPlanId  || '';
+    try {
+      const snap = await getDoc(doc(db, 'config', 'paypal'));
+      if (snap.exists()) {
+        MONTHLY_PLAN_ID = snap.data().monthlyPlanId || MONTHLY_PLAN_ID;
+        YEARLY_PLAN_ID  = snap.data().yearlyPlanId  || YEARLY_PLAN_ID;
+      }
+    } catch (_) {
+      // Use hardcoded defaults if Firestore is unavailable
     }
   }
 
