@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Trend Analysis – DreamCoach</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="teal darken-2">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo">🌙 DreamCoach</a>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/" class="btn-flat white-text"><i class="material-icons left">add_circle</i>New Dream</a></li>
+      <li><a href="/dashboard.html" class="btn-flat white-text"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+      <li><a href="/settings.html" class="btn-flat white-text"><i class="material-icons left">settings</i>Settings</a></li>
+      <li><a href="#" id="logoutBtn" class="btn-flat white-text"><i class="material-icons left">logout</i>Sign Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+  <li><a href="/"><i class="material-icons">add_circle</i>New Dream</a></li>
+  <li><a href="/dashboard.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+  <li><a href="/settings.html"><i class="material-icons">settings</i>Settings</a></li>
+  <li><a href="#" id="sidenav-logout"><i class="material-icons">logout</i>Sign Out</a></li>
+</ul>
+
+<div class="container mt-50">
+
+  <!-- Pro paywall (shown to free users) -->
+  <div id="paywallSection" class="card hidden" style="border-radius:12px;">
+    <div class="card-content paywall-overlay">
+      <i class="material-icons">lock</i>
+      <h4 style="font-family:'Merriweather',serif; color:#00695c;">Pro Feature</h4>
+      <p style="max-width:480px; margin:0 auto 24px;">
+        Trend Analysis scans across your entire dream journal to uncover recurring symbols,
+        emotional patterns, and psychological evolution over time.
+      </p>
+      <a href="/pricing.html" class="btn-large teal darken-2 waves-effect waves-light" style="font-family:'Merriweather',serif;">
+        <i class="material-icons left">star</i>Upgrade to Pro — from $16/month
+      </a>
+      <p class="grey-text" style="margin-top:16px; font-size:0.85rem;">Cancel anytime. Instant access.</p>
+    </div>
+  </div>
+
+  <!-- Analysis UI (shown to Pro users) -->
+  <div id="analysisSection" class="hidden">
+
+    <div class="row">
+      <div class="col s12 m9">
+        <h4 style="font-family:'Merriweather',serif; color:#00695c;">Dream Pattern Analysis</h4>
+        <p class="grey-text" style="margin-top:-8px;">Discover recurring themes, symbols, and psychological patterns across your dream journal.</p>
+      </div>
+    </div>
+
+    <!-- Criteria card -->
+    <div class="card" style="border-radius:12px;">
+      <div class="card-content">
+        <span class="card-title">Analysis Criteria</span>
+
+        <!-- Date range -->
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input type="date" id="dateFrom">
+            <label for="dateFrom" class="active">From Date</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input type="date" id="dateTo">
+            <label for="dateTo" class="active">To Date</label>
+          </div>
+        </div>
+
+        <!-- Prompt templates -->
+        <p style="margin-bottom:8px; color:#616161; font-size:0.9rem;">Quick templates — click to use:</p>
+        <div style="margin-bottom:16px;">
+          <span class="prompt-template" data-prompt="Identify recurring symbols, themes, and archetypes across these dreams. Analyze how these patterns might relate to the dreamer's life circumstances or psychological state.">
+            🔮 Recurring Symbols &amp; Themes
+          </span>
+          <span class="prompt-template" data-prompt="Analyze emotional patterns in these dreams. Which emotions appear most frequently? How have emotional themes evolved over time? What might this suggest about the dreamer's emotional processing?">
+            💙 Emotional Patterns
+          </span>
+          <span class="prompt-template" data-prompt="Track the evolution of specific symbols or themes across these dreams chronologically. How have certain patterns changed over time and what might this reveal about the dreamer's psychological journey?">
+            📈 Symbol Evolution Over Time
+          </span>
+          <span class="prompt-template" data-prompt="Identify dream elements that may connect to major life events or challenges. How might these dreams be processing or reflecting significant experiences in the dreamer's waking life?">
+            🌍 Connection to Waking Life
+          </span>
+          <span class="prompt-template" data-prompt="Analyze these dreams from a Jungian perspective, focusing on the shadow, anima/animus, and individuation process. What might these dreams reveal about the dreamer's unconscious and personal growth?">
+            🧠 Jungian Deep Dive
+          </span>
+        </div>
+
+        <!-- Custom prompt -->
+        <div class="input-field">
+          <textarea id="analysisPrompt" class="materialize-textarea" style="min-height:100px;"></textarea>
+          <label for="analysisPrompt">Your Analysis Question</label>
+          <span class="helper-text">Describe what patterns, themes, or insights you want to explore across your dreams.</span>
+        </div>
+
+        <button class="btn teal darken-2 waves-effect waves-light" id="runBtn" style="font-family:'Merriweather',serif;">
+          <i class="material-icons left">analytics</i>Run Analysis
+        </button>
+        <button class="btn-flat teal-text text-darken-2 waves-effect hidden" id="exportBtn" style="margin-left:8px;">
+          <i class="material-icons left">description</i>Export Results
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading -->
+    <div id="analysisLoader" class="card hidden" style="border-radius:12px;">
+      <div class="card-content loader-wrapper">
+        <h5 class="teal-text text-darken-2">🔮 Analyzing Dream Patterns…</h5>
+        <p class="grey-text">Scanning your dream journal and identifying patterns. This may take a moment.</p>
+        <div class="progress" style="max-width:400px; margin:0 auto;">
+          <div class="indeterminate"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results -->
+    <div id="resultsCard" class="card hidden" style="border-radius:12px;">
+      <div class="card-content">
+        <span class="card-title">📊 Analysis Results</span>
+        <div class="card-panel teal lighten-5" style="border-radius:8px; margin-bottom:16px;">
+          <span id="resultsMeta" style="font-size:0.9rem;"></span>
+        </div>
+        <div class="analysis-result" id="resultsText" style="white-space:pre-wrap; line-height:1.8;"></div>
+      </div>
+      <div class="card-action">
+        <a href="#" id="newAnalysisBtn" class="teal-text text-darken-2">
+          <i class="material-icons left" style="vertical-align:middle; font-size:18px;">refresh</i>New Analysis
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /analysisSection -->
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="module">
+  import { auth, fns } from './js/firebase-config.js';
+  import { initAuthGuard, logout, isPro, getUserData } from './js/auth.js';
+  import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
+
+  M.AutoInit();
+
+  initAuthGuard(async (user) => {
+    if (!user) return;
+
+    const userData = await getUserData(user.uid);
+    if (isPro(userData)) {
+      document.getElementById('paywallSection').classList.add('hidden');
+      document.getElementById('analysisSection').classList.remove('hidden');
+      initDateDefaults();
+    } else {
+      document.getElementById('paywallSection').classList.remove('hidden');
+      document.getElementById('analysisSection').classList.add('hidden');
+    }
+  });
+
+  function initDateDefaults() {
+    const today = new Date();
+    const threeMonthsAgo = new Date();
+    threeMonthsAgo.setMonth(today.getMonth() - 3);
+
+    const fmt = d => d.toISOString().split('T')[0];
+    document.getElementById('dateTo').value   = fmt(today);
+    document.getElementById('dateFrom').value = fmt(threeMonthsAgo);
+  }
+
+  // Prompt template chips
+  document.querySelectorAll('.prompt-template').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('analysisPrompt').value = el.dataset.prompt;
+      M.textareaAutoResize(document.getElementById('analysisPrompt'));
+      M.updateTextFields();
+    });
+  });
+
+  let lastResult = null;
+
+  document.getElementById('runBtn').addEventListener('click', async () => {
+    const prompt   = document.getElementById('analysisPrompt').value.trim();
+    const dateFrom = document.getElementById('dateFrom').value;
+    const dateTo   = document.getElementById('dateTo').value;
+
+    if (!prompt) {
+      M.toast({ html: 'Please enter an analysis prompt or choose a template.', classes: 'red darken-2' });
+      return;
+    }
+
+    document.getElementById('resultsCard').classList.add('hidden');
+    document.getElementById('analysisLoader').classList.remove('hidden');
+    document.getElementById('exportBtn').classList.add('hidden');
+    document.getElementById('runBtn').disabled = true;
+
+    try {
+      const analyzeDreamTrends = httpsCallable(fns, 'analyzeDreamTrends');
+      const res = await analyzeDreamTrends({ prompt, dateFrom, dateTo });
+      lastResult = res.data;
+
+      document.getElementById('resultsText').textContent = lastResult.analysis;
+      document.getElementById('resultsMeta').innerHTML =
+        `<strong>${lastResult.dreamCount}</strong> dreams analyzed &nbsp;·&nbsp; Date range: <strong>${lastResult.dateRange}</strong>`;
+
+      document.getElementById('analysisLoader').classList.add('hidden');
+      document.getElementById('resultsCard').classList.remove('hidden');
+      document.getElementById('exportBtn').classList.remove('hidden');
+
+    } catch (err) {
+      document.getElementById('analysisLoader').classList.add('hidden');
+      const msg = err.message || 'Analysis failed. Please try again.';
+      M.toast({ html: msg, classes: 'red darken-2', displayLength: 6000 });
+    } finally {
+      document.getElementById('runBtn').disabled = false;
+    }
+  });
+
+  document.getElementById('exportBtn').addEventListener('click', () => {
+    if (!lastResult) return;
+    // Create a downloadable text file of the analysis
+    const content = `DreamCoach – Trend Analysis\n${'='.repeat(40)}\nDreams analyzed: ${lastResult.dreamCount}\nDate range: ${lastResult.dateRange}\n${'='.repeat(40)}\n\n${lastResult.analysis}`;
+    const blob = new Blob([content], { type: 'text/plain' });
+    const url  = URL.createObjectURL(blob);
+    const a    = document.createElement('a');
+    a.href     = url;
+    a.download = `dreamcoach-trend-analysis-${new Date().toISOString().split('T')[0]}.txt`;
+    a.click();
+    URL.revokeObjectURL(url);
+    M.toast({ html: 'Analysis exported!', classes: 'teal darken-2' });
+  });
+
+  document.getElementById('newAnalysisBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('resultsCard').classList.add('hidden');
+    document.getElementById('exportBtn').classList.add('hidden');
+    document.getElementById('analysisPrompt').value = '';
+    M.textareaAutoResize(document.getElementById('analysisPrompt'));
+    M.updateTextFields();
+    window.scrollTo(0, 0);
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+  document.getElementById('sidenav-logout').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+</script>
+</body>
+</html>

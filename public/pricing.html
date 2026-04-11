@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pricing – DreamCoach</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .plan-header { text-align: center; padding: 24px 16px 8px; }
+    .plan-header .plan-name { font-family:'Merriweather',serif; font-size:1.3rem; color:#00695c; margin:0; }
+    .save-badge {
+      display: inline-block;
+      background: #f9a825;
+      color: #fff;
+      border-radius: 12px;
+      padding: 2px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+    #paypal-monthly-btn, #paypal-yearly-btn { min-height: 45px; }
+    .paypal-wrapper { margin-top: 16px; }
+  </style>
+</head>
+<body>
+
+<nav class="teal darken-2">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo">🌙 DreamCoach</a>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/dashboard.html" class="btn-flat white-text"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+      <li><a href="#" id="logoutBtn" class="btn-flat white-text hidden"><i class="material-icons left">logout</i>Sign Out</a></li>
+      <li><a href="/login.html" class="btn-flat white-text" id="loginBtn"><i class="material-icons left">login</i>Sign In</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+  <li><a href="/dashboard.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+  <li><a href="#" id="sidenav-logout"><i class="material-icons">logout</i>Sign Out</a></li>
+</ul>
+
+<div class="container mt-50">
+
+  <div class="center mb-20">
+    <h3 style="font-family:'Merriweather',serif; color:#00695c;">Simple, Honest Pricing</h3>
+    <p class="grey-text" style="font-size:1.1rem;">Start free. Upgrade when you're ready to go deeper.</p>
+  </div>
+
+  <!-- Current plan notice (shown when logged in and already Pro) -->
+  <div id="currentPlanNotice" class="card-panel teal lighten-5 center hidden" style="border-radius:12px; margin-bottom:24px;">
+    <i class="material-icons" style="vertical-align:middle; color:#00695c;">check_circle</i>
+    <strong id="currentPlanText" style="color:#00695c;"></strong>
+  </div>
+
+  <div class="row">
+
+    <!-- ── Free Plan ─────────────────────────────────────────────────────────── -->
+    <div class="col s12 m4">
+      <div class="card pricing-card hoverable" style="height:100%;">
+        <div class="plan-header">
+          <p class="plan-name">Free</p>
+          <div style="margin:16px 0 8px;">
+            <span class="price-tag">$0</span>
+            <span class="price-period">&nbsp;forever</span>
+          </div>
+        </div>
+        <div class="card-content">
+          <ul class="feature-list" style="list-style:none; padding:0; margin:0;">
+            <li><i class="material-icons">check</i> 3 dream analyses per month</li>
+            <li><i class="material-icons">check</i> Jungian, Freudian &amp; Gestalt views</li>
+            <li><i class="material-icons">check</i> Reflection questions</li>
+            <li><i class="material-icons">check</i> Dream history</li>
+            <li><i class="material-icons no">close</i> Trend analysis</li>
+            <li><i class="material-icons no">close</i> Pattern extraction</li>
+            <li><i class="material-icons no">close</i> Export to Google Doc</li>
+          </ul>
+          <div style="margin-top:24px;">
+            <a href="/login.html" class="btn-flat teal-text text-darken-2 waves-effect" style="width:100%; text-align:center;" id="freeBtn">
+              Get Started Free
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Pro Monthly ────────────────────────────────────────────────────────── -->
+    <div class="col s12 m4">
+      <div class="card pricing-card featured hoverable" style="height:100%;">
+        <div class="plan-header">
+          <p class="plan-name">Pro Monthly</p>
+          <div style="margin:16px 0 8px;">
+            <span class="price-tag">$20</span>
+            <span class="price-period">&nbsp;/ month</span>
+          </div>
+          <p class="grey-text" style="font-size:0.8rem; margin:0;">Billed monthly. Cancel anytime.</p>
+        </div>
+        <div class="card-content">
+          <ul class="feature-list" style="list-style:none; padding:0; margin:0;">
+            <li><i class="material-icons">check</i> <strong>Unlimited</strong> dream analyses</li>
+            <li><i class="material-icons">check</i> Jungian, Freudian &amp; Gestalt views</li>
+            <li><i class="material-icons">check</i> Reflection questions</li>
+            <li><i class="material-icons">check</i> Full dream history</li>
+            <li><i class="material-icons">check</i> <strong>Trend analysis</strong></li>
+            <li><i class="material-icons">check</i> <strong>Pattern extraction</strong></li>
+            <li><i class="material-icons">check</i> <strong>Export to Google Doc</strong></li>
+          </ul>
+          <div class="paypal-wrapper" id="paypal-monthly-container">
+            <!-- PayPal button injected here -->
+            <div id="paypal-monthly-btn"></div>
+            <div id="monthly-loading" class="center" style="padding:12px;">
+              <div class="progress"><div class="indeterminate"></div></div>
+              <p class="grey-text" style="font-size:0.8rem; margin:4px 0 0;">Loading payment…</p>
+            </div>
+          </div>
+          <div id="monthly-already-active" class="hidden center" style="margin-top:16px;">
+            <span class="badge-pro" style="font-size:0.9rem; padding:6px 16px;">✓ Your Current Plan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Pro Yearly ─────────────────────────────────────────────────────────── -->
+    <div class="col s12 m4">
+      <div class="card pricing-card hoverable" style="height:100%;">
+        <div class="plan-header">
+          <p class="plan-name">
+            Pro Yearly
+            <span class="save-badge">SAVE 20%</span>
+          </p>
+          <div style="margin:16px 0 4px;">
+            <span class="price-tag">$192</span>
+            <span class="price-period">&nbsp;/ year</span>
+          </div>
+          <p class="grey-text" style="font-size:0.8rem; margin:0;">Just $16/month, billed annually.</p>
+        </div>
+        <div class="card-content">
+          <ul class="feature-list" style="list-style:none; padding:0; margin:0;">
+            <li><i class="material-icons">check</i> <strong>Unlimited</strong> dream analyses</li>
+            <li><i class="material-icons">check</i> Jungian, Freudian &amp; Gestalt views</li>
+            <li><i class="material-icons">check</i> Reflection questions</li>
+            <li><i class="material-icons">check</i> Full dream history</li>
+            <li><i class="material-icons">check</i> <strong>Trend analysis</strong></li>
+            <li><i class="material-icons">check</i> <strong>Pattern extraction</strong></li>
+            <li><i class="material-icons">check</i> <strong>Export to Google Doc</strong></li>
+          </ul>
+          <div class="paypal-wrapper" id="paypal-yearly-container">
+            <div id="paypal-yearly-btn"></div>
+            <div id="yearly-loading" class="center" style="padding:12px;">
+              <div class="progress"><div class="indeterminate"></div></div>
+              <p class="grey-text" style="font-size:0.8rem; margin:4px 0 0;">Loading payment…</p>
+            </div>
+          </div>
+          <div id="yearly-already-active" class="hidden center" style="margin-top:16px;">
+            <span class="badge-pro" style="font-size:0.9rem; padding:6px 16px;">✓ Your Current Plan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /row -->
+
+  <!-- FAQ -->
+  <div class="row mt-50">
+    <div class="col s12">
+      <h5 style="font-family:'Merriweather',serif; color:#00695c; text-align:center;">Frequently Asked Questions</h5>
+      <ul class="collapsible" id="faq">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">help_outline</i>Can I cancel anytime?</div>
+          <div class="collapsible-body"><p>Yes. Cancel your subscription at any time from your Settings page. You'll keep Pro access until the end of your current billing period.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">help_outline</i>What counts as a "dream analysis"?</div>
+          <div class="collapsible-body"><p>Each time you submit a dream description and receive an AI-generated Jungian analysis, that counts as one analysis. Viewing your existing analyses doesn't count.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">help_outline</i>Is my dream data private?</div>
+          <div class="collapsible-body"><p>Your dreams are stored securely in Firebase and are only accessible by your account. We do not share your data with third parties.</p></div>
+        </li>
+        <li>
+          <div class="collapsible-header"><i class="material-icons">help_outline</i>What AI model powers the analysis?</div>
+          <div class="collapsible-body"><p>DreamCoach uses Google's Gemini 1.5 Pro, one of the most advanced AI models available, trained on extensive psychological and dream analysis literature.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <br><br>
+</div><!-- /container -->
+
+<!-- Login required modal (guests who click PayPal) -->
+<div id="loginModal" class="modal" style="border-radius:12px; max-width:400px;">
+  <div class="modal-content center">
+    <i class="material-icons" style="font-size:48px; color:#00695c;">login</i>
+    <h5 style="font-family:'Merriweather',serif;">Sign in to Subscribe</h5>
+    <p>Create a free account or sign in to start your Pro subscription.</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat waves-effect">Cancel</a>
+    <a href="/login.html" class="btn teal darken-2 waves-effect waves-light">Sign In / Sign Up</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<!-- PayPal JS SDK – vault=true enables subscriptions -->
+<script src="https://www.paypal.com/sdk/js?client-id=AfFO713UgKTXBPuyY7SKC9pQ_o3aJBSCA7h1WVdoRbYGcqXwfhuyII1FZz2AHRV9LIb3UEXY_0BTPw6f&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
+
+<script type="module">
+  import { auth, db, fns } from './js/firebase-config.js';
+  import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+  import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+  import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
+  import { logout, isPro } from './js/auth.js';
+
+  M.AutoInit();
+
+  // PayPal Plan IDs — populated by calling /setupPayPalPlans once.
+  // After running setup, paste the returned IDs here:
+  let MONTHLY_PLAN_ID = '';
+  let YEARLY_PLAN_ID  = '';
+
+  // Try to load plan IDs from Firestore (set by setupPayPalPlans function)
+  async function loadPlanIds() {
+    const snap = await getDoc(doc(db, 'config', 'paypal'));
+    if (snap.exists()) {
+      MONTHLY_PLAN_ID = snap.data().monthlyPlanId || '';
+      YEARLY_PLAN_ID  = snap.data().yearlyPlanId  || '';
+    }
+  }
+
+  let currentUser = null;
+
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+
+    if (user) {
+      document.getElementById('logoutBtn').classList.remove('hidden');
+      document.getElementById('loginBtn').classList.add('hidden');
+      document.getElementById('freeBtn').textContent = 'Your Current Plan';
+      document.getElementById('freeBtn').href = '/dashboard.html';
+
+      const snap = await getDoc(doc(db, 'users', user.uid));
+      if (snap.exists()) {
+        const userData = snap.data();
+        if (isPro(userData)) {
+          const notice = document.getElementById('currentPlanNotice');
+          const label  = userData.subscriptionStatus === 'pro_yearly' ? 'Pro Yearly' : 'Pro Monthly';
+          document.getElementById('currentPlanText').textContent = `✓ You are on the ${label} plan`;
+          notice.classList.remove('hidden');
+
+          if (userData.subscriptionStatus === 'pro_monthly') {
+            document.getElementById('monthly-already-active').classList.remove('hidden');
+            document.getElementById('paypal-monthly-btn').style.display = 'none';
+          } else {
+            document.getElementById('yearly-already-active').classList.remove('hidden');
+            document.getElementById('paypal-yearly-btn').style.display = 'none';
+          }
+        }
+      }
+    }
+
+    // Load plan IDs then render PayPal buttons
+    await loadPlanIds();
+    renderPayPalButtons();
+  });
+
+  function renderPayPalButtons() {
+    document.getElementById('monthly-loading').style.display = 'none';
+    document.getElementById('yearly-loading').style.display  = 'none';
+
+    if (!MONTHLY_PLAN_ID || !YEARLY_PLAN_ID) {
+      // Plan IDs not set up yet — show placeholder message
+      const msg = '<p class="grey-text" style="font-size:0.8rem; text-align:center; margin-top:12px;">Payment setup in progress. Please check back soon.</p>';
+      document.getElementById('paypal-monthly-btn').innerHTML = msg;
+      document.getElementById('paypal-yearly-btn').innerHTML  = msg;
+      return;
+    }
+
+    function makeButton(containerId, planId, planType) {
+      const container = document.getElementById(containerId);
+      if (!container || container.innerHTML.trim() !== '') return;
+
+      paypal.Buttons({
+        style: {
+          shape: 'rect',
+          color: 'blue',
+          layout: 'vertical',
+          label: 'subscribe'
+        },
+        createSubscription: (data, actions) => {
+          if (!currentUser) {
+            M.Modal.getInstance(document.getElementById('loginModal')).open();
+            return Promise.reject('not logged in');
+          }
+          return actions.subscription.create({ plan_id: planId });
+        },
+        onApprove: async (data) => {
+          M.toast({ html: '⏳ Activating your subscription…', classes: 'teal darken-2', displayLength: 4000 });
+          try {
+            const verify = httpsCallable(fns, 'verifyPayPalSubscription');
+            const result = await verify({ subscriptionId: data.subscriptionID, planType });
+            M.toast({ html: '🎉 Welcome to Pro! Redirecting…', classes: 'teal darken-2', displayLength: 3000 });
+            setTimeout(() => { location.href = '/dashboard.html?upgraded=true'; }, 2000);
+          } catch (err) {
+            M.toast({ html: 'Subscription verified but activation failed. Please contact support.', classes: 'red darken-2', displayLength: 8000 });
+          }
+        },
+        onError: (err) => {
+          console.error('PayPal error', err);
+          M.toast({ html: 'Payment error. Please try again.', classes: 'red darken-2' });
+        },
+        onCancel: () => {
+          M.toast({ html: 'Subscription cancelled.', classes: 'orange darken-2' });
+        }
+      }).render('#' + containerId);
+    }
+
+    makeButton('paypal-monthly-btn', MONTHLY_PLAN_ID, 'monthly');
+    makeButton('paypal-yearly-btn',  YEARLY_PLAN_ID,  'yearly');
+  }
+
+  document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+  document.getElementById('sidenav-logout').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+</script>
+</body>
+</html>

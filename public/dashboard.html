@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard – DreamCoach</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <style>
+    .dream-expanded { display: none; }
+    .dream-expanded.open { display: block; }
+  </style>
+</head>
+<body>
+
+<nav class="teal darken-2">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo">🌙 DreamCoach</a>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/" class="btn-flat white-text"><i class="material-icons left">add_circle</i>New Dream</a></li>
+      <li><a href="/analysis.html" class="btn-flat white-text"><i class="material-icons left">analytics</i>Trends</a></li>
+      <li><a href="/pricing.html" class="btn-flat white-text"><i class="material-icons left">star</i>Pricing</a></li>
+      <li><a href="/settings.html" class="btn-flat white-text"><i class="material-icons left">settings</i>Settings</a></li>
+      <li><a href="#" id="logoutBtn" class="btn-flat white-text"><i class="material-icons left">logout</i>Sign Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+  <li><a href="/"><i class="material-icons">add_circle</i>New Dream</a></li>
+  <li><a href="/analysis.html"><i class="material-icons">analytics</i>Trends</a></li>
+  <li><a href="/pricing.html"><i class="material-icons">star</i>Pricing</a></li>
+  <li><a href="/settings.html"><i class="material-icons">settings</i>Settings</a></li>
+  <li><a href="#" id="sidenav-logout"><i class="material-icons">logout</i>Sign Out</a></li>
+</ul>
+
+<div class="container mt-50">
+
+  <!-- Welcome + stats row -->
+  <div class="row">
+    <div class="col s12 m8">
+      <h4 style="font-family:'Merriweather',serif; color:#00695c;">
+        <span id="greetingName">Your</span> Dream Journal
+      </h4>
+      <p class="grey-text" style="margin-top:-8px;">All your dreams and analyses in one place.</p>
+    </div>
+    <div class="col s12 m4 right-align" style="padding-top:16px;">
+      <a href="/" class="btn teal darken-2 waves-effect waves-light" style="font-family:'Merriweather',serif;">
+        <i class="material-icons left">add</i>New Dream
+      </a>
+    </div>
+  </div>
+
+  <!-- Stats cards -->
+  <div class="row" id="statsRow">
+    <div class="col s12 m4">
+      <div class="card hoverable" style="border-radius:12px; text-align:center; padding:16px 8px;">
+        <i class="material-icons" style="font-size:36px; color:#00695c;">bedtime</i>
+        <h5 id="statTotal" style="font-family:'Merriweather',serif; color:#00695c; margin:8px 0 4px;">–</h5>
+        <p class="grey-text" style="margin:0; font-size:0.85rem;">Total Dreams</p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card hoverable" style="border-radius:12px; text-align:center; padding:16px 8px;">
+        <i class="material-icons" style="font-size:36px; color:#00695c;">today</i>
+        <h5 id="statMonth" style="font-family:'Merriweather',serif; color:#00695c; margin:8px 0 4px;">–</h5>
+        <p class="grey-text" style="margin:0; font-size:0.85rem;">This Month</p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card hoverable" style="border-radius:12px; text-align:center; padding:16px 8px;">
+        <i class="material-icons" style="font-size:36px; color:#00695c;" id="planIcon">star_border</i>
+        <h5 id="statPlan" style="font-family:'Merriweather',serif; color:#00695c; margin:8px 0 4px;">Free</h5>
+        <p class="grey-text" style="margin:0; font-size:0.85rem;">Current Plan</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Usage bar (free users) -->
+  <div id="usageBanner" class="card-panel teal lighten-5 hidden" style="border-radius:12px; margin-bottom:20px;">
+    <div class="row" style="margin-bottom:0; align-items:center;">
+      <div class="col s9">
+        <p style="margin:0 0 6px; font-size:0.9rem;" id="usageText"></p>
+        <div class="usage-bar-wrap">
+          <div class="progress">
+            <div class="determinate" id="usageBar" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col s3 right-align">
+        <a href="/pricing.html" class="btn-small teal darken-2 waves-effect" id="upgradeBtn" style="display:none;">Upgrade</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dreams list -->
+  <div class="card" style="border-radius:12px;">
+    <div class="card-content">
+      <span class="card-title">Dream History</span>
+
+      <!-- Loading -->
+      <div id="dreamsLoading" class="center" style="padding:40px;">
+        <div class="progress" style="max-width:300px; margin:0 auto;">
+          <div class="indeterminate"></div>
+        </div>
+        <p class="grey-text">Loading your dreams…</p>
+      </div>
+
+      <!-- Empty state -->
+      <div id="dreamsEmpty" class="center hidden" style="padding:48px 16px;">
+        <i class="material-icons" style="font-size:64px; color:#e0e0e0;">bedtime</i>
+        <h5 style="color:#9e9e9e; font-family:'Merriweather',serif;">No dreams yet</h5>
+        <p class="grey-text">Record your first dream and let DreamCoach unlock its meaning.</p>
+        <a href="/" class="btn teal darken-2 waves-effect waves-light">Analyze My First Dream</a>
+      </div>
+
+      <!-- Dream list -->
+      <div id="dreamsList"></div>
+
+      <!-- Pagination -->
+      <div id="paginationRow" class="center hidden" style="margin-top:20px;">
+        <button class="btn-flat teal-text text-darken-2 waves-effect" id="prevBtn" disabled>
+          <i class="material-icons left">chevron_left</i>Previous
+        </button>
+        <span id="pageInfo" class="grey-text" style="margin:0 16px; font-size:0.85rem;"></span>
+        <button class="btn-flat teal-text text-darken-2 waves-effect" id="nextBtn">
+          Next<i class="material-icons right">chevron_right</i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upgrade CTA (free users who hit limit) -->
+  <div id="upgradeCta" class="card teal lighten-5 hidden" style="border-radius:12px; margin-bottom:30px;">
+    <div class="card-content center">
+      <i class="material-icons" style="font-size:48px; color:#00695c;">star</i>
+      <h5 style="font-family:'Merriweather',serif; color:#00695c;">Unlock Unlimited Dreams</h5>
+      <p>Upgrade to Pro for unlimited analyses, trend analysis across your entire dream journal, and more.</p>
+      <a href="/pricing.html" class="btn teal darken-2 waves-effect waves-light" style="font-family:'Merriweather',serif;">
+        View Pro Plans — from $16/mo
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- Analysis Modal -->
+<div id="analysisModal" class="modal modal-fixed-footer" style="border-radius:12px; max-height:85vh;">
+  <div class="modal-content">
+    <h5 style="font-family:'Merriweather',serif; color:#00695c;" id="modalTitle">Dream Analysis</h5>
+    <p class="grey-text" id="modalDate"></p>
+    <h6 style="color:#424242; margin-top:16px;">Dream Description</h6>
+    <p id="modalDescription" style="background:#f5f5f5; padding:12px; border-radius:8px; font-style:italic;"></p>
+    <h6 style="color:#424242; margin-top:16px;">Analysis</h6>
+    <div class="analysis-result" id="modalAnalysis" style="white-space:pre-wrap;"></div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat teal-text text-darken-2 waves-effect">Close</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="module">
+  import { auth, db } from './js/firebase-config.js';
+  import { initAuthGuard, logout, isPro, getUserData } from './js/auth.js';
+  import {
+    collection, query, where, orderBy, limit,
+    startAfter, getDocs, doc, getDoc, getCountFromServer
+  } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+
+  M.AutoInit();
+  const modal = M.Modal.getInstance(document.getElementById('analysisModal'));
+
+  const PAGE_SIZE = 10;
+  let lastVisible = null;
+  let firstVisible = null;
+  let pageStack = [];
+  let currentPage = 1;
+  let totalDreams = 0;
+  let currentUser = null;
+
+  initAuthGuard(async (user) => {
+    if (!user) return;
+    currentUser = user;
+
+    // Greeting
+    const name = user.displayName || user.email.split('@')[0];
+    document.getElementById('greetingName').textContent = name + "'s";
+
+    await loadUserStats(user.uid);
+    await loadDreams(user.uid);
+  });
+
+  async function loadUserStats(uid) {
+    const userData = await getUserData(uid);
+    if (!userData) return;
+
+    // Stats
+    const countSnap = await getCountFromServer(
+      query(collection(db, 'dreams'), where('userId', '==', uid))
+    );
+    totalDreams = countSnap.data().count;
+    document.getElementById('statTotal').textContent = totalDreams;
+
+    const now = new Date();
+    const monthStart = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-01`;
+    const monthSnap = await getCountFromServer(
+      query(collection(db, 'dreams'), where('userId', '==', uid), where('dreamDate', '>=', monthStart))
+    );
+    document.getElementById('statMonth').textContent = monthSnap.data().count;
+
+    if (isPro(userData)) {
+      document.getElementById('statPlan').textContent = userData.subscriptionStatus === 'pro_yearly' ? 'Pro (Yearly)' : 'Pro (Monthly)';
+      document.getElementById('planIcon').textContent = 'star';
+    } else {
+      document.getElementById('statPlan').textContent = 'Free';
+
+      // Usage banner
+      const used = userData.monthlyUsage || 0;
+      const pct  = Math.min(100, (used / 3) * 100);
+      document.getElementById('usageBanner').classList.remove('hidden');
+      document.getElementById('usageText').textContent = `Free Plan: ${used}/3 analyses used this month`;
+      document.getElementById('usageBar').style.width = pct + '%';
+      if (used >= 3) {
+        document.getElementById('upgradeBtn').style.display = 'inline-block';
+        document.getElementById('upgradeCta').classList.remove('hidden');
+      }
+    }
+  }
+
+  async function loadDreams(uid, cursor = null) {
+    document.getElementById('dreamsLoading').classList.remove('hidden');
+    document.getElementById('dreamsList').innerHTML = '';
+
+    let q = query(
+      collection(db, 'dreams'),
+      where('userId', '==', uid),
+      orderBy('timestamp', 'desc'),
+      limit(PAGE_SIZE)
+    );
+
+    if (cursor) q = query(
+      collection(db, 'dreams'),
+      where('userId', '==', uid),
+      orderBy('timestamp', 'desc'),
+      startAfter(cursor),
+      limit(PAGE_SIZE)
+    );
+
+    const snap = await getDocs(q);
+    document.getElementById('dreamsLoading').classList.add('hidden');
+
+    if (snap.empty && currentPage === 1) {
+      document.getElementById('dreamsEmpty').classList.remove('hidden');
+      return;
+    }
+
+    firstVisible = snap.docs[0] || null;
+    lastVisible  = snap.docs[snap.docs.length - 1] || null;
+
+    renderDreams(snap.docs);
+
+    // Pagination
+    const totalPages = Math.ceil(totalDreams / PAGE_SIZE);
+    if (totalPages > 1) {
+      document.getElementById('paginationRow').classList.remove('hidden');
+      document.getElementById('pageInfo').textContent = `Page ${currentPage} of ${totalPages}`;
+      document.getElementById('prevBtn').disabled = currentPage <= 1;
+      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+    }
+  }
+
+  function renderDreams(docs) {
+    const list = document.getElementById('dreamsList');
+    list.innerHTML = '';
+
+    docs.forEach(docSnap => {
+      const d = docSnap.data();
+      const dateStr = d.dreamDate || (d.timestamp?.toDate().toLocaleDateString()) || '—';
+      const preview = (d.description || '').substring(0, 120) + (d.description?.length > 120 ? '…' : '');
+
+      const el = document.createElement('div');
+      el.className = 'card dream-card hoverable';
+      el.style.cssText = 'border-radius:10px; margin-bottom:12px;';
+      el.innerHTML = `
+        <div class="card-content" style="padding:16px 20px; cursor:pointer;">
+          <div class="row" style="margin-bottom:0; align-items:center;">
+            <div class="col s10">
+              <span class="dream-date">🌙 ${dateStr}</span>
+              <p style="margin:6px 0 0; font-size:0.9rem; color:#424242;">${preview}</p>
+            </div>
+            <div class="col s2 right-align">
+              <i class="material-icons grey-text" style="font-size:20px;">chevron_right</i>
+            </div>
+          </div>
+        </div>
+      `;
+
+      el.addEventListener('click', () => openModal(d, dateStr));
+      list.appendChild(el);
+    });
+  }
+
+  function openModal(d, dateStr) {
+    document.getElementById('modalTitle').textContent = `Dream – ${dateStr}`;
+    document.getElementById('modalDate').textContent = `Recorded by ${d.name || 'you'} on ${dateStr}`;
+    document.getElementById('modalDescription').textContent = d.description || '';
+    document.getElementById('modalAnalysis').textContent = d.analysis || 'No analysis available.';
+
+    const modalEl = document.getElementById('analysisModal');
+    M.Modal.getInstance(modalEl).open();
+  }
+
+  document.getElementById('nextBtn').addEventListener('click', () => {
+    pageStack.push(lastVisible);
+    currentPage++;
+    loadDreams(currentUser.uid, lastVisible);
+  });
+
+  document.getElementById('prevBtn').addEventListener('click', () => {
+    pageStack.pop();
+    currentPage--;
+    const cursor = pageStack.length > 0 ? pageStack[pageStack.length - 1] : null;
+    loadDreams(currentUser.uid, cursor);
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', (e) => {
+    e.preventDefault(); logout();
+  });
+  document.getElementById('sidenav-logout').addEventListener('click', (e) => {
+    e.preventDefault(); logout();
+  });
+</script>
+</body>
+</html>

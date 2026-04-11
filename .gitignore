@@ -1,0 +1,11 @@
+node_modules/
+.firebase/
+firebase-debug.log
+firestore-debug.log
+ui-debug.log
+functions/.env
+functions/.env.local
+*.local
+.DS_Store
+*.json.bak
+dreamanalysis-39322-*.json

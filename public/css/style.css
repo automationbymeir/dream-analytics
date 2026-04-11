@@ -1,0 +1,295 @@
+/* ─── DreamAnalytics – Global Styles ─────────────────────────────────────── */
+
+:root {
+  --teal-dark:  #00695c;
+  --teal-mid:   #00897b;
+  --teal-light: #e0f2f1;
+  --moon:       #f9a825;
+  --text-main:  #212121;
+  --text-sub:   #757575;
+  --card-radius: 12px;
+}
+
+/* ── Body & Typography ─────────────────────────────────────────────────────── */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #fafafa;
+  color: var(--text-main);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Merriweather', serif;
+}
+
+/* ── Navbar ────────────────────────────────────────────────────────────────── */
+nav.teal.darken-2 {
+  background-color: var(--teal-dark) !important;
+}
+
+nav .brand-logo {
+  font-family: 'Merriweather', serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+}
+
+nav .btn-flat {
+  color: #fff !important;
+}
+
+/* ── Cards ─────────────────────────────────────────────────────────────────── */
+.card,
+.card-panel {
+  border-radius: var(--card-radius) !important;
+}
+
+.card .card-title {
+  font-family: 'Merriweather', serif;
+  color: var(--teal-dark);
+  font-size: 1.3rem;
+}
+
+/* ── Hero section (index.html landing) ─────────────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg, #004d40 0%, #00695c 60%, #00897b 100%);
+  color: #fff;
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  color: #fff;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto 32px;
+}
+
+.hero .moon-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 16px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+
+/* ── Feature chips on landing ──────────────────────────────────────────────── */
+.feature-chip {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 6px 16px;
+  margin: 4px;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+/* ── Usage bar ──────────────────────────────────────────────────────────────── */
+.usage-bar-wrap {
+  margin: 8px 0 16px;
+}
+
+.usage-bar-wrap .progress {
+  border-radius: 4px;
+  height: 8px;
+  background-color: #b2dfdb;
+}
+
+.usage-bar-wrap .progress .determinate {
+  background-color: var(--teal-dark);
+  border-radius: 4px;
+}
+
+/* ── Analysis result block ─────────────────────────────────────────────────── */
+.analysis-result {
+  border-left: 4px solid var(--teal-dark);
+  padding: 16px 20px;
+  background: #f5f5f5;
+  border-radius: 0 8px 8px 0;
+  margin-top: 16px;
+  white-space: pre-wrap;
+  line-height: 1.7;
+}
+
+/* ── Pricing cards ─────────────────────────────────────────────────────────── */
+.pricing-card {
+  border-radius: var(--card-radius) !important;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12) !important;
+}
+
+.pricing-card.featured {
+  border: 2px solid var(--teal-dark);
+}
+
+.price-tag {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--teal-dark);
+  font-family: 'Merriweather', serif;
+}
+
+.price-period {
+  font-size: 0.9rem;
+  color: var(--text-sub);
+}
+
+.feature-list li {
+  padding: 6px 0;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.feature-list li:last-child { border-bottom: none; }
+
+.feature-list .material-icons {
+  font-size: 18px;
+  color: var(--teal-dark);
+}
+
+.feature-list .material-icons.no {
+  color: #bdbdbd;
+}
+
+/* ── Tabs ──────────────────────────────────────────────────────────────────── */
+.tabs .tab a {
+  color: var(--teal-dark) !important;
+}
+
+.tabs .tab a:hover,
+.tabs .tab a.active {
+  color: var(--teal-dark) !important;
+}
+
+.tabs .indicator {
+  background-color: var(--teal-dark) !important;
+}
+
+/* ── Prompt templates ──────────────────────────────────────────────────────── */
+.prompt-template {
+  display: inline-block;
+  padding: 6px 14px;
+  margin: 4px;
+  background: var(--teal-light);
+  border-radius: 16px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s, color 0.2s;
+}
+
+.prompt-template:hover {
+  background: #b2dfdb;
+}
+
+/* ── Dream history cards ───────────────────────────────────────────────────── */
+.dream-card {
+  border-left: 4px solid var(--teal-dark);
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.dream-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1) !important;
+}
+
+.dream-card .dream-date {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+/* ── Status badge ──────────────────────────────────────────────────────────── */
+.badge-free {
+  background: #e0e0e0;
+  color: #616161;
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+}
+
+.badge-pro {
+  background: var(--teal-light);
+  color: var(--teal-dark);
+  border-radius: 12px;
+  padding: 2px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ── Paywall overlay ────────────────────────────────────────────────────────── */
+.paywall-overlay {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.paywall-overlay .material-icons {
+  font-size: 64px;
+  color: var(--teal-dark);
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* ── Forms ──────────────────────────────────────────────────────────────────── */
+.input-field label {
+  color: var(--teal-dark);
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+  border-bottom-color: var(--teal-dark) !important;
+  box-shadow: 0 1px 0 0 var(--teal-dark) !important;
+}
+
+.input-field input:focus + label,
+.input-field textarea:focus + label {
+  color: var(--teal-dark) !important;
+}
+
+/* ── Loading spinner ────────────────────────────────────────────────────────── */
+.loader-wrapper {
+  text-align: center;
+  padding: 48px 24px;
+}
+
+.loader-wrapper .progress {
+  margin: 24px auto;
+  max-width: 400px;
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 2rem; }
+  .hero p  { font-size: 1rem; }
+  .price-tag { font-size: 2rem; }
+}
+
+/* ── Utility ────────────────────────────────────────────────────────────────── */
+.mt-30  { margin-top: 30px; }
+.mt-50  { margin-top: 50px; }
+.mb-20  { margin-bottom: 20px; }
+.hidden { display: none !important; }
+
+.teal-text-dark { color: var(--teal-dark) !important; }
+
+.btn.teal.darken-2,
+.btn-large.teal.darken-2 {
+  background-color: var(--teal-dark) !important;
+}
+
+.btn-flat.teal-text {
+  color: var(--teal-dark) !important;
+}

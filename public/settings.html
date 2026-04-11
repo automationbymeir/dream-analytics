@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Settings – DreamCoach</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="teal darken-2">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo">🌙 DreamCoach</a>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="/" class="btn-flat white-text"><i class="material-icons left">add_circle</i>New Dream</a></li>
+      <li><a href="/dashboard.html" class="btn-flat white-text"><i class="material-icons left">dashboard</i>Dashboard</a></li>
+      <li><a href="#" id="logoutBtn" class="btn-flat white-text"><i class="material-icons left">logout</i>Sign Out</a></li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="mobile-nav">
+  <li><a href="/"><i class="material-icons">add_circle</i>New Dream</a></li>
+  <li><a href="/dashboard.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+  <li><a href="#" id="sidenav-logout"><i class="material-icons">logout</i>Sign Out</a></li>
+</ul>
+
+<div class="container mt-50">
+  <h4 style="font-family:'Merriweather',serif; color:#00695c;">Settings</h4>
+
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs" id="settingsTabs">
+        <li class="tab col s4"><a href="#tab-profile" class="active">Profile</a></li>
+        <li class="tab col s4"><a href="#tab-subscription">Subscription</a></li>
+        <li class="tab col s4"><a href="#tab-account">Account</a></li>
+      </ul>
+    </div>
+
+    <!-- ── Profile Tab ──────────────────────────────────────────────────────── -->
+    <div id="tab-profile" class="col s12">
+      <div class="card" style="border-radius:0 0 12px 12px; margin-top:0;">
+        <div class="card-content">
+          <span class="card-title" style="color:#00695c;">Profile Information</span>
+
+          <div class="input-field">
+            <input id="displayName" type="text">
+            <label for="displayName" class="active">Display Name</label>
+          </div>
+          <div class="input-field">
+            <input id="profileEmail" type="email" disabled class="grey-text">
+            <label for="profileEmail" class="active">Email Address</label>
+            <span class="helper-text">Email cannot be changed here.</span>
+          </div>
+
+          <div class="card-panel teal lighten-5" style="border-radius:8px; margin-top:16px;">
+            <p style="margin:0; font-size:0.9rem;">
+              <strong>Account created:</strong> <span id="createdAt">—</span><br>
+              <strong>Total dreams analyzed:</strong> <span id="totalDreams">—</span>
+            </p>
+          </div>
+
+          <button class="btn teal darken-2 waves-effect waves-light" id="saveProfileBtn" style="margin-top:16px; font-family:'Merriweather',serif;">
+            Save Profile<i class="material-icons right">save</i>
+          </button>
+          <div id="profileStatus" class="hidden" style="margin-top:12px; padding:10px; border-radius:6px;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Subscription Tab ─────────────────────────────────────────────────── -->
+    <div id="tab-subscription" class="col s12">
+      <div class="card" style="border-radius:0 0 12px 12px; margin-top:0;">
+        <div class="card-content">
+          <span class="card-title" style="color:#00695c;">Subscription</span>
+
+          <!-- Current plan panel -->
+          <div id="planPanel" class="card-panel" style="border-radius:8px; margin-bottom:20px;">
+            <div class="row" style="margin-bottom:0; align-items:center;">
+              <div class="col s8">
+                <p style="margin:0; font-weight:500;" id="planName">Loading…</p>
+                <p style="margin:4px 0 0; font-size:0.85rem; color:#757575;" id="planDetail"></p>
+              </div>
+              <div class="col s4 right-align">
+                <span id="planBadge"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Free usage -->
+          <div id="freeUsagePanel" class="hidden">
+            <p style="margin-bottom:6px; font-size:0.9rem;" id="usageText"></p>
+            <div class="usage-bar-wrap">
+              <div class="progress">
+                <div class="determinate" id="usageBar" style="width:0%"></div>
+              </div>
+            </div>
+            <a href="/pricing.html" class="btn teal darken-2 waves-effect waves-light" style="margin-top:20px; font-family:'Merriweather',serif;">
+              <i class="material-icons left">star</i>Upgrade to Pro
+            </a>
+          </div>
+
+          <!-- Pro subscription details -->
+          <div id="proPanel" class="hidden">
+            <div class="row">
+              <div class="col s12 m6">
+                <p style="margin:0; font-size:0.85rem; color:#757575;">Subscription ID</p>
+                <p style="font-size:0.85rem; word-break:break-all;" id="subId">—</p>
+              </div>
+              <div class="col s12 m6">
+                <p style="margin:0; font-size:0.85rem; color:#757575;">Next billing / Expires</p>
+                <p style="font-size:0.85rem;" id="subExpiry">—</p>
+              </div>
+            </div>
+
+            <div class="divider" style="margin:16px 0;"></div>
+
+            <p class="grey-text" style="font-size:0.85rem;">
+              To cancel your subscription, click below. You'll keep Pro access until the end of your current billing period.
+            </p>
+            <button class="btn red lighten-1 waves-effect waves-light" id="cancelSubBtn" style="font-family:'Merriweather',serif;">
+              Cancel Subscription<i class="material-icons right">cancel</i>
+            </button>
+            <div id="cancelStatus" class="hidden" style="margin-top:12px; padding:10px; border-radius:6px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Account Tab ──────────────────────────────────────────────────────── -->
+    <div id="tab-account" class="col s12">
+      <div class="card" style="border-radius:0 0 12px 12px; margin-top:0;">
+        <div class="card-content">
+          <span class="card-title" style="color:#00695c;">Account</span>
+
+          <div class="card-panel orange lighten-5" style="border-radius:8px; margin-bottom:24px;">
+            <p style="margin:0; font-size:0.9rem;">
+              <i class="material-icons" style="vertical-align:middle; font-size:18px; color:#e65100;">warning</i>
+              &nbsp;Deleting your account is permanent and cannot be undone.
+              All your dreams and analysis data will be deleted.
+            </p>
+          </div>
+
+          <button class="btn red darken-2 waves-effect waves-light" id="deleteAccountBtn">
+            <i class="material-icons left">delete_forever</i>Delete My Account
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /row -->
+</div>
+
+<!-- Cancel subscription confirmation modal -->
+<div id="cancelModal" class="modal" style="border-radius:12px; max-width:440px;">
+  <div class="modal-content">
+    <h5 style="font-family:'Merriweather',serif;">Cancel Subscription?</h5>
+    <p>You'll keep Pro access until the end of your current billing period. After that your account reverts to the Free plan (3 analyses/month).</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat waves-effect">Keep Subscription</a>
+    <a href="#!" class="btn red waves-effect waves-light" id="confirmCancelBtn">Yes, Cancel</a>
+  </div>
+</div>
+
+<!-- Delete account confirmation modal -->
+<div id="deleteModal" class="modal" style="border-radius:12px; max-width:440px;">
+  <div class="modal-content">
+    <h5 style="font-family:'Merriweather',serif; color:#c62828;">Delete Account?</h5>
+    <p>This will permanently delete your account and all dream data. This cannot be undone.</p>
+    <p>Type <strong>DELETE</strong> to confirm:</p>
+    <div class="input-field">
+      <input id="deleteConfirmInput" type="text" placeholder="DELETE">
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-close btn-flat waves-effect">Cancel</a>
+    <a href="#!" class="btn red darken-2 waves-effect waves-light" id="confirmDeleteBtn">Delete Forever</a>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="module">
+  import { auth, db, fns } from './js/firebase-config.js';
+  import { initAuthGuard, logout, isPro } from './js/auth.js';
+  import {
+    doc, getDoc, updateDoc, getDocs, collection,
+    query, where, deleteDoc, getCountFromServer
+  } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+  import { deleteUser, updateProfile } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+  import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
+
+  M.AutoInit();
+
+  let currentUser = null;
+  let userData    = null;
+
+  initAuthGuard(async (user) => {
+    if (!user) return;
+    currentUser = user;
+    await loadSettings(user);
+  });
+
+  async function loadSettings(user) {
+    // Profile tab
+    document.getElementById('displayName').value  = user.displayName || '';
+    document.getElementById('profileEmail').value = user.email || '';
+    M.updateTextFields();
+
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (!snap.exists()) return;
+    userData = snap.data();
+
+    // Created at
+    const created = userData.createdAt?.toDate?.() || new Date();
+    document.getElementById('createdAt').textContent = created.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+
+    // Total dreams
+    const countSnap = await getCountFromServer(
+      query(collection(db, 'dreams'), where('userId', '==', user.uid))
+    );
+    document.getElementById('totalDreams').textContent = countSnap.data().count;
+
+    // Subscription tab
+    const proStatus = isPro(userData);
+    if (proStatus) {
+      document.getElementById('planBadge').innerHTML = '<span class="badge-pro" style="font-size:0.85rem; padding:4px 12px;">PRO</span>';
+      document.getElementById('planPanel').style.background = '#e0f2f1';
+
+      const planLabel = userData.subscriptionStatus === 'pro_yearly' ? 'Pro Yearly ($192/year)' : 'Pro Monthly ($20/month)';
+      document.getElementById('planName').textContent   = planLabel;
+      document.getElementById('planDetail').textContent = 'Unlimited dream analyses and trend analysis.';
+
+      document.getElementById('proPanel').classList.remove('hidden');
+      document.getElementById('subId').textContent = userData.subscriptionId || '—';
+      if (userData.subscriptionExpiry) {
+        const expDate = userData.subscriptionExpiry.toDate();
+        document.getElementById('subExpiry').textContent = expDate.toLocaleDateString('en-US', { year:'numeric', month:'long', day:'numeric' });
+      }
+    } else {
+      document.getElementById('planBadge').innerHTML = '<span class="badge-free">FREE</span>';
+      document.getElementById('planPanel').style.background = '#fafafa';
+      document.getElementById('planName').textContent   = 'Free Plan';
+      document.getElementById('planDetail').textContent = '3 dream analyses per month.';
+
+      document.getElementById('freeUsagePanel').classList.remove('hidden');
+      const used = userData.monthlyUsage || 0;
+      document.getElementById('usageText').textContent = `${used}/3 analyses used this month`;
+      document.getElementById('usageBar').style.width  = Math.min(100, (used / 3) * 100) + '%';
+    }
+  }
+
+  // Save profile
+  document.getElementById('saveProfileBtn').addEventListener('click', async () => {
+    if (!currentUser) return;
+    const name = document.getElementById('displayName').value.trim();
+    const statusEl = document.getElementById('profileStatus');
+
+    try {
+      await updateProfile(currentUser, { displayName: name });
+      await updateDoc(doc(db, 'users', currentUser.uid), { displayName: name });
+      statusEl.className = 'card-panel green lighten-4';
+      statusEl.textContent = '✓ Profile saved.';
+      statusEl.classList.remove('hidden');
+      setTimeout(() => statusEl.classList.add('hidden'), 3000);
+    } catch (err) {
+      statusEl.className = 'card-panel red lighten-4';
+      statusEl.textContent = 'Error: ' + err.message;
+      statusEl.classList.remove('hidden');
+    }
+  });
+
+  // Cancel subscription
+  document.getElementById('cancelSubBtn').addEventListener('click', () => {
+    M.Modal.getInstance(document.getElementById('cancelModal')).open();
+  });
+
+  document.getElementById('confirmCancelBtn').addEventListener('click', async () => {
+    M.Modal.getInstance(document.getElementById('cancelModal')).close();
+    const statusEl = document.getElementById('cancelStatus');
+    statusEl.className = 'card-panel yellow lighten-4';
+    statusEl.textContent = 'Cancelling subscription…';
+    statusEl.classList.remove('hidden');
+
+    try {
+      const cancelSubscription = httpsCallable(fns, 'cancelSubscription');
+      await cancelSubscription({});
+      statusEl.className = 'card-panel green lighten-4';
+      statusEl.textContent = '✓ Subscription cancelled. You keep Pro access until the billing period ends.';
+      document.getElementById('cancelSubBtn').disabled = true;
+      // Reload subscription display
+      await loadSettings(currentUser);
+    } catch (err) {
+      statusEl.className = 'card-panel red lighten-4';
+      statusEl.textContent = 'Error: ' + (err.message || 'Cancellation failed.');
+    }
+  });
+
+  // Delete account
+  document.getElementById('deleteAccountBtn').addEventListener('click', () => {
+    document.getElementById('deleteConfirmInput').value = '';
+    M.Modal.getInstance(document.getElementById('deleteModal')).open();
+  });
+
+  document.getElementById('confirmDeleteBtn').addEventListener('click', async () => {
+    if (document.getElementById('deleteConfirmInput').value !== 'DELETE') {
+      M.toast({ html: 'Please type DELETE to confirm.', classes: 'red darken-2' });
+      return;
+    }
+
+    M.Modal.getInstance(document.getElementById('deleteModal')).close();
+    M.toast({ html: 'Deleting account…', classes: 'grey darken-2', displayLength: 10000 });
+
+    try {
+      // Delete all dreams
+      const dreamsSnap = await getDocs(
+        query(collection(db, 'dreams'), where('userId', '==', currentUser.uid))
+      );
+      const deletes = dreamsSnap.docs.map(d => deleteDoc(d.ref));
+      await Promise.all(deletes);
+
+      // Delete user doc
+      await deleteDoc(doc(db, 'users', currentUser.uid));
+
+      // Delete Firebase Auth user
+      await deleteUser(currentUser);
+
+      location.href = '/?deleted=true';
+    } catch (err) {
+      M.toast({ html: 'Error deleting account: ' + err.message + '. Please sign in again and try.', classes: 'red darken-2', displayLength: 8000 });
+    }
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+  document.getElementById('sidenav-logout').addEventListener('click', (e) => { e.preventDefault(); logout(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isAuth() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return request.auth.uid == uid;
+    }
+
+    // Users: read own doc; client cannot write subscription fields
+    match /users/{userId} {
+      allow read: if isAuth() && isOwner(userId);
+      allow create: if isAuth() && isOwner(userId);
+      allow update: if isAuth() && isOwner(userId)
+        && !request.resource.data.diff(resource.data).affectedKeys()
+            .hasAny(['subscriptionStatus', 'subscriptionId', 'subscriptionExpiry',
+                     'monthlyUsage', 'monthlyUsageReset']);
+    }
+
+    // Dreams: flat collection, userId field used for ownership
+    match /dreams/{dreamId} {
+      allow read: if isAuth() && resource.data.userId == request.auth.uid;
+      allow create: if isAuth()
+        && request.resource.data.userId == request.auth.uid
+        && !('analysis' in request.resource.data);
+      allow delete: if isAuth() && resource.data.userId == request.auth.uid;
+    }
+
+    // App config (plan IDs, etc.) — read-only for all authenticated users
+    match /config/{doc} {
+      allow read: if isAuth();
+    }
+  }
+}

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DreamCoach – AI Dream Analysis</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- ── Navbar ─────────────────────────────────────────────────────────────── -->
+<nav class="teal darken-2">
+  <div class="nav-wrapper container">
+    <a href="/" class="brand-logo">🌙 DreamCoach</a>
+    <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <ul class="right hide-on-med-and-down" id="nav-desktop">
+      <li id="nav-dashboard-link" class="hidden">
+        <a href="/dashboard.html" class="btn-flat white-text">
+          <i class="material-icons left">dashboard</i>Dashboard
+        </a>
+      </li>
+      <li id="nav-analysis-link" class="hidden">
+        <a href="/analysis.html" class="btn-flat white-text">
+          <i class="material-icons left">analytics</i>Trends
+        </a>
+      </li>
+      <li>
+        <a href="/pricing.html" class="btn-flat white-text">
+          <i class="material-icons left">star</i>Pricing
+        </a>
+      </li>
+      <li id="nav-login-link">
+        <a href="/login.html" class="btn-flat white-text">
+          <i class="material-icons left">login</i>Sign In
+        </a>
+      </li>
+      <li id="nav-logout-link" class="hidden">
+        <a href="#" id="logoutBtn" class="btn-flat white-text">
+          <i class="material-icons left">logout</i>Sign Out
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Sidenav mobile -->
+<ul class="sidenav" id="mobile-nav">
+  <li><a href="/dashboard.html"><i class="material-icons">dashboard</i>Dashboard</a></li>
+  <li><a href="/analysis.html"><i class="material-icons">analytics</i>Trends</a></li>
+  <li><a href="/pricing.html"><i class="material-icons">star</i>Pricing</a></li>
+  <li><a href="/login.html" id="sidenav-login"><i class="material-icons">login</i>Sign In</a></li>
+  <li><a href="#" id="sidenav-logout" class="hidden"><i class="material-icons">logout</i>Sign Out</a></li>
+</ul>
+
+<!-- ── Hero (shown to guests) ───────────────────────────────────────────────── -->
+<div id="hero-section" class="hero hidden">
+  <div class="container">
+    <span class="moon-icon">🌙</span>
+    <h1>Unlock Your Dreams</h1>
+    <p>AI-powered Jungian dream analysis that reveals symbols, archetypes, and insights from your unconscious mind.</p>
+    <a href="/login.html" class="btn-large white teal-text text-darken-2 waves-effect waves-teal" style="font-family:'Merriweather',serif;">
+      <i class="material-icons left">auto_awesome</i>Start Free – 3 Dreams/Month
+    </a>
+    <div style="margin-top:24px;">
+      <span class="feature-chip">🔮 Jungian Analysis</span>
+      <span class="feature-chip">🧠 Freudian &amp; Gestalt</span>
+      <span class="feature-chip">✨ Reflection Questions</span>
+      <span class="feature-chip">📊 Trend Analysis (Pro)</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── Main App (shown to logged-in users) ───────────────────────────────────── -->
+<div id="app-section" class="container mt-50 hidden">
+
+  <!-- Usage banner -->
+  <div id="usage-banner" class="card-panel teal lighten-5 hidden" style="border-radius:12px;">
+    <div class="row" style="margin-bottom:0; align-items:center;" class="valign-wrapper">
+      <div class="col s8 m10">
+        <span id="usage-text" style="font-size:0.9rem;"></span>
+        <div class="usage-bar-wrap">
+          <div class="progress">
+            <div class="determinate" id="usage-bar" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="col s4 m2 right-align">
+        <a href="/pricing.html" class="btn-small teal darken-2 waves-effect waves-light" id="upgrade-btn" style="display:none;font-size:0.75rem;">
+          Upgrade
+        </a>
+        <span class="badge-pro" id="pro-badge" style="display:none;">PRO</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dream Form Card -->
+  <div class="card hoverable">
+    <div class="card-content">
+      <span class="card-title">🌙 Analyze Your Dream</span>
+      <p class="grey-text" style="margin-top:-8px;margin-bottom:20px;">Share your dream and receive a deep Jungian analysis with reflection questions.</p>
+
+      <form id="dreamForm">
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="name" type="text" required>
+            <label for="name">Your Name</label>
+          </div>
+          <div class="input-field col s12 m6">
+            <input id="email" type="email" required>
+            <label for="email">Email Address</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12 m6">
+            <input id="dreamDate" type="date" required>
+            <label for="dreamDate" class="active">Date of Dream</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="input-field col s12">
+            <textarea id="description" class="materialize-textarea" required style="min-height:140px;"></textarea>
+            <label for="description">Describe Your Dream</label>
+            <span class="helper-text">Include as much detail as you remember — people, places, feelings, symbols.</span>
+          </div>
+        </div>
+
+        <button class="btn-large waves-effect waves-light teal darken-2" type="submit" id="submitBtn" style="font-family:'Merriweather',serif;">
+          <i class="material-icons left">auto_awesome</i>Analyze Dream
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Loading state -->
+  <div id="loadingCard" class="card hidden">
+    <div class="card-content loader-wrapper">
+      <h5 class="teal-text text-darken-2">🔮 Analyzing Your Dream…</h5>
+      <p class="grey-text">Exploring Jungian archetypes, symbols, and reflection questions…</p>
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analysis Result -->
+  <div id="resultCard" class="card hidden">
+    <div class="card-content">
+      <span class="card-title">✨ Your Dream Analysis</span>
+      <div class="analysis-result" id="analysisText"></div>
+    </div>
+    <div class="card-action">
+      <a href="/dashboard.html" class="teal-text text-darken-2">
+        <i class="material-icons left" style="vertical-align:middle;font-size:18px;">history</i>View All Dreams
+      </a>
+      <a href="#" id="newDreamBtn" class="teal-text text-darken-2" style="margin-left:16px;">
+        <i class="material-icons left" style="vertical-align:middle;font-size:18px;">add</i>New Dream
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── Features section (guests only) ─────────────────────────────────────── -->
+<div id="features-section" class="container mt-50 hidden">
+  <h4 class="center" style="font-family:'Merriweather',serif; color:#00695c;">How DreamCoach Works</h4>
+  <div class="row mt-30">
+    <div class="col s12 m4">
+      <div class="card hoverable" style="text-align:center; padding:20px; border-radius:12px;">
+        <i class="material-icons" style="font-size:48px; color:#00695c;">edit_note</i>
+        <h5 style="font-family:'Merriweather',serif;">1. Record</h5>
+        <p>Describe your dream with as much detail as you remember — symbols, emotions, characters.</p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card hoverable" style="text-align:center; padding:20px; border-radius:12px;">
+        <i class="material-icons" style="font-size:48px; color:#00695c;">psychology</i>
+        <h5 style="font-family:'Merriweather',serif;">2. Analyze</h5>
+        <p>Our Gemini-powered AI applies Jungian, Freudian, and Gestalt frameworks to decode your dream.</p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="card hoverable" style="text-align:center; padding:20px; border-radius:12px;">
+        <i class="material-icons" style="font-size:48px; color:#00695c;">self_improvement</i>
+        <h5 style="font-family:'Merriweather',serif;">3. Grow</h5>
+        <p>Receive personalized reflection questions and track patterns in your dream journal over time.</p>
+      </div>
+    </div>
+  </div>
+  <div class="center mt-30">
+    <a href="/login.html" class="btn-large teal darken-2 waves-effect waves-light" style="font-family:'Merriweather',serif;">
+      Get Started Free
+    </a>
+    <a href="/pricing.html" class="btn-large btn-flat teal-text text-darken-2 waves-effect" style="margin-left:12px;">
+      See Pricing
+    </a>
+  </div>
+</div>
+
+<br><br>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script type="module">
+  import { auth, db, fns } from './js/firebase-config.js';
+  import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+  import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
+  import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
+  import { logout, isPro } from './js/auth.js';
+
+  M.AutoInit();
+
+  let currentUser = null;
+
+  onAuthStateChanged(auth, async (user) => {
+    currentUser = user;
+    if (user) {
+      showApp(user);
+      await loadUserData(user);
+    } else {
+      showGuest();
+    }
+  });
+
+  function showApp(user) {
+    document.getElementById('hero-section').classList.add('hidden');
+    document.getElementById('features-section').classList.add('hidden');
+    document.getElementById('app-section').classList.remove('hidden');
+    document.getElementById('nav-dashboard-link').classList.remove('hidden');
+    document.getElementById('nav-analysis-link').classList.remove('hidden');
+    document.getElementById('nav-login-link').classList.add('hidden');
+    document.getElementById('nav-logout-link').classList.remove('hidden');
+
+    // Pre-fill name/email from Firebase Auth
+    if (user.displayName) {
+      document.getElementById('name').value = user.displayName;
+      M.updateTextFields();
+    }
+    if (user.email) {
+      document.getElementById('email').value = user.email;
+      M.updateTextFields();
+    }
+    document.getElementById('dreamDate').valueAsDate = new Date();
+  }
+
+  function showGuest() {
+    document.getElementById('hero-section').classList.remove('hidden');
+    document.getElementById('features-section').classList.remove('hidden');
+    document.getElementById('app-section').classList.add('hidden');
+  }
+
+  async function loadUserData(user) {
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (!snap.exists()) return;
+    const data = snap.data();
+
+    const usageBanner = document.getElementById('usage-banner');
+    usageBanner.classList.remove('hidden');
+
+    if (isPro(data)) {
+      document.getElementById('pro-badge').style.display = 'inline-block';
+      document.getElementById('upgrade-btn').style.display = 'none';
+      document.getElementById('usage-text').textContent = '✨ Pro Plan — Unlimited dream analyses';
+      document.getElementById('usage-bar').style.width = '100%';
+    } else {
+      const used = data.monthlyUsage || 0;
+      const pct = Math.min(100, (used / 3) * 100);
+      document.getElementById('usage-bar').style.width = pct + '%';
+      document.getElementById('usage-text').textContent = `Free Plan: ${used}/3 analyses used this month`;
+      if (used >= 3) {
+        document.getElementById('upgrade-btn').style.display = 'inline-block';
+      }
+    }
+  }
+
+  // ── Form submission ──────────────────────────────────────────────────────────
+  document.getElementById('dreamForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!currentUser) { location.href = '/login.html'; return; }
+
+    const description = document.getElementById('description').value.trim();
+    const dreamDate   = document.getElementById('dreamDate').value;
+    const name        = document.getElementById('name').value.trim();
+
+    if (description.length < 20) {
+      M.toast({ html: 'Please describe your dream in more detail.', classes: 'red darken-2' });
+      return;
+    }
+
+    // Show loading
+    document.getElementById('dreamForm').classList.add('hidden');
+    document.getElementById('resultCard').classList.add('hidden');
+    document.getElementById('loadingCard').classList.remove('hidden');
+
+    try {
+      const analyzeDream = httpsCallable(fns, 'analyzeDream');
+      const result = await analyzeDream({ description, dreamDate, name });
+
+      const { analysis, remainingFree } = result.data;
+
+      // Show result
+      document.getElementById('loadingCard').classList.add('hidden');
+      document.getElementById('resultCard').classList.remove('hidden');
+      document.getElementById('analysisText').textContent = analysis;
+
+      if (remainingFree !== null && remainingFree !== undefined) {
+        M.toast({
+          html: remainingFree > 0
+            ? `Analysis complete! ${remainingFree} free ${remainingFree === 1 ? 'analysis' : 'analyses'} remaining this month.`
+            : '✅ Analysis complete! You have used all free analyses this month.',
+          classes: 'teal darken-2',
+          displayLength: 6000
+        });
+      } else {
+        M.toast({ html: '✅ Dream analysis complete!', classes: 'teal darken-2' });
+      }
+
+      // Refresh usage display
+      await loadUserData(currentUser);
+
+    } catch (err) {
+      document.getElementById('loadingCard').classList.add('hidden');
+      document.getElementById('dreamForm').classList.remove('hidden');
+
+      const msg = err.message || 'Analysis failed. Please try again.';
+      if (msg.includes('limit')) {
+        M.toast({
+          html: `${msg} <a href="/pricing.html" style="color:#fff;text-decoration:underline;margin-left:8px;">Upgrade</a>`,
+          classes: 'orange darken-2',
+          displayLength: 8000
+        });
+      } else {
+        M.toast({ html: msg, classes: 'red darken-2', displayLength: 5000 });
+      }
+    }
+  });
+
+  document.getElementById('newDreamBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById('resultCard').classList.add('hidden');
+    document.getElementById('dreamForm').classList.remove('hidden');
+    document.getElementById('description').value = '';
+    M.textareaAutoResize(document.getElementById('description'));
+    M.updateTextFields();
+    window.scrollTo(0, 0);
+  });
+
+  document.getElementById('logoutBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    logout();
+  });
+</script>
+</body>
+</html>
