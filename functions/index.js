@@ -7,15 +7,11 @@ admin.initializeApp();
 const db = admin.firestore();
 
 // ─── Configuration ────────────────────────────────────────────────────────────
-// Keys are read from Firebase Functions config:
-//   firebase functions:config:set gemini.key="..." paypal.client_id="..." paypal.secret="..."
-// For local dev, create functions/.runtimeconfig.json with the same structure.
+// Keys are loaded from functions/.env (v2 functions pick this up automatically).
 
-const cfg = () => functions.config();
-
-const GEMINI_API_KEY  = () => (cfg().gemini  && cfg().gemini.key)         || process.env.GEMINI_API_KEY;
-const PAYPAL_CLIENT   = () => (cfg().paypal  && cfg().paypal.client_id)   || process.env.PAYPAL_CLIENT_ID   || 'AfFO713UgKTXBPuyY7SKC9pQ_o3aJBSCA7h1WVdoRbYGcqXwfhuyII1FZz2AHRV9LIb3UEXY_0BTPw6f';
-const PAYPAL_SECRET   = () => (cfg().paypal  && cfg().paypal.secret)      || process.env.PAYPAL_SECRET       || 'EII7K42SQr_St07G1WfgY7AqyU3VxyYuL8W-mxbe9ZNAfMbF1oxk2en9rjw-QhfeHh8vPjTLebgppPDw';
+const GEMINI_API_KEY  = () => process.env.GEMINI_API_KEY;
+const PAYPAL_CLIENT   = () => process.env.PAYPAL_CLIENT_ID;
+const PAYPAL_SECRET   = () => process.env.PAYPAL_SECRET;
 const PAYPAL_BASE_URL = 'https://api-m.paypal.com'; // Switch to api-m.sandbox.paypal.com for testing
 
 const FREE_TIER_LIMIT = 3; // analyses per month
