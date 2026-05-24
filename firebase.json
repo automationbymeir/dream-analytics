@@ -22,6 +22,12 @@
           { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
         ]
       }
+    ],
+    "rewrites": [
+      {
+        "source": "/sitemap.xml",
+        "function": "sitemapXml"
+      }
     ]
   },
   "storage": {

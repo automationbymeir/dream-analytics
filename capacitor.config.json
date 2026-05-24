@@ -1,0 +1,21 @@
+{
+  "appId": "com.automationbymeir.dreamanalytics",
+  "appName": "Dream Analytics",
+  "webDir": "public",
+  "server": {
+    "url": "https://dreamanalysis-39322.web.app",
+    "cleartext": true,
+    "allowNavigation": [
+      "dreamanalysis-39322.web.app"
+    ]
+  },
+  "plugins": {
+    "FirebaseAuthentication": {
+      "skipNativeAuth": false,
+      "providers": ["google.com"]
+    },
+    "PushNotifications": {
+      "presentationOptions": ["badge", "sound", "alert"]
+    }
+  }
+}

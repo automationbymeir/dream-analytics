@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="he" dir="rtl">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -12,17 +12,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DreamCoach – Settings</title>
+<title>הגדרות חשבון – DreamCoach</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
     theme: { extend: {
       colors: { indigo: { 950: "#0F0D1F" }, amber: { 400: "#FFD700", 500: "#F9A825" }, violet: { 400: "#A78BFA", 900: "#4C1D95" } },
       borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
-      fontFamily: { "headline": ["EB Garamond", "serif"], "body": ["Newsreader", "serif"], "label": ["Manrope", "sans-serif"] }
+      fontFamily: { "headline": ["Open Sans", "sans-serif"], "body": ["Open Sans", "sans-serif"], "label": ["Open Sans", "sans-serif"], "display": ["Open Sans", "sans-serif"] }
     }}
   }
 </script>
@@ -48,16 +48,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
   <div class="flex justify-between items-center w-full px-6 md:px-8 py-3">
     <div class="flex items-center gap-6 md:gap-8">
-      <a href="/" class="text-xl font-bold text-amber-500 italic font-headline">🌙 DreamCoach</a>
+      <a href="/he/" class="text-xl font-bold text-amber-500 italic font-headline">🌙 DreamCoach</a>
       <div class="hidden md:flex items-center gap-4 font-label text-sm tracking-wide">
-        <a href="/dashboard.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Dashboard</a>
-        <a href="/" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">New Dream</a>
-        <a href="/analysis.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Analysis</a>
-        <a href="/settings.html" class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold">Settings</a>
+        <a href="/he/dashboard.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">לוח בקרה</a>
+        <a href="/he/" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">חלום חדש</a>
+        <a href="/he/analysis.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">טרנד</a>
+        <a href="/he/settings.html" class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold">הגדרות</a>
       </div>
     </div>
     <button id="logoutBtn" class="text-violet-200/60 hover:text-amber-400 font-label text-sm transition-colors px-3 py-1 rounded-lg hover:bg-white/5">
-      <span class="material-symbols-outlined text-base mr-1">logout</span>Sign Out
+      <span class="material-symbols-outlined text-base mr-1">logout</span>התנתקות בטוחה מהחשבון
     </button>
   </div>
 </nav>
@@ -65,41 +65,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <main class="max-w-3xl mx-auto px-4 md:px-6 py-10 space-y-8">
 
   <header>
-    <h1 class="font-headline text-4xl md:text-5xl text-amber-400 italic">Settings</h1>
-    <p class="text-violet-200/50 font-body italic mt-1">Manage your account and subscription</p>
+    <h1 class="font-headline text-4xl md:text-5xl text-amber-400 italic">הגדרות</h1>
+    <p class="text-violet-200/50 font-body italic mt-1">ניהול כל ההגדרות, שירותים והמנוי החודשי המקושר שלכם</p>
   </header>
 
   <!-- Tabs -->
   <div class="flex border-b border-white/10">
-    <button onclick="switchTab('profile')" id="tab-profile" class="px-6 py-3 font-label text-sm uppercase tracking-widest transition-colors tab-active">Profile</button>
-    <button onclick="switchTab('subscription')" id="tab-subscription" class="px-6 py-3 font-label text-sm uppercase tracking-widest transition-colors tab-inactive">Subscription</button>
-    <button onclick="switchTab('account')" id="tab-account" class="px-6 py-3 font-label text-sm uppercase tracking-widest transition-colors tab-inactive">Account</button>
+    <button onclick="switchTab('profile')" id="tab-profile" class="px-6 py-3 font-label text-sm uppercase tracking-widest transition-colors tab-active">הפרטים שלי בחשבון</button>
+    <button onclick="switchTab('subscription')" id="tab-subscription" class="px-6 py-3 font-label text-sm uppercase tracking-widest transition-colors tab-inactive">מנוי וחיובים</button>
+    <button onclick="switchTab('account')" id="tab-account" class="px-6 py-3 font-label text-sm uppercase tracking-widest transition-colors tab-inactive">הגדרות וניהול חשבון</button>
   </div>
 
   <!-- ═══ PROFILE TAB ═══ -->
   <div id="panel-profile" class="space-y-6">
     <div class="glass-card rounded-2xl p-6 md:p-8 space-y-6">
-      <h2 class="font-headline text-2xl italic text-slate-100">Profile Information</h2>
+      <h2 class="font-headline text-2xl italic text-slate-100">הגדרות אישיות</h2>
       <div>
-        <label class="font-label text-xs uppercase tracking-wider text-violet-300/50 block mb-2">Display Name</label>
-        <input id="displayName" type="text" placeholder="Dream Traveler"
+        <label class="font-label text-xs uppercase tracking-wider text-violet-300/50 block mb-2">שם תצוגה מועדף</label>
+        <input id="displayName" type="text" placeholder="נוסע בזמן (שם משתמש)"
           class="w-full input-dream rounded-xl px-4 py-3 font-body transition-all"/>
       </div>
       <div>
-        <label class="font-label text-xs uppercase tracking-wider text-violet-300/50 block mb-2">Email Address</label>
+        <label class="font-label text-xs uppercase tracking-wider text-violet-300/50 block mb-2">דואר אלקטרוני</label>
         <input id="profileEmail" type="email" disabled
           class="w-full input-dream rounded-xl px-4 py-3 font-body transition-all"/>
-        <p class="font-label text-xs text-violet-300/30 mt-1 italic">Email cannot be changed here.</p>
+        <p class="font-label text-xs text-violet-300/30 mt-1 italic">לשינוי דוא"ל אנא פנו לשירות לקוחות.</p>
       </div>
       <div class="glass-card rounded-xl p-4 border border-violet-500/10 space-y-1">
-        <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider">Account Stats</p>
-        <p class="font-body text-sm text-slate-300">Member since: <span id="createdAt" class="text-amber-400/80">—</span></p>
-        <p class="font-body text-sm text-slate-300">Dreams analyzed: <span id="totalDreams" class="text-amber-400/80">—</span></p>
+        <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider">פעילות אזור אישי</p>
+        <p class="font-body text-sm text-slate-300">תאריך הצטרפות: <span id="createdAt" class="text-amber-400/80">—</span></p>
+        <p class="font-body text-sm text-slate-300">כמות החלומות שנותחו במערכת: <span id="totalDreams" class="text-amber-400/80">—</span></p>
       </div>
       <div class="glass-card rounded-xl p-4 border border-violet-500/10 flex items-center justify-between">
         <div>
-          <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider">Push Notifications</p>
-          <p class="font-body text-sm text-slate-300 mt-1">Receive updates about your dreams and new features.</p>
+          <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider">התראות פוש (Push Notifications)</p>
+          <p class="font-body text-sm text-slate-300 mt-1">קבלו עדכונים על חלומות ופירושים חדשים. (ניתן לנהל גם דרך הגדרות המכשיר)</p>
         </div>
         <label class="relative inline-flex items-center cursor-pointer">
           <input type="checkbox" id="pushToggle" class="sr-only peer">
@@ -108,7 +108,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <button id="saveProfileBtn"
         class="px-8 py-3 rounded-full bg-gradient-to-r from-violet-600 to-purple-700 text-white font-label font-bold hover:scale-[1.02] active:scale-95 transition-all shadow-lg shadow-violet-500/20">
-        <span class="material-symbols-outlined text-sm mr-1">save</span>Save Profile
+        <span class="material-symbols-outlined text-sm mr-1">save</span>Save הפרטים שלי בחשבון
       </button>
       <div id="profileStatus" class="hidden rounded-xl p-3 font-label text-sm"></div>
     </div>
@@ -117,12 +117,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ═══ SUBSCRIPTION TAB ═══ -->
   <div id="panel-subscription" class="hidden space-y-6">
     <div class="glass-card rounded-2xl p-6 md:p-8 space-y-6">
-      <h2 class="font-headline text-2xl italic text-slate-100">Subscription</h2>
+      <h2 class="font-headline text-2xl italic text-slate-100">מנוי וחיובים</h2>
 
       <!-- Plan panel -->
       <div id="planPanel" class="rounded-xl p-5 border border-violet-500/20 bg-violet-900/10 flex items-center justify-between gap-4">
         <div>
-          <p id="planName" class="font-label font-semibold text-slate-100 text-sm">Loading…</p>
+          <p id="planName" class="font-label font-semibold text-slate-100 text-sm">ממתין למידע מהשרת...</p>
           <p id="planDetail" class="font-body text-xs text-violet-200/60 mt-0.5 italic"></p>
         </div>
         <span id="planBadge"></span>
@@ -131,16 +131,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Free usage panel -->
       <div id="freeUsagePanel" class="hidden space-y-3">
         <div class="flex justify-between font-label text-sm">
-          <span class="text-violet-200/70">Monthly Usage</span>
+          <span class="text-violet-200/70">ניצול ניתוחים החודש</span>
           <span id="usageText" class="text-amber-400 font-bold"></span>
         </div>
         <div class="w-full bg-slate-900 rounded-full h-2.5 overflow-hidden border border-white/5">
           <div id="usageBar" class="bg-gradient-to-r from-violet-500 to-amber-400 h-full rounded-full transition-all duration-500" style="width:0%"></div>
         </div>
-        <a href="/pricing.html"
+        <a href="/he/pricing.html"
           class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500 text-indigo-950 font-label font-bold text-sm hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/20 mt-2">
           <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">star</span>
-          Upgrade to Pro
+          מעבר למסלול Premium / Pro
         </a>
       </div>
 
@@ -148,20 +148,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div id="proPanel" class="hidden space-y-4">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div class="glass-card rounded-xl p-4 border border-violet-500/10">
-            <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-1">Subscription ID</p>
+            <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-1">קוד מנוי פנימי</p>
             <p id="subId" class="font-body text-sm text-slate-300 break-all">—</p>
           </div>
           <div class="glass-card rounded-xl p-4 border border-violet-500/10">
-            <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-1">Next Billing / Expires</p>
+            <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-1">מועד חיוב הבא / תום תוכנית</p>
             <p id="subExpiry" class="font-body text-sm text-slate-300">—</p>
           </div>
         </div>
         <p class="font-body text-sm text-violet-200/50 italic">
-          To cancel, click below. You'll keep Pro access until the end of your current billing period.
+          לביטול המנוי, לחצו למטה. המנוי יישאר פתוח עד לתום תקופת החיוב עליה שילמתם.
         </p>
         <button id="cancelSubBtn"
           class="px-6 py-3 rounded-full border border-red-500/30 text-red-400 font-label text-sm font-bold hover:bg-red-500/10 transition-all">
-          <span class="material-symbols-outlined text-sm mr-1">cancel</span>Cancel Subscription
+          <span class="material-symbols-outlined text-sm mr-1">cancel</span>עזיבת המסלול (לחינמי)
         </button>
         <div id="cancelStatus" class="hidden rounded-xl p-3 font-label text-sm"></div>
       </div>
@@ -171,37 +171,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- ═══ ACCOUNT TAB ═══ -->
   <div id="panel-account" class="hidden space-y-6">
     <div class="glass-card rounded-2xl p-6 md:p-8 space-y-6">
-      <h2 class="font-headline text-2xl italic text-slate-100">Account</h2>
+      <h2 class="font-headline text-2xl italic text-slate-100">הגדרות וניהול חשבון</h2>
       <div class="rounded-xl p-4 border border-orange-500/20 bg-orange-500/5 flex items-start gap-3">
         <span class="material-symbols-outlined text-orange-400 text-xl mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1;">warning</span>
         <p class="font-body text-sm text-orange-200/80 leading-relaxed">
-          Deleting your account is <strong>permanent and cannot be undone</strong>. All your dreams and analysis data will be permanently deleted.
+          פעולת מחיקת החשבון <strong>אינה ניתנת לביטול</strong>. כלל היומנים ומידע החלומות שצברתם יימחקו תמיד מהשרת.
         </p>
       </div>
       <button id="deleteAccountBtn"
         class="px-6 py-3 rounded-full border border-red-600/40 text-red-400 font-label text-sm font-bold hover:bg-red-600/10 transition-all">
-        <span class="material-symbols-outlined text-sm mr-1">delete_forever</span>Delete My Account
+        <span class="material-symbols-outlined text-sm mr-1">delete_forever</span>מחיקת החשבון והמידע לנצח
       </button>
     </div>
   </div>
 
 </main>
 
-<!-- Cancel Modal -->
+<!-- סתם טעות Modal -->
 <div id="cancelModal" class="hidden fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
   <div class="glass-card rounded-2xl p-8 max-w-sm w-full border border-violet-500/20 shadow-2xl">
-    <h3 class="font-headline text-2xl italic text-white mb-3">Cancel Subscription?</h3>
+    <h3 class="font-headline text-2xl italic text-white mb-3">האם לבטל את המנוי?</h3>
     <p class="font-body text-violet-200/70 text-sm leading-relaxed mb-6">
-      You'll keep Pro access until the end of your current billing period. After that your account reverts to the Free plan.
+      גישת ה-Pro תישמר במלואה עד סיום החודש (או השנה) הנוכחי/ת, ולאחר מכן החשבון יחזור למסלול החינמי.
     </p>
     <div class="flex gap-3">
       <button onclick="document.getElementById('cancelModal').classList.add('hidden')"
         class="flex-1 py-3 rounded-xl glass-card border border-white/10 font-label text-sm text-violet-300 hover:text-white transition-colors">
-        Keep Subscription
+        ביטול – אני רוצה להישאר ב-Pro
       </button>
       <button id="confirmCancelBtn"
         class="flex-1 py-3 rounded-xl bg-red-600/80 text-white font-label text-sm font-bold hover:bg-red-600 transition-colors">
-        Yes, Cancel
+        כן, בטל כעת
       </button>
     </div>
   </div>
@@ -211,19 +211,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="deleteModal" class="hidden fixed inset-0 z-[100] bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
   <div class="glass-card rounded-2xl p-8 max-w-sm w-full border border-red-500/20 shadow-2xl">
     <span class="material-symbols-outlined text-4xl text-red-400 block mb-3" style="font-variation-settings:'FILL' 1;">delete_forever</span>
-    <h3 class="font-headline text-2xl italic text-red-300 mb-2">Delete Account?</h3>
-    <p class="font-body text-violet-200/60 text-sm mb-4 leading-relaxed">This will permanently delete your account and all dream data. This cannot be undone.</p>
-    <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-2">Type <strong class="text-red-400">DELETE</strong> to confirm:</p>
+    <h3 class="font-headline text-2xl italic text-red-300 mb-2">האם למחוק הכל?</h3>
+    <p class="font-body text-violet-200/60 text-sm mb-4 leading-relaxed">המערכת תמחק את כל היסטוריית החלומות שלכם ופרטי החשבון לצמיתות.</p>
+    <p class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-2">הדפיסו את המילה <strong class="text-red-400">DELETE</strong> באנגלית לאישור:</p>
     <input id="deleteConfirmInput" type="text" placeholder="DELETE"
       class="w-full input-dream rounded-xl px-4 py-3 font-label text-sm mb-4 transition-all"/>
     <div class="flex gap-3">
       <button onclick="document.getElementById('deleteModal').classList.add('hidden')"
         class="flex-1 py-3 rounded-xl glass-card border border-white/10 font-label text-sm text-violet-300 hover:text-white transition-colors">
-        Cancel
+        סתם טעות
       </button>
       <button id="confirmDeleteBtn"
         class="flex-1 py-3 rounded-xl bg-red-700/80 text-white font-label text-sm font-bold hover:bg-red-700 transition-colors">
-        Delete Forever
+        למחוק טוטאלית מעכשיו!
       </button>
     </div>
   </div>
@@ -233,8 +233,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex flex-col gap-2 pointer-events-none"></div>
 
 <script type="module">
-  import { auth, db, fns } from './js/firebase-config.js';
-  import { initAuthGuard, logout, isPro } from './js/auth.js';
+  import { auth, db, fns } from '/js/firebase-config.js';
+  import { initAuthGuard, logout, isPro } from '/js/auth.js';
   import {
     doc, getDoc, updateDoc, getDocs, collection,
     query, where, deleteDoc, getCountFromServer
@@ -291,8 +291,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const proStatus = isPro(userData);
     if (proStatus) {
       document.getElementById('planBadge').innerHTML = `<span class="px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-400 font-label text-xs font-bold uppercase tracking-wider">PRO</span>`;
-      document.getElementById('planName').textContent   = userData.subscriptionStatus === 'pro_yearly' ? 'Pro Yearly ($192/year)' : 'Pro Monthly ($20/month)';
-      document.getElementById('planDetail').textContent = 'Unlimited dream analyses and trend analysis.';
+      document.getElementById('planName').textContent   = userData.subscriptionStatus === 'pro_yearly' ? 'פרו (מסלול שנתי) ($192/לשנה)' : 'פרו (מסלול חודשי) ($20/לחודש)';
+      document.getElementById('planDetail').textContent = 'ניתוח בלתי מוגבל עם מחקר דפוסים מתקדם על החלומות.';
       document.getElementById('proPanel').classList.remove('hidden');
       document.getElementById('subId').textContent = userData.subscriptionId || '—';
       if (userData.subscriptionExpiry) {
@@ -301,11 +301,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       }
     } else {
       document.getElementById('planBadge').innerHTML = `<span class="px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-300 font-label text-xs font-bold uppercase tracking-wider">FREE</span>`;
-      document.getElementById('planName').textContent   = 'Free Plan';
+      document.getElementById('planName').textContent   = 'מסלול חינמי';
       document.getElementById('planDetail').textContent = '3 dream analyses per month.';
       document.getElementById('freeUsagePanel').classList.remove('hidden');
       const used = userData.monthlyUsage || 0;
-      document.getElementById('usageText').textContent = `${used}/3 used this month`;
+      document.getElementById('usageText').textContent = `${used}/3 מתוך 3 ניתוחי חינם נוצלו`;
       document.getElementById('usageBar').style.width  = Math.min(100, (used / 3) * 100) + '%';
     }
 
@@ -320,14 +320,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const isEnabled = e.target.checked;
     try {
       await updateDoc(doc(db, 'users', currentUser.uid), { notificationsEnabled: isEnabled });
-      showToast(`Notifications ${isEnabled ? 'enabled' : 'disabled'} successfully.`, 'success');
+      showToast(`התראות ${isEnabled ? 'הופעלו' : 'כובו'} בהצלחה`, 'success');
       if (isEnabled && window.Capacitor?.Plugins?.PushNotifications) {
         window.Capacitor.Plugins.PushNotifications.requestPermissions().then(res => {
           if (res.receive === 'granted') window.Capacitor.Plugins.PushNotifications.register();
         });
       }
     } catch (err) {
-      showToast('Error updating notification settings', 'error');
+      showToast('שגיאה בעדכון הגדרות התראות', 'error');
       e.target.checked = !isEnabled;
     }
   });
@@ -340,7 +340,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       await updateProfile(currentUser, { displayName: name });
       await updateDoc(doc(db, 'users', currentUser.uid), { displayName: name });
       statusEl.className = 'rounded-xl p-3 font-label text-sm bg-emerald-500/10 border border-emerald-500/20 text-emerald-400';
-      statusEl.textContent = '✓ Profile saved successfully.';
+      statusEl.textContent = '✓ הפרטים שלי בחשבון saved successfully.';
       statusEl.classList.remove('hidden');
       setTimeout(() => statusEl.classList.add('hidden'), 3000);
     } catch (err) {
@@ -358,7 +358,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.getElementById('cancelModal').classList.add('hidden');
     const statusEl = document.getElementById('cancelStatus');
     statusEl.className = 'rounded-xl p-3 font-label text-sm bg-amber-500/10 border border-amber-500/20 text-amber-400';
-    statusEl.textContent = 'Cancelling subscription…';
+    statusEl.textContent = 'מבטל מנוי...';
     statusEl.classList.remove('hidden');
     try {
       const cancelSubscription = httpsCallable(fns, 'cancelSubscription');
@@ -369,7 +369,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       await loadSettings(currentUser);
     } catch (err) {
       statusEl.className = 'rounded-xl p-3 font-label text-sm bg-red-500/10 border border-red-500/20 text-red-400';
-      statusEl.textContent = 'Error: ' + (err.message || 'Cancellation failed.');
+      statusEl.textContent = 'Error: ' + (err.message || 'ביטול המנוי נכשל.');
     }
   });
 
@@ -389,9 +389,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       await Promise.all(dreamsSnap.docs.map(d => deleteDoc(d.ref)));
       await deleteDoc(doc(db, 'users', currentUser.uid));
       await deleteUser(currentUser);
-      location.href = '/?deleted=true';
+      location.href = '/he/?deleted=true';
     } catch (err) {
-      showToast('Error: ' + err.message + '. Please sign in again and try.', 'error');
+      showToast('Error: ' + err.message + '. Please sign in again וכן try.', 'error');
     }
   });
 
@@ -403,14 +403,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
     <div class="text-center md:text-left">
       <div class="text-lg font-bold text-amber-200 font-headline italic">🌙 DreamCoach Analytics</div>
-      <p class="text-xs text-violet-300/40 font-label mt-1">A product of <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
+      <p class="text-xs text-violet-300/40 font-label mt-1">מוצר מבית הצוות של <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
     </div>
-    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. Navigate your subconscious.</p>
+    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. כלים פשוטים להבנת עולמות תת-המודע.</p>
     <div class="flex flex-wrap gap-4 justify-center">
-      <a href="/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">About</a>
-      <a href="/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Support</a>
-      <a href="/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Privacy</a>
-      <a href="/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Terms</a>
+      <a href="/he/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">אודות</a>
+      <a href="/he/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תמיכה</a>
+      <a href="/he/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">פרטיות</a>
+      <a href="/he/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תנאי שימוש</a>
     </div>
   </div>
 </footer>

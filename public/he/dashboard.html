@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="he" dir="rtl">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -12,11 +12,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DreamCoach – Dashboard</title>
+<title>לוח הבקרה שלי – DreamCoach</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
@@ -24,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       extend: {
         colors: { indigo: { 950: "#0F0D1F" }, amber: { 400: "#FFD700", 500: "#F9A825" }, violet: { 400: "#A78BFA", 900: "#4C1D95" } },
         borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
-        fontFamily: { "headline": ["EB Garamond", "serif"], "body": ["Newsreader", "serif"], "label": ["Manrope", "sans-serif"] }
+        fontFamily: { "headline": ["Open Sans", "sans-serif"], "body": ["Open Sans", "sans-serif"], "label": ["Open Sans", "sans-serif"], "display": ["Open Sans", "sans-serif"] }
       }
     }
   }
@@ -45,19 +45,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <nav class="bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
   <div class="flex justify-between items-center w-full px-6 md:px-8 py-3">
     <div class="flex items-center gap-6 md:gap-8">
-      <a href="/" class="text-xl font-bold text-amber-500 italic font-headline">🌙 DreamCoach</a>
+      <a href="/he/" class="text-xl font-bold text-amber-500 italic font-headline">🌙 DreamCoach</a>
       <div class="hidden md:flex items-center gap-4 font-label text-sm tracking-wide">
-        <a href="/dashboard.html" class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold">Dashboard</a>
-        <a href="/" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">New Dream</a>
-        <a href="/analysis.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Analysis</a>
-        <a href="/pricing.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Pricing</a>
-        <a href="/settings.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Settings</a>
+        <a href="/he/dashboard.html" class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold">לוח בקרה</a>
+        <a href="/he/" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">חלום חדש</a>
+        <a href="/he/analysis.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">טרנד</a>
+        <a href="/he/pricing.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">מסלולים</a>
+        <a href="/he/settings.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">הגדרות</a>
       </div>
     </div>
     <div class="flex items-center gap-3">
       <span class="font-label text-sm text-violet-300/60 hidden md:block" id="greetingName"></span>
       <button id="logoutBtn" class="text-violet-200/60 hover:text-amber-400 font-label text-sm transition-colors px-3 py-1 rounded-lg hover:bg-white/5">
-        <span class="material-symbols-outlined text-base align-middle mr-1">logout</span>Sign Out
+        <span class="material-symbols-outlined text-base align-middle mr-1">logout</span>התנתקות בטוחה מהחשבון
       </button>
     </div>
   </div>
@@ -67,36 +67,36 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Header -->
   <header class="space-y-1">
-    <h1 class="font-headline text-4xl md:text-5xl text-amber-400 italic">Dream Insights</h1>
-    <p class="text-violet-200/60 font-body text-lg italic">Explore the landscapes of your subconscious mind.</p>
+    <h1 class="font-headline text-4xl md:text-5xl text-amber-400 italic">תובנות מעולם תת-המודע</h1>
+    <p class="text-violet-200/60 font-body text-lg italic">לצלול עמוק ולגלות את מה שקיים ולא ראיתם</p>
   </header>
 
   <!-- Stats Row -->
   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
     <div class="glass-card p-5 md:p-6 rounded-xl space-y-2">
       <div class="flex justify-between items-start">
-        <span class="font-label text-xs uppercase tracking-widest text-violet-300/50">Total Dreams</span>
+        <span class="font-label text-xs uppercase tracking-widest text-violet-300/50">סך המקרים שתועדו</span>
         <span class="material-symbols-outlined text-amber-500 text-xl">auto_awesome</span>
       </div>
       <p id="statTotal" class="text-3xl font-headline text-slate-100">—</p>
     </div>
     <div class="glass-card p-5 md:p-6 rounded-xl space-y-2">
       <div class="flex justify-between items-start">
-        <span class="font-label text-xs uppercase tracking-widest text-violet-300/50">This Month</span>
+        <span class="font-label text-xs uppercase tracking-widest text-violet-300/50">חלומות מתוך חודש זה</span>
         <span class="material-symbols-outlined text-amber-500 text-xl">calendar_month</span>
       </div>
       <p id="statMonth" class="text-3xl font-headline text-slate-100">—</p>
     </div>
     <div class="glass-card p-5 md:p-6 rounded-xl space-y-2">
       <div class="flex justify-between items-start">
-        <span class="font-label text-xs uppercase tracking-widest text-violet-300/50">Current Plan</span>
+        <span class="font-label text-xs uppercase tracking-widest text-violet-300/50">מסלול החשבון במערכת</span>
         <span id="planIcon" class="material-symbols-outlined text-amber-500 text-xl">verified</span>
       </div>
       <p id="statPlan" class="text-2xl font-headline text-slate-100 italic">—</p>
     </div>
     <div class="glass-card p-5 md:p-6 rounded-xl border-amber-500/20 bg-amber-500/5 space-y-2">
       <div class="flex justify-between items-start">
-        <span class="font-label text-xs uppercase tracking-widest text-amber-500/60">Usage</span>
+        <span class="font-label text-xs uppercase tracking-widest text-amber-500/60">קצב שימוש חודשי</span>
         <span class="material-symbols-outlined text-amber-500 text-xl">hourglass_empty</span>
       </div>
       <div id="usageBanner" class="hidden space-y-2">
@@ -104,7 +104,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="w-full bg-slate-900 rounded-full h-2 overflow-hidden border border-white/5">
           <div id="usageBar" class="bg-gradient-to-r from-violet-500 to-amber-400 h-full rounded-full transition-all duration-500" style="width:0%"></div>
         </div>
-        <a id="upgradeBtn" href="/pricing.html" class="hidden inline-block mt-2 px-3 py-1 bg-amber-500 text-indigo-950 font-label text-xs font-bold rounded-full hover:bg-amber-400 transition-all">Upgrade ↗</a>
+        <a id="upgradeBtn" href="/he/pricing.html" class="hidden inline-block mt-2 px-3 py-1 bg-amber-500 text-indigo-950 font-label text-xs font-bold rounded-full hover:bg-amber-400 transition-all">שידרוג מיידי ↗</a>
       </div>
     </div>
   </div>
@@ -112,7 +112,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Monthly Trends Chart -->
   <div class="glass-card p-5 md:p-6 rounded-xl space-y-4">
     <div class="flex items-center justify-between">
-      <h2 class="font-headline text-2xl text-slate-100 italic">Monthly Trends</h2>
+      <h2 class="font-headline text-2xl text-slate-100 italic">מגמות חודשיות</h2>
       <span class="material-symbols-outlined text-amber-500">monitoring</span>
     </div>
     <div class="w-full h-64">
@@ -124,11 +124,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="upgradeCta" class="hidden glass-card rounded-2xl p-6 border border-amber-500/20 bg-amber-500/5 flex flex-col sm:flex-row items-center gap-4">
     <span class="material-symbols-outlined text-amber-400 text-3xl" style="font-variation-settings:'FILL' 1;">star</span>
     <div class="flex-1 text-center sm:text-left">
-      <p class="font-headline text-lg text-amber-300 italic">You've reached your free limit this month</p>
-      <p class="font-label text-sm text-violet-200/60">Upgrade to Pro for unlimited dreams and trend analysis</p>
+      <p class="font-headline text-lg text-amber-300 italic">הגעת לתקרת השימוש החינמי החודש</p>
+      <p class="font-label text-sm text-violet-200/60">שדרוג למסלול Pro לתיעוד בלתי מוגבל ולמעקב אחר דפוסים</p>
     </div>
-    <a href="/pricing.html" class="px-6 py-3 bg-amber-500 text-indigo-950 font-label font-bold rounded-full hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/20 whitespace-nowrap">
-      View Plans
+    <a href="/he/pricing.html" class="px-6 py-3 bg-amber-500 text-indigo-950 font-label font-bold rounded-full hover:bg-amber-400 transition-all shadow-lg shadow-amber-500/20 whitespace-nowrap">
+      צפייה במסלולים
     </a>
   </div>
 
@@ -138,22 +138,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="material-symbols-outlined text-amber-400 text-2xl" style="font-variation-settings:'FILL' 1;">event_repeat</span>
     </div>
     <div class="flex-1 min-w-0">
-      <h3 class="font-headline text-xl italic text-slate-100 mb-1">Set a Dream Reminder</h3>
-      <p class="font-body text-violet-200/50 text-sm">Add a recurring reminder to your Google Calendar to journal your dreams each morning.</p>
+      <h3 class="font-headline text-xl italic text-slate-100 mb-1">קביעת תזכורת תיעוד בחשבון ה-Google</h3>
+      <p class="font-body text-violet-200/50 text-sm">מומלץ לקבוע תזכורת מחזורית בקאלנדר כדי להישאר תמיד בחיבור חזק לזיכרון של כל בוקר חדש.</p>
     </div>
     <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
       <div class="flex items-center gap-2">
-        <label class="font-label text-xs text-violet-300/50 uppercase tracking-wider whitespace-nowrap">Time</label>
+        <label class="font-label text-xs text-violet-300/50 uppercase tracking-wider whitespace-nowrap">שעת תיעוד</label>
         <input id="reminderTime" type="time" value="07:00"
           class="bg-black/30 border border-violet-500/20 text-white font-label text-sm rounded-lg px-3 py-2 focus:outline-none focus:border-violet-400/60"/>
       </div>
       <button onclick="addReminder('daily')"
         class="px-4 py-2 rounded-xl bg-violet-600/30 border border-violet-500/20 text-violet-200 font-label text-sm hover:bg-violet-600/50 hover:text-white transition-all">
-        Daily
+        יומי
       </button>
       <button onclick="addReminder('weekly')"
         class="px-4 py-2 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-300 font-label text-sm hover:bg-amber-500/20 hover:text-white transition-all">
-        Weekly
+        שבועי
       </button>
     </div>
   </div>
@@ -161,8 +161,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- Dreams List -->
   <div class="space-y-4">
     <div class="flex items-center justify-between">
-      <h2 class="font-headline text-3xl text-slate-100 italic">Dream Journal</h2>
-      <a href="/" class="text-sm font-label text-violet-400 hover:text-amber-400 transition-colors uppercase tracking-widest">+ New Dream</a>
+      <h2 class="font-headline text-3xl text-slate-100 italic">יומן אישי לחלומות</h2>
+      <a href="/he/" class="text-sm font-label text-violet-400 hover:text-amber-400 transition-colors uppercase tracking-widest">+ רישום חלום</a>
     </div>
 
     <!-- Loading -->
@@ -171,16 +171,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="absolute inset-0 rounded-full bg-violet-500/20 animate-ping"></div>
         <span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-2xl text-violet-400">bedtime</span>
       </div>
-      <p class="font-body italic text-violet-200/60">Loading your dreamscape…</p>
+      <p class="font-body italic text-violet-200/60">טעינת הנתונים מרשתות החלום הקשורות בחשבון...</p>
     </div>
 
     <!-- Empty state -->
     <div id="dreamsEmpty" class="hidden glass-card rounded-2xl p-12 text-center">
       <span class="material-symbols-outlined text-5xl text-violet-400/40 mb-4 block" style="font-variation-settings:'FILL' 1;">bedtime</span>
-      <h3 class="font-headline text-2xl italic text-slate-300 mb-2">Your dream journal is empty</h3>
-      <p class="font-body text-violet-200/50 mb-6">Record your first dream to begin your journey into the subconscious.</p>
-      <a href="/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 to-purple-700 text-white font-label font-bold hover:scale-105 transition-transform shadow-lg shadow-violet-500/20">
-        <span class="material-symbols-outlined text-sm">add</span>Record First Dream
+      <h3 class="font-headline text-2xl italic text-slate-300 mb-2">אין יומן רשמים כעת – יומן החלומות ריק</h3>
+      <p class="font-body text-violet-200/50 mb-6">מומלץ לתעד חלום שראיתם כדי להתחיל במסע.</p>
+      <a href="/he/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-violet-600 to-purple-700 text-white font-label font-bold hover:scale-105 transition-transform shadow-lg shadow-violet-500/20">
+        <span class="material-symbols-outlined text-sm">add</span>תיעוד חלום ראשון
       </a>
     </div>
 
@@ -189,17 +189,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <!-- Pagination -->
     <div id="paginationRow" class="hidden flex items-center justify-center gap-4 pt-4">
-      <button id="prevBtn" class="px-5 py-2 glass-card rounded-full font-label text-sm text-violet-300 hover:text-amber-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors border border-violet-500/20">← Prev</button>
+      <button id="prevBtn" class="px-5 py-2 glass-card rounded-full font-label text-sm text-violet-300 hover:text-amber-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors border border-violet-500/20">← הרגעים הקודמים</button>
       <span id="pageInfo" class="font-label text-sm text-violet-300/60"></span>
-      <button id="nextBtn" class="px-5 py-2 glass-card rounded-full font-label text-sm text-violet-300 hover:text-amber-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors border border-violet-500/20">Next →</button>
+      <button id="nextBtn" class="px-5 py-2 glass-card rounded-full font-label text-sm text-violet-300 hover:text-amber-400 disabled:opacity-30 disabled:cursor-not-allowed transition-colors border border-violet-500/20">לצעד הבא ←</button>
     </div>
   </div>
 </main>
 
 <!-- FAB -->
-<a href="/" class="fixed bottom-8 right-8 w-16 h-16 bg-amber-500 hover:bg-amber-400 text-indigo-950 rounded-full shadow-[0_10px_40px_rgba(249,168,37,0.4)] flex items-center justify-center transition-all hover:scale-110 active:scale-95 group z-50">
+<a href="/he/" class="fixed bottom-8 right-8 w-16 h-16 bg-amber-500 hover:bg-amber-400 text-indigo-950 rounded-full shadow-[0_10px_40px_rgba(249,168,37,0.4)] flex items-center justify-center transition-all hover:scale-110 active:scale-95 group z-50">
   <span class="material-symbols-outlined text-3xl font-bold group-hover:rotate-90 transition-transform duration-300">add</span>
-  <span class="absolute right-20 bg-indigo-950 border border-amber-500/30 text-amber-400 font-label text-xs py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase tracking-widest">New Dream</span>
+  <span class="absolute right-20 bg-indigo-950 border border-amber-500/30 text-amber-400 font-label text-xs py-2 px-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none uppercase tracking-widest">חלום חדש</span>
 </a>
 
 <!-- Dream Detail Modal -->
@@ -211,7 +211,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <h3 id="modalTitle" class="font-headline text-2xl italic text-amber-300 mb-1"></h3>
     <p id="modalDate" class="font-label text-xs text-violet-300/50 uppercase tracking-wider mb-6"></p>
     <div class="mb-6">
-      <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3">Dream Description</p>
+      <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3">פירוט תוכן החלום</p>
       <div class="bg-slate-900/60 rounded-xl p-4 border border-white/5">
         <p id="modalDescription" dir="auto" class="font-body text-start italic text-slate-300 leading-relaxed"></p>
       </div>
@@ -219,7 +219,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div>
       <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3">
         <span class="material-symbols-outlined text-secondary text-sm align-middle mr-1" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
-        AI Analysis
+        מסמך הניתוח המורחב (AI)
       </p>
       <div class="bg-violet-900/20 rounded-xl p-4 border border-violet-500/15 relative group">
         <button onclick="copyElementText('modalAnalysis')" class="absolute top-2 right-2 rtl:left-2 rtl:right-auto opacity-0 group-hover:opacity-100 p-1.5 bg-black/40 rounded-lg transition-all hover:bg-white/20 text-white flex items-center justify-center" aria-label="Copy">
@@ -231,25 +231,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <!-- Follow up UI -->
     <div class="mt-6 border-t border-violet-500/20 pt-6">
       <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3">
-        <span class="material-symbols-outlined text-secondary text-sm align-middle mr-1" style="font-variation-settings:'FILL' 1;">forum</span>
-        Ask the AI
+        <span class="material-symbols-outlined text-secondary text-sm align-middle ml-1" style="font-variation-settings:'FILL' 1;">forum</span>
+        שאל/י את הבינה המלאכותית
       </p>
-      <div id="modalFollowUps" class="mb-4 flex flex-col gap-2 max-h-[300px] overflow-y-auto pr-2"></div>
+      <div id="modalFollowUps" class="mb-4 flex flex-col gap-2 max-h-[300px] overflow-y-auto pl-2"></div>
       <div class="flex gap-2">
-        <input type="text" id="followUpInput" dir="auto" class="flex-1 bg-slate-900/60 border border-violet-500/20 rounded-xl px-4 py-2 font-body text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 transition-colors" placeholder="Ask a follow-up question...">
-        <button id="followUpBtn" onclick="askFollowUp()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-indigo-950 font-label text-sm uppercase tracking-wider rounded-xl transition-colors disabled:opacity-50">Send</button>
+        <input type="text" id="followUpInput" dir="auto" class="flex-1 bg-slate-900/60 border border-violet-500/20 rounded-xl px-4 py-2 font-body text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500/50 transition-colors" placeholder="אפשר לשאול שאלת המשך על הניתוח...">
+        <button id="followUpBtn" onclick="askFollowUp()" class="px-4 py-2 bg-amber-500 hover:bg-amber-400 text-indigo-950 font-label text-sm uppercase tracking-wider rounded-xl transition-colors disabled:opacity-50">שליחה</button>
       </div>
     </div>
     <!-- Dream Video Section (Pro only) -->
     <div id="modalVideoSection" class="hidden mt-6 border-t border-violet-500/20 pt-6">
       <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3">
-        <span class="material-symbols-outlined text-secondary text-sm align-middle mr-1" style="font-variation-settings:'FILL' 1;">movie</span>
-        Dream Illustration Video
+        <span class="material-symbols-outlined text-secondary text-sm align-middle ml-1" style="font-variation-settings:'FILL' 1;">movie</span>
+        סרטון איור החלום
       </p>
       <!-- Generating state -->
       <div id="modalVideoGenerating" class="hidden flex items-center gap-3 bg-violet-900/20 rounded-xl p-4 border border-violet-500/15 text-violet-300 font-label text-sm">
         <div class="w-4 h-4 rounded-full border-2 border-violet-400/30 border-t-violet-400 animate-spin flex-shrink-0"></div>
-        Generating your dream video… this takes about 2 minutes.
+        הסרטון שלך נוצר כעת… זה לוקח כשתי דקות.
       </div>
       <!-- Ready state -->
       <div id="modalVideoReady" class="hidden space-y-3">
@@ -258,20 +258,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="flex flex-wrap gap-3">
           <button onclick="shareVideo()" class="flex items-center gap-2 px-4 py-2 bg-violet-700/40 hover:bg-violet-700/60 rounded-xl text-white border border-violet-500/30 transition-all text-sm font-label">
-            <span class="material-symbols-outlined text-base">share</span> Share Video
+            <span class="material-symbols-outlined text-base">share</span> שתף סרטון
           </button>
           <a id="modalVideoDownloadLink" href="#" download class="flex items-center gap-2 px-4 py-2 bg-slate-900/50 hover:bg-slate-800 rounded-xl text-violet-300 border border-violet-500/20 transition-all text-sm font-label">
-            <span class="material-symbols-outlined text-base">download</span> Download Video
+            <span class="material-symbols-outlined text-base">download</span> הורדת הסרטון
           </a>
         </div>
       </div>
     </div>
     <div class="mt-6 flex flex-wrap gap-4 border-t border-violet-500/20 pt-6">
       <button onclick="downloadDreamDoc()" class="flex items-center gap-2 px-4 py-2 bg-slate-900/50 hover:bg-slate-800 rounded-xl text-violet-300 border border-violet-500/20 transition-all text-sm font-label group">
-        <span class="material-symbols-outlined text-base group-hover:-translate-y-0.5 transition-transform">download</span> Download (.doc)
+        <span class="material-symbols-outlined text-base group-hover:-translate-y-0.5 transition-transform">download</span> שמירה במחשב (.doc)
       </button>
       <button onclick="emailDreamSummary(event)" class="flex items-center gap-2 px-4 py-2 bg-slate-900/50 hover:bg-slate-800 rounded-xl text-violet-300 border border-violet-500/20 transition-all text-sm font-label group">
-        <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">mail</span> Email Summary
+        <span class="material-symbols-outlined text-base group-hover:translate-x-0.5 transition-transform">mail</span> שליחת סיכום למייל האישי
       </button>
     </div>
   </div>
@@ -281,8 +281,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex flex-col gap-2 pointer-events-none"></div>
 
 <script type="module">
-  import { auth, db, fns } from './js/firebase-config.js';
-  import { initAuthGuard, logout, isPro, getUserData } from './js/auth.js';
+  import { auth, db, fns } from '/js/firebase-config.js';
+  import { initAuthGuard, logout, isPro, getUserData } from '/js/auth.js';
   import {
     collection, query, where, orderBy, limit,
     startAfter, getDocs, doc, getDoc, getCountFromServer
@@ -337,7 +337,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('statPlan').textContent = 'Free';
       const used = userData.monthlyUsage || 0;
       document.getElementById('usageBanner').classList.remove('hidden');
-      document.getElementById('usageText').textContent = `Free Plan: ${used}/3 this month`;
+      document.getElementById('usageText').textContent = `תחת המסלול החינמי: ${used}/3 this month`;
       document.getElementById('usageBar').style.width = Math.min(100, (used/3)*100) + '%';
       if (used >= 3) {
         document.getElementById('upgradeBtn').classList.remove('hidden');
@@ -378,7 +378,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const counts = {};
     for (let i = 0; i < 6; i++) {
       const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+      const key = d.toLocaleString('he-IL', { month: 'short', year: '2-digit' });
       counts[key] = 0;
     }
     
@@ -387,11 +387,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const dateStr = data.dreamDate;
       if (dateStr) {
         const d = new Date(dateStr);
-        const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+        const key = d.toLocaleString('he-IL', { month: 'short', year: '2-digit' });
         if (counts[key] !== undefined) counts[key]++;
       } else if (data.timestamp) {
         const d = data.timestamp.toDate();
-        const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+        const key = d.toLocaleString('he-IL', { month: 'short', year: '2-digit' });
         if (counts[key] !== undefined) counts[key]++;
       }
     });
@@ -407,7 +407,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       data: {
         labels: labels,
         datasets: [{
-          label: 'Dreams Recorded',
+          label: 'חלומות שתועדו',
           data: data,
           borderColor: '#A78BFA',
           backgroundColor: 'rgba(167, 139, 250, 0.2)',
@@ -420,6 +420,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }]
       },
       options: {
+        rtl: true,
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -470,11 +471,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
            </div>`;
       const videoBadge = d.videoUrl
         ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-700/40 border border-violet-500/30 text-violet-300 font-label text-[10px] uppercase tracking-wider">
-             <span class="material-symbols-outlined text-[11px]" style="font-variation-settings:'FILL' 1;">movie</span>Video
+             <span class="material-symbols-outlined text-[11px]" style="font-variation-settings:'FILL' 1;">movie</span>סרטון
            </span>`
         : d.videoStatus === 'generating'
           ? `<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-900/30 border border-violet-500/20 text-violet-400/60 font-label text-[10px] uppercase tracking-wider">
-               <span class="w-2 h-2 rounded-full border border-violet-400/40 border-t-violet-400 animate-spin"></span>Video…
+               <span class="w-2 h-2 rounded-full border border-violet-400/40 border-t-violet-400 animate-spin"></span>יוצר…
              </span>`
           : '';
       el.innerHTML = `
@@ -501,14 +502,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const el = document.getElementById(id);
     if(el) {
       navigator.clipboard.writeText(el.textContent);
-      showToast('Copied!', 'success');
+      showToast('הועתק!', 'success');
     }
   };
   
   window.copyRawText = function(text, event) {
     if(event) event.stopPropagation();
     navigator.clipboard.writeText(text);
-    showToast('Copied!', 'success');
+    showToast('הועתק!', 'success');
   };
 
   window.askFollowUp = async function() {
@@ -572,7 +573,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }
         errorDiv.setAttribute('dir', 'auto');
         errorDiv.innerHTML = '<span class="material-symbols-outlined text-amber-400 text-sm align-middle rtl:ml-1 ltr:mr-1">workspace_premium</span> ' + 
-          'You have reached the limit of 2 follow-up questions on the Free plan. <a href="/pricing.html" class="underline font-bold text-amber-400 hover:text-amber-300">Upgrade to Pro</a> to ask unlimited questions.';
+          'הגעת למכסה של 2 שאלות על חלום בחשבון החינמי. <a href="/he/pricing.html" class="underline font-bold text-amber-400 hover:text-amber-300">שדרוג עכשיו ל-Pro</a> לשאלות ללא הגבלה.';
         container.appendChild(errorDiv);
         container.scrollTop = container.scrollHeight;
         input.value = val; // restore their input gracefully
@@ -582,7 +583,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     } finally {
       btn.disabled = false;
       input.disabled = false;
-      btn.textContent = document.documentElement.lang === 'he' ? 'שלח' : 'Send';
+      btn.textContent = document.documentElement.lang === 'he' ? 'שליחה' : 'Send';
       input.focus();
     }
   };
@@ -616,7 +617,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
 
     const modal = document.getElementById('analysisModal');
-    
+
     const container = document.getElementById('modalFollowUps');
     if (container) {
       container.innerHTML = '';
@@ -653,12 +654,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.downloadDreamDoc = function() {
     if (!currentUser || !currentDream) return;
     if (!currentUserProfile || !isPro(currentUserProfile)) {
-      return showToast('Downloading dreams is a Pro feature. <a href="/pricing.html" class="underline ml-1">Upgrade</a>', 'warning');
+      return showToast('Downloading dreams is a Pro feature. <a href="/he/pricing.html" class="underline ml-1">לשדרוג המנוי</a>', 'warning');
     }
     const content = `Dream Date: ${currentDream.dateStr}\n\nDescription:\n${currentDream.description}\n\nAnalysis:\n${currentDream.analysis}`;
     
     if (currentDream.followUps && currentDream.followUps.length > 0) {
-      content += '\n\nFollow-Up Questions:\n' + currentDream.followUps.map(f => `Q: ${f.question}\nA: ${f.answer}`).join('\n\n');
+      content += '\n\nשאלות המשך ותשובות:\n' + currentDream.followUps.map(f => `Q: ${f.question}\nA: ${f.answer}`).join('\n\n');
     }
 
     const blob = new Blob([content], { type: 'application/msword' });
@@ -673,7 +674,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.emailDreamSummary = async function(event) {
     if (!currentUser || !currentDream) return;
     if (!currentUserProfile || !isPro(currentUserProfile)) {
-      return showToast('Emailing summaries is a Pro feature. <a href="/pricing.html" class="underline ml-1">Upgrade</a>', 'warning');
+      return showToast('Emailing summaries is a Pro feature. <a href="/he/pricing.html" class="underline ml-1">לשדרוג המנוי</a>', 'warning');
     }
     const btn = event.currentTarget;
     const oldText = btn.innerHTML;
@@ -703,8 +704,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   window.shareVideo = async function() {
     if (!currentDream?.videoUrl) return;
     const shareData = {
-      title: 'My Dream — DreamCoach',
-      text: 'Check out this AI-illustrated video of my dream! 🌙',
+      title: 'החלום שלי – DreamCoach',
+      text: 'תראו את הסרטון הקולנועי של החלום שלי! 🌙',
       url: currentDream.videoUrl,
     };
     try {
@@ -712,12 +713,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         await navigator.share(shareData);
       } else {
         await navigator.clipboard.writeText(currentDream.videoUrl);
-        showToast('Video link copied to clipboard! 📋');
+        showToast('הקישור לסרטון הועתק! 📋');
       }
     } catch (err) {
       if (err.name !== 'AbortError') {
         await navigator.clipboard.writeText(currentDream.videoUrl).catch(() => {});
-        showToast('Video link copied to clipboard! 📋');
+        showToast('הקישור לסרטון הועתק! 📋');
       }
     }
   };
@@ -758,7 +759,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const params = new URLSearchParams({
       action: 'TEMPLATE',
       text: '🌙 Record Your Dream – DreamCoach',
-      details: 'Open DreamCoach and journal the dreams you remember from last night.',
+      details: 'Open DreamCoach וכן journal the dreams you remember from last night.',
       dates: `${fmt(start)}/${fmt(end)}`,
       recur: rrule,
       sf: 'true',
@@ -774,14 +775,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
     <div class="text-center md:text-left">
       <div class="text-lg font-bold text-amber-200 font-headline italic">🌙 DreamCoach Analytics</div>
-      <p class="text-xs text-violet-300/40 font-label mt-1">A product of <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
+      <p class="text-xs text-violet-300/40 font-label mt-1">מוצר מבית הצוות של <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
     </div>
-    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. Navigate your subconscious.</p>
+    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. כלים פשוטים להבנת עולמות תת-המודע.</p>
     <div class="flex flex-wrap gap-4 justify-center">
-      <a href="/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">About</a>
-      <a href="/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Support</a>
-      <a href="/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Privacy</a>
-      <a href="/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Terms</a>
+      <a href="/he/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">אודות</a>
+      <a href="/he/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תמיכה</a>
+      <a href="/he/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">פרטיות</a>
+      <a href="/he/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תנאי שימוש</a>
     </div>
   </div>
 </footer>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="he" dir="rtl">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -15,8 +15,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <title>DreamCoach – AI Dream Analysis</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">tailwind.config = {darkMode:"class",theme:{extend:{colors:{"secondary-container":"#dc9000","on-secondary-container":"#4f3100",surface:"#131124","on-tertiary":"#460283",outline:"#958da1","error-container":"#93000a","on-surface-variant":"#ccc3d8","outline-variant":"#4a4455",background:"#131124","surface-container-highest":"#353247",error:"#ffb4ab","surface-container":"#1f1d31","surface-container-low":"#1b192d","surface-dim":"#131124","on-secondary":"#462b00","tertiary-fixed-dim":"#dab9ff",tertiary:"#dab9ff","surface-container-high":"#2a283c","surface-tint":"#d2bbff","on-background":"#e4dffb","secondary-fixed-dim":"#ffb957","on-primary-fixed":"#25005a","inverse-on-surface":"#302e43","tertiary-container":"#804cbe","on-primary-container":"#ede0ff","on-tertiary-container":"#f1e0ff","surface-variant":"#353247","secondary-fixed":"#ffddb5","primary-fixed-dim":"#d2bbff",secondary:"#ffb957","surface-container-lowest":"#0e0c1f","primary-fixed":"#eaddff",primary:"#7C3AED","primary-container":"#7c3aed","on-error":"#690005","on-error-container":"#ffdad6","tertiary-fixed":"#eedbff","on-surface":"#e4dffb","on-primary":"#3f008e","surface-bright":"#39374c","inverse-surface":"#e4dffb","inverse-primary":"#732ee4"},borderRadius:{DEFAULT:"0.5rem",lg:"1rem",xl:"1.5rem",full:"9999px"},fontFamily:{headline:["EB Garamond","serif"],body:["Newsreader","serif"],label:["Manrope","sans-serif"],display:["EB Garamond","serif"]}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Varela+Round&family=Rubik:wght@300..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode:"class",theme:{extend:{colors:{"secondary-container":"#dc9000","on-secondary-container":"#4f3100",surface:"#131124","on-tertiary":"#460283",outline:"#958da1","error-container":"#93000a","on-surface-variant":"#ccc3d8","outline-variant":"#4a4455",background:"#131124","surface-container-highest":"#353247",error:"#ffb4ab","surface-container":"#1f1d31","surface-container-low":"#1b192d","surface-dim":"#131124","on-secondary":"#462b00","tertiary-fixed-dim":"#dab9ff",tertiary:"#dab9ff","surface-container-high":"#2a283c","surface-tint":"#d2bbff","on-background":"#e4dffb","secondary-fixed-dim":"#ffb957","on-primary-fixed":"#25005a","inverse-on-surface":"#302e43","tertiary-container":"#804cbe","on-primary-container":"#ede0ff","on-tertiary-container":"#f1e0ff","surface-variant":"#353247","secondary-fixed":"#ffddb5","primary-fixed-dim":"#d2bbff",secondary:"#ffb957","surface-container-lowest":"#0e0c1f","primary-fixed":"#eaddff",primary:"#7C3AED","primary-container":"#7c3aed","on-error":"#690005","on-error-container":"#ffdad6","tertiary-fixed":"#eedbff","on-surface":"#e4dffb","on-primary":"#3f008e","surface-bright":"#39374c","inverse-surface":"#e4dffb","inverse-primary":"#732ee4"},borderRadius:{DEFAULT:"0.5rem",lg:"1rem",xl:"1.5rem",full:"9999px"},fontFamily:{headline:["Varela Round","sans-serif"],body:["Rubik","sans-serif"],label:["Rubik","sans-serif"],display:["Varela Round","sans-serif"]}}}}</script>
 <style>
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
   body { background-color: #131124; color: #e4dffb; }
@@ -36,16 +36,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- Navbar -->
 <nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 bg-[#131124]/60 backdrop-blur-xl border-b border-violet-900/20 shadow-lg">
-  <a href="/" class="text-xl md:text-2xl font-headline italic text-violet-100">🌙 DreamCoach</a>
+  <a href="/he/" class="text-xl md:text-2xl font-headline italic text-violet-100">🌙 DreamCoach</a>
   <div class="hidden md:flex items-center gap-5">
-    <a id="nav-dashboard-link" href="/dashboard.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Dashboard</a>
-    <a id="nav-analysis-link" href="/analysis.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Analysis</a>
-    <a href="/pricing.html" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Pricing</a>
-    <a id="nav-settings-link" href="/settings.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Settings</a>
-    <a id="nav-login-link" href="/login.html" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Sign In</a>
-    <a id="nav-logout-link" href="#" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Sign Out</a>
+    <a id="nav-dashboard-link" href="/he/dashboard.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">לוח בקרה</a>
+    <a id="nav-analysis-link" href="/he/analysis.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">טרנד</a>
+    <a href="/he/pricing.html" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">מסלולים</a>
+    <a id="nav-settings-link" href="/he/settings.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">הגדרות</a>
+    <a id="nav-login-link" href="/he/login.html" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">התחברות</a>
+    <a id="nav-logout-link" href="#" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">התנתקות</a>
   </div>
-  <a id="nav-get-started" href="/login.html" class="hidden md:inline-block nebula-gradient px-6 py-2 rounded-full text-white font-label font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">Get Started</a>
+  <a id="nav-get-started" href="/he/login.html" class="hidden md:inline-block nebula-gradient px-6 py-2 rounded-full text-white font-label font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">התחילו עכשיו</a>
 </nav>
 
 <main class="relative overflow-hidden">
@@ -57,21 +57,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="absolute bottom-[20%] right-[-5%] w-[400px] h-[400px] bg-secondary/5 blur-[100px] rounded-full pointer-events-none"></div>
       <div class="relative z-10 max-w-5xl mx-auto">
         <div class="mb-8 inline-block px-4 py-1.5 rounded-full glass-card border border-outline-variant/15 text-secondary text-xs font-label font-bold tracking-[0.2em] uppercase">
-          AI-Powered · Jungian Analysis
+          גישה אלטרנטיבית מבוססת תבניות יונג • בעזרת כלי בינה חכמים
         </div>
         <h1 class="text-6xl md:text-8xl font-headline italic leading-tight mb-8 text-on-background">
-          Unlock the Secrets<br/>of Your <span class="text-primary-fixed-dim">Dreams</span>
+          גלו את הסודות<br/>של  <span class="text-primary-fixed-dim">החלומות שלכם</span>
         </h1>
         <p class="text-lg md:text-xl text-on-surface-variant max-w-2xl mx-auto mb-12 font-body leading-relaxed">
-          Decode the archetypes within. Our AI leverages advanced Jungian, Freudian, and Gestalt psychology to turn your nightly visions into psychological insight.
+          גלו מה המשמעות האמיתית. המערכת משתמשת בתורות הפסיכולוגיה של יונג, פרויד והגשטאלט כדי לתרגם חלום פשוט לתובנות מרחיבות דעת.
         </p>
         <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <a href="/login.html" class="nebula-gradient px-10 py-4 rounded-full text-white text-lg font-label font-bold shadow-2xl shadow-primary-container/40 hover:scale-105 transition-transform">
-            Start Free
+          <a href="/he/login.html" class="nebula-gradient px-10 py-4 rounded-full text-white text-lg font-label font-bold shadow-2xl shadow-primary-container/40 hover:scale-105 transition-transform">
+            התחלה בחינם
           </a>
-          <a href="/pricing.html" class="group flex items-center gap-3 px-10 py-4 rounded-full glass-card text-on-surface hover:bg-surface-container-high transition-colors font-label font-bold">
+          <a href="/he/pricing.html" class="group flex items-center gap-3 px-10 py-4 rounded-full glass-card text-on-surface hover:bg-surface-container-high transition-colors font-label font-bold">
             <span class="material-symbols-outlined group-hover:text-secondary transition-colors">auto_awesome</span>
-            View Plans
+            צפייה במסלולים
           </a>
         </div>
       </div>
@@ -91,130 +91,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="w-14 h-14 nebula-gradient rounded-xl flex items-center justify-center mb-8 shadow-xl shadow-primary/20">
             <span class="material-symbols-outlined text-white text-3xl" style="font-variation-settings:'FILL' 1;">edit_note</span>
           </div>
-          <h3 class="text-2xl font-headline italic text-on-surface mb-4">Record Dreams</h3>
-          <p class="text-on-surface-variant leading-relaxed font-body">Capture your subconscious visions before they fade—with a journal built for the half-awake mind.</p>
+          <h3 class="text-2xl font-headline italic text-on-surface mb-4">תיעוד יומן אישי</h3>
+          <p class="text-on-surface-variant leading-relaxed font-body">תעדו כל זיכרון ורשמים שנותרו מהחלום שלכם לתוך יומן דיגיטלי אישי וקריא.</p>
         </div>
         <div class="glass-card p-10 rounded-xl hover:bg-surface-container-high transition-all duration-500 md:translate-y-6">
           <div class="w-14 h-14 bg-secondary-container rounded-xl flex items-center justify-center mb-8 shadow-xl shadow-secondary/20">
             <span class="material-symbols-outlined text-on-secondary-container text-3xl" style="font-variation-settings:'FILL' 1;">psychology</span>
           </div>
-          <h3 class="text-2xl font-headline italic text-on-surface mb-4">AI Analysis</h3>
-          <p class="text-on-surface-variant leading-relaxed font-body">Neural networks trained on Jungian archetypes identify symbols and recurring themes in your dreamscape.</p>
+          <h3 class="text-2xl font-headline italic text-on-surface mb-4">ניתוח בעזרת בינה (AI)</h3>
+          <p class="text-on-surface-variant leading-relaxed font-body">ניתוח מיידי ומקצועי שיעזור לכם לגלות את המוטיבים העמוקים והמסרים בתוך תת-המודע שלכם.</p>
         </div>
         <div class="glass-card p-10 rounded-xl hover:bg-surface-container-high transition-all duration-500">
           <div class="w-14 h-14 bg-surface-container-highest rounded-xl flex items-center justify-center mb-8 shadow-xl border border-outline-variant/20">
             <span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings:'FILL' 1;">monitoring</span>
           </div>
-          <h3 class="text-2xl font-headline italic text-on-surface mb-4">Track Patterns</h3>
-          <p class="text-on-surface-variant leading-relaxed font-body">Visualize your emotional trajectory and recurring dream motifs over months of psychological tracking.</p>
+          <h3 class="text-2xl font-headline italic text-on-surface mb-4">גילוי דפוסי רגש ומחשבה</h3>
+          <p class="text-on-surface-variant leading-relaxed font-body">מערכת שעוקבת ומנתחת מגמות עמוקות ורגלי חשיבה דרך החוויות שעברתם בשינה במהלך חודשים ארוכים.</p>
         </div>
       </div>
     </section>
-
-    <!-- ═══ PROMO VIDEO ═══ -->
-    <section class="py-20 px-6 md:px-10">
-      <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-10">
-          <div class="inline-block px-4 py-1.5 rounded-full glass-card border border-outline-variant/15 text-secondary text-xs font-label font-bold tracking-[0.2em] uppercase mb-6">
-            See It In Action
-          </div>
-          <h2 class="font-headline text-4xl md:text-5xl italic text-on-background mb-4">
-            Navigate Your <span class="text-primary-fixed-dim">Subconscious</span>
-          </h2>
-          <p class="text-on-surface-variant font-body text-lg max-w-xl mx-auto leading-relaxed">
-            Discover how DreamCoach transforms your nightly visions into psychological insight.
-          </p>
-        </div>
-
-        <!-- Language toggle -->
-        <div class="flex justify-center gap-3 mb-8">
-          <button id="btn-lang-en" onclick="switchLang('en')"
-            class="px-5 py-2 rounded-full font-label font-bold text-sm transition-all nebula-gradient text-white shadow-lg shadow-primary/30">
-            🇺🇸 English
-          </button>
-          <button id="btn-lang-he" onclick="switchLang('he')"
-            class="px-5 py-2 rounded-full font-label font-bold text-sm transition-all glass-card border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/40">
-            🇮🇱 עברית
-          </button>
-        </div>
-
-        <!-- Video player wrapper -->
-        <div class="relative rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 border border-outline-variant/20 moon-glow bg-[#0e0c1f]" style="aspect-ratio:16/9;">
-          <video id="video-en" class="w-full h-full object-cover"
-            src="/video/promo-en.mp4"
-            controls
-            preload="metadata"
-            poster="">
-          </video>
-          <video id="video-he" class="w-full h-full object-cover hidden"
-            src="/video/promo-he.mp4"
-            controls
-            preload="metadata"
-            poster="">
-          </video>
-        </div>
-
-        <!-- CTA under video -->
-        <div class="text-center mt-10">
-          <a href="/login.html" class="nebula-gradient px-10 py-4 rounded-full text-white text-lg font-label font-bold shadow-2xl shadow-primary-container/40 hover:scale-105 transition-transform inline-block">
-            Start Free →
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <script>
-      function switchLang(lang) {
-        const videoEn = document.getElementById('video-en');
-        const videoHe = document.getElementById('video-he');
-        const btnEn = document.getElementById('btn-lang-en');
-        const btnHe = document.getElementById('btn-lang-he');
-
-        if (lang === 'en') {
-          videoEn.classList.remove('hidden');
-          videoHe.classList.add('hidden');
-          videoHe.pause();
-          btnEn.classList.add('nebula-gradient', 'text-white', 'shadow-lg', 'shadow-primary/30');
-          btnEn.classList.remove('glass-card', 'border', 'border-outline-variant/30', 'text-on-surface-variant', 'hover:text-on-surface', 'hover:border-primary/40');
-          btnHe.classList.remove('nebula-gradient', 'text-white', 'shadow-lg', 'shadow-primary/30');
-          btnHe.classList.add('glass-card', 'border', 'border-outline-variant/30', 'text-on-surface-variant', 'hover:text-on-surface', 'hover:border-primary/40');
-        } else {
-          videoHe.classList.remove('hidden');
-          videoEn.classList.add('hidden');
-          videoEn.pause();
-          btnHe.classList.add('nebula-gradient', 'text-white', 'shadow-lg', 'shadow-primary/30');
-          btnHe.classList.remove('glass-card', 'border', 'border-outline-variant/30', 'text-on-surface-variant', 'hover:text-on-surface', 'hover:border-primary/40');
-          btnEn.classList.remove('nebula-gradient', 'text-white', 'shadow-lg', 'shadow-primary/30');
-          btnEn.classList.add('glass-card', 'border', 'border-outline-variant/30', 'text-on-surface-variant', 'hover:text-on-surface', 'hover:border-primary/40');
-        }
-      }
-    </script>
 
       <!-- Analysis Methods -->
-  <section class="mt-16 mb-16 space-y-8">
+  <section class="mt-16 mb-16 space-y-8" dir="rtl">
     <div class="text-center">
-      <h2 class="font-headline text-3xl md:text-4xl italic text-white mb-2">The Pioneers of Dream Analysis</h2>
-      <p class="font-body text-violet-200/60 text-sm max-w-2xl mx-auto">Discover the foundational frameworks our AI uses to map the landscapes of your subconscious mind.</p>
+      <h2 class="font-headline text-3xl md:text-4xl italic text-white mb-2">חלוצי ניתוח החלומות</h2>
+      <p class="font-body text-violet-200/60 text-sm max-w-2xl mx-auto">גלו את המסגרות הפסיכולוגיות שהבינה המלאכותית שלנו משתמשת בהן במטרה למפות את עומקי תת-המודע.</p>
     </div>
     
     <div class="grid md:grid-cols-2 gap-8">
       <!-- Carl Jung -->
-      <a href="/jung.html" class="group hover:ring-2 hover:ring-amber-500/50 hover:-translate-y-1 block glass-card rounded-3xl p-6 border border-violet-500/15 shadow-2xl flex flex-col md:flex-row gap-6 items-center">
-        <img src="/img/jung.png" alt="Carl Jung" class="w-32 h-32 rounded-full border-4 border-amber-500/20 shadow-[0_0_20px_rgba(249,168,37,0.3)] object-cover flex-shrink-0" />
+      <a href="/he/jung.html" class="group hover:ring-2 hover:ring-amber-500/50 hover:-translate-y-1 block glass-card rounded-3xl p-6 border border-violet-500/15 shadow-2xl flex flex-col md:flex-row gap-6 items-center text-start">
+        <img src="/img/jung.png" alt="קארל יונג" class="w-32 h-32 rounded-full border-4 border-amber-500/20 shadow-[0_0_20px_rgba(249,168,37,0.3)] object-cover flex-shrink-0" />
         <div>
-          <h3 class="font-headline text-2xl italic text-amber-300 mb-1">Carl Jung</h3>
-          <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3 block">Analytical Psychology</p>
-          <p class="font-body text-slate-300 leading-relaxed text-sm">Jung believed dreams are the window to the "collective unconscious"—a shared psychological heritage. His method focuses on universally recognized symbols, called <strong>archetypes</strong> (like The Shadow, The Hero, or The Anima). Jungian analysis treats dreams as forward-looking tools designed to help us achieve "individuation," the journey of becoming our most authentic selves.</p>
+          <h3 class="font-headline text-2xl italic text-amber-300 mb-1">קארל יונג</h3>
+          <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3 block">פסיכולוגיה אנליטית</p>
+          <p class="font-body text-slate-300 leading-relaxed text-sm">יונג האמין שחלומות הם החלון ל"לא-מודע הקולקטיבי" שלנו — מאגר ידע וזכרונות משותף לכלל המין האנושי. השיטה שלו מתמקדת בסמלים אוניברסליים שנקראים <strong>ארכיטיפים</strong> (כמו הצל, הגיבור, או האנימה). הניתוח היונגיאני מתייחס לחלומות ככלים שמטרתם להדריך את האדם לקראת מודעות עצמית וצמיחה אישית.</p>
         </div>
       </a>
       
       <!-- Sigmund Freud -->
-      <a href="/freud.html" class="group hover:ring-2 hover:ring-amber-500/50 hover:-translate-y-1 block glass-card rounded-3xl p-6 border border-violet-500/15 shadow-2xl flex flex-col md:flex-row gap-6 items-center">
-        <img src="/img/freud.png" alt="Sigmund Freud" class="w-32 h-32 rounded-full border-4 border-amber-500/20 shadow-[0_0_20px_rgba(249,168,37,0.3)] object-cover flex-shrink-0" />
+      <a href="/he/freud.html" class="group hover:ring-2 hover:ring-amber-500/50 hover:-translate-y-1 block glass-card rounded-3xl p-6 border border-violet-500/15 shadow-2xl flex flex-col md:flex-row gap-6 items-center text-start">
+        <img src="/img/freud.png" alt="זיגמונד פרויד" class="w-32 h-32 rounded-full border-4 border-amber-500/20 shadow-[0_0_20px_rgba(249,168,37,0.3)] object-cover flex-shrink-0" />
         <div>
-          <h3 class="font-headline text-2xl italic text-amber-300 mb-1">Sigmund Freud</h3>
-          <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3 block">Psychoanalysis</p>
-          <p class="font-body text-slate-300 leading-relaxed text-sm">Dubbed the "royal road to the unconscious," Freud saw dreams as expressions of deeply repressed wishes, desires, and unresolved childhood conflicts. His method separates the "manifest content" (what literally happens in the dream) from the "latent content" (the hidden, symbolic truth). Freudian analysis aims to dig up the past to resolve current emotional knots.</p>
+          <h3 class="font-headline text-2xl italic text-amber-300 mb-1">זיגמונד פרויד</h3>
+          <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3 block">פסיכואנליזה</p>
+          <p class="font-body text-slate-300 leading-relaxed text-sm">פרויד כינה את החלום "דרך המלך אל הלא-מודע", וראה בו ביטוי עמוק של משאלות ותשוקות מודחקות, לרוב מילדותנו. שיטתו מפרידה בין ה"תוכן הגלוי" (מה שקרה בחלום עצמו) לבין "התוכן החבוי" (האמת הסמלית האמיתית). הניתוח הפרוידיאני נועד לעקור מן השורש קונפליקטים פנימיים כדי לפתור תסביכים עכשוויים.</p>
         </div>
       </a>
     </div>
@@ -225,14 +146,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <div class="text-center md:text-left">
           <div class="text-lg font-bold text-amber-200 font-headline italic">🌙 DreamCoach Analytics</div>
-          <p class="text-xs text-violet-300/40 font-label mt-1">A product of <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
+          <p class="text-xs text-violet-300/40 font-label mt-1">מוצר מבית הצוות של <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
         </div>
-        <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. Navigate your subconscious.</p>
+        <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. כלים פשוטים להבנת עולמות תת-המודע.</p>
         <div class="flex flex-wrap gap-4 justify-center">
-          <a href="/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">About</a>
-          <a href="/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Support</a>
-          <a href="/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Privacy</a>
-          <a href="/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Terms</a>
+          <a href="/he/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">אודות</a>
+          <a href="/he/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תמיכה</a>
+          <a href="/he/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">פרטיות</a>
+          <a href="/he/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תנאי שימוש</a>
         </div>
       </div>
     </footer>
@@ -240,7 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- ═══ LOGGED-IN APP SECTION ═══ -->
   <div id="app-section" class="hidden pt-24 pb-16 px-4 md:px-8 max-w-4xl mx-auto">
-    <!-- Usage Banner -->
+    <!-- קצב שימוש חודשי Banner -->
     <div id="usage-banner" class="hidden mb-8 glass-card rounded-2xl p-4 flex flex-col sm:flex-row items-center gap-4 border border-violet-500/20">
       <div class="flex-1 min-w-0">
         <p id="usage-text" class="font-label text-sm text-on-surface-variant mb-2"></p>
@@ -250,51 +171,51 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="flex items-center gap-3 shrink-0">
         <span id="pro-badge" class="hidden px-3 py-1 rounded-full bg-amber-400/20 border border-amber-400/40 text-amber-400 font-label text-xs font-bold uppercase tracking-wider">✨ Pro</span>
-        <a id="upgrade-btn" href="/pricing.html" class="hidden px-4 py-2 rounded-full bg-amber-400 text-indigo-950 font-label text-xs font-bold uppercase tracking-wider hover:bg-amber-300 transition-colors">Upgrade</a>
+        <a id="upgrade-btn" href="/he/pricing.html" class="hidden px-4 py-2 rounded-full bg-amber-400 text-indigo-950 font-label text-xs font-bold uppercase tracking-wider hover:bg-amber-300 transition-colors">לשדרוג המנוי</a>
       </div>
     </div>
 
     <!-- Dream Form -->
     <div id="dreamForm" class="glass-card rounded-3xl p-8 border border-violet-500/15 shadow-2xl">
-      <h2 class="font-headline text-3xl md:text-4xl italic text-on-surface mb-2">Record a Dream</h2>
-      <p class="font-body text-on-surface-variant text-sm mb-8 italic">Capture your vision while it's still fresh…</p>
+      <h2 class="font-headline text-3xl md:text-4xl italic text-on-surface mb-2">תעדו חלום שחלמתם</h2>
+      <p class="font-body text-on-surface-variant text-sm mb-8 italic">מומלץ לתעד את החלום סמוך מתמיד לרגע שבו התעוררתם והוא עוד זכור בעוצמה...</p>
 
       <div class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label class="font-label text-xs uppercase tracking-wider text-on-surface-variant block mb-2">Your Name</label>
-            <input id="name" type="text" placeholder="Dream Traveler"
+            <label class="font-label text-xs uppercase tracking-wider text-on-surface-variant block mb-2">שם פרטי</label>
+            <input id="name" type="text" placeholder="נוסע בזמן (שם משתמש)"
               class="w-full input-dream rounded-xl px-4 py-3 font-body transition-all"/>
           </div>
           <div>
-            <label class="font-label text-xs uppercase tracking-wider text-on-surface-variant block mb-2">Dream Date</label>
+            <label class="font-label text-xs uppercase tracking-wider text-on-surface-variant block mb-2">תאריך החלום</label>
             <input id="dreamDate" type="date"
               class="w-full input-dream rounded-xl px-4 py-3 font-label transition-all"/>
           </div>
         </div>
         <div>
           <label class="font-label text-xs uppercase tracking-wider text-on-surface-variant flex justify-between items-center mb-2">
-            <span>Describe Your Dream</span>
+            <span>תיאור החוויה מהחלום</span>
             <div class="flex gap-4">
               <button type="button" id="recordBtn" onclick="toggleRecording()" class="text-secondary hover:text-amber-300 transition-colors flex items-center gap-1" title="Speak your dream">
-                <span class="material-symbols-outlined text-sm" id="recordIcon">mic</span> <span class="hidden sm:inline" id="recordText">Record</span>
+                <span class="material-symbols-outlined text-sm" id="recordIcon">mic</span> <span class="hidden sm:inline" id="recordText">הקלטת קול</span>
               </button>
               <button type="button" id="uploadDocBtn" onclick="document.getElementById('docInput').click()" class="text-tertiary hover:text-violet-300 transition-colors flex items-center gap-1" title="Pro Feature: Upload .docx">
-                <span class="material-symbols-outlined text-sm">upload_file</span> <span class="hidden sm:inline">Upload Doc</span>
+                <span class="material-symbols-outlined text-sm">upload_file</span> <span class="hidden sm:inline">ייבוא מטקסט</span>
               </button>
               <input type="file" id="docInput" accept=".docx" class="hidden" onchange="handleDocUpload(event)" />
             </div>
           </label>
           <div class="relative">
-            <textarea id="description" rows="6" placeholder="I was in a place where the sky was the colour of memory…" class="w-full input-dream rounded-xl px-4 py-3 font-body resize-none transition-all"></textarea>
+            <textarea id="description" rows="6" placeholder="הייתי בחלום נודד במקום שבו השמיים היו בצבע נוזלי..." class="w-full input-dream rounded-xl px-4 py-3 font-body resize-none transition-all"></textarea>
             <div id="docLoading" class="hidden absolute inset-0 bg-surface-container-high/80 backdrop-blur-sm rounded-xl flex items-center justify-center border border-tertiary/30">
                <span class="material-symbols-outlined animate-spin text-tertiary mr-2">autorenew</span>
-               <span class="font-label text-sm text-tertiary italic">Reading document...</span>
+               <span class="font-label text-sm text-tertiary italic">סורק מסמך...</span>
             </div>
           </div>
           <p class="font-label text-xs text-on-surface-variant/50 mt-2 italic flex justify-between">
-            <span>At least 20 characters for a meaningful analysis.</span>
-            <span id="recordingStatus" class="hidden text-secondary animate-pulse">Listening... (Speak now)</span>
+            <span>יש לכתוב יותר מ-20 תווים כדי שנוכל לחלץ ניתוח אמין.</span>
+            <span id="recordingStatus" class="hidden text-secondary animate-pulse">מאזין... (דברו חופשי)</span>
           </p>
         </div>
         <button id="submitBtn" type="button" onclick="submitDream()"
@@ -312,15 +233,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="absolute inset-2 rounded-full bg-primary/30 animate-pulse"></div>
         <span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-4xl text-primary" style="font-variation-settings:'FILL' 1;">bedtime</span>
       </div>
-      <h3 class="font-headline text-2xl italic text-on-surface mb-2">Entering the dreamscape…</h3>
-      <p class="font-body text-on-surface-variant italic">Our AI is consulting the collective unconscious</p>
+      <h3 class="font-headline text-2xl italic text-on-surface mb-2">צולל אל נבכי החלום ולניתוח...</h3>
+      <p class="font-body text-on-surface-variant italic">הבינה מבצעת כעת הרצה משולבת על המידע</p>
     </div>
 
     <!-- Result Card -->
     <div id="resultCard" class="hidden glass-card rounded-3xl p-8 border border-violet-500/20 shadow-2xl">
       <div class="flex items-center gap-3 mb-6">
         <span class="material-symbols-outlined text-secondary text-2xl" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
-        <h3 class="font-headline text-2xl italic text-on-surface">Dream Analysis</h3>
+        <h3 class="font-headline text-2xl italic text-on-surface">קריאת הניתוח המלא</h3>
       </div>
       <div class="bg-surface-container-lowest/60 rounded-2xl p-6 border border-outline-variant/20 mb-6">
         <p id="analysisText" class="font-body text-on-surface leading-relaxed whitespace-pre-wrap text-base"></p>
@@ -331,7 +252,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <span class="material-symbols-outlined align-middle mr-2 text-sm">add</span>
           New Dream
         </button>
-        <a href="/dashboard.html" class="flex-1 text-center py-3 px-6 rounded-full nebula-gradient text-white font-label font-bold hover:scale-[1.02] transition-transform">
+        <a href="/he/dashboard.html" class="flex-1 text-center py-3 px-6 rounded-full nebula-gradient text-white font-label font-bold hover:scale-[1.02] transition-transform">
           View Journal
         </a>
       </div>
@@ -351,27 +272,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div id="ob-step-0" class="ob-step space-y-4 text-center">
       <div class="text-5xl mb-2">🌙</div>
-      <h2 class="font-headline text-3xl italic text-amber-400">Welcome to DreamCoach</h2>
-      <p class="font-body text-violet-200/70 leading-relaxed">You're about to explore the language of your subconscious. Let us quickly show you how to get started.</p>
+      <h2 class="font-headline text-3xl italic text-amber-400">ברוכים הבאים ל-DreamCoach (חווית הפרימיום בעברית שוטפת)</h2>
+      <p class="font-body text-violet-200/70 leading-relaxed">הנכם צעד אחד בדרך לחשיפת השפה הפנימית אשר בנפשכם, נעביר בנקודות איך לייצר תובנה!</p>
     </div>
     <div id="ob-step-1" class="ob-step hidden space-y-4 text-center">
       <span class="material-symbols-outlined text-5xl text-amber-400 block" style="font-variation-settings:'FILL' 1;">edit_note</span>
-      <h2 class="font-headline text-3xl italic text-white">Record Your Dreams</h2>
-      <p class="font-body text-violet-200/70 leading-relaxed">Use the dream entry form to describe what you remember. The more detail you give, the richer the AI analysis will be. Click <strong class="text-white">Analyze Dream</strong> to begin.</p>
+      <h2 class="font-headline text-3xl italic text-white">קלטת זיכרונות ותיעוד עובדתי (מה שראיתם בראש)</h2>
+      <p class="font-body text-violet-200/70 leading-relaxed">פרטו בטופס כל דבר קטן אשר נחרט ואל תקצצו בדימיונות. עולם תת-המודע המשמש בניסוח פתוח גורר פלט איכותי ומפואר משמעותית של תוצרי תובנה – מומלץ ללחוץ על <strong class="text-white">קביעת ניתוח</strong> כדי להתחיל.</p>
     </div>
     <div id="ob-step-2" class="ob-step hidden space-y-4 text-center">
       <span class="material-symbols-outlined text-5xl text-amber-400 block" style="font-variation-settings:'FILL' 1;">insights</span>
-      <h2 class="font-headline text-3xl italic text-white">Your Dream Dashboard</h2>
-      <p class="font-body text-violet-200/70 leading-relaxed">The <strong class="text-white">Dashboard</strong> holds your full dream journal, usage stats, and history. Open any entry to revisit its Jungian, Freudian, and Gestalt analysis.</p>
+      <h2 class="font-headline text-3xl italic text-white">לראות את הכל מתוך יומן אחד מסודר כרונולוגית</h2>
+      <p class="font-body text-violet-200/70 leading-relaxed"><strong>מרחב הדשבורד (לוח הבקרה) במערכת:</strong> נועד לשמש לצורך מיקוד, בדיקה תקופתית ותצוגות ויזואליות של תיעודי חלומות מהימים האחרונים. אין מניעה לשוב לאותו מסמך ניתוח להעמקה נוספת.</p>
     </div>
     <div id="ob-step-3" class="ob-step hidden space-y-4 text-center">
       <span class="material-symbols-outlined text-5xl text-amber-400 block" style="font-variation-settings:'FILL' 1;">star</span>
-      <h2 class="font-headline text-3xl italic text-white">Unlock Pro Features</h2>
-      <p class="font-body text-violet-200/70 leading-relaxed">Free users get 3 analyses per month. With <strong class="text-amber-400">Pro</strong> you get unlimited analyses, pattern trend analysis, and export. Check <a href="/pricing.html" class="underline text-amber-400">Pricing</a> — or enter a coupon code!</p>
+      <h2 class="font-headline text-3xl italic text-white">הפעלת הרשאות ה-Pro וביטול הגרסה החינמית הרגילה</h2>
+      <p class="font-body text-violet-200/70 leading-relaxed">כולנו מקבלים פה מדי חודש תקרת מידגם של עד 3 מסמכי חלום חינם לחלוטין! הראייה שלנו ב-<strong class="text-amber-400">Pro</strong> היא להעניק פלטפורמה רעננה וארוכה יותר למי שרוצה למצות עד תום פונקציות כמו בידוד תבניות - לפרטים נוספים.  <a href="/he/pricing.html" class="underline text-amber-400">מסלולים</a> — או במקרה של זכאות לקופון (ברקוד אישי)?</p>
     </div>
     <div class="flex gap-3 mt-8">
-      <button onclick="skipOnboarding()" class="flex-1 py-3 rounded-xl font-label text-sm text-violet-300 hover:text-white transition-colors" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">Skip</button>
-      <button id="ob-next-btn" onclick="nextOnboardingStep()" class="flex-1 py-3 rounded-xl bg-amber-500 text-indigo-950 font-label font-bold text-sm hover:bg-amber-400 transition-all">Next →</button>
+      <button onclick="skipOnboarding()" class="flex-1 py-3 rounded-xl font-label text-sm text-violet-300 hover:text-white transition-colors" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)">דילוג על ההדרכה</button>
+      <button id="ob-next-btn" onclick="nextOnboardingStep()" class="flex-1 py-3 rounded-xl bg-amber-500 text-indigo-950 font-label font-bold text-sm hover:bg-amber-400 transition-all">לצעד הבא ←</button>
     </div>
   </div>
 </div>
@@ -380,11 +301,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex flex-col gap-2 pointer-events-none"></div>
 
 <script type="module">
-  import { auth, db, fns } from './js/firebase-config.js';
+  import { auth, db, fns } from '/js/firebase-config.js';
   import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
   import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
   import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
-  import { logout, isPro } from './js/auth.js';
+  import { logout, isPro } from '/js/auth.js';
 
   let currentUser = null;
   let isUserPro = false;
@@ -452,7 +373,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   // Handle Docx Upload
   window.handleDocUpload = async function(event) {
     if (!currentUser) return showToast('Please sign in to use this feature.');
-    if (!isUserPro) return showToast('Document upload is a Pro feature. <a href="/pricing.html" class="underline">Upgrade</a>', 'warning');
+    if (!isUserPro) return showToast('Document upload is a Pro feature. <a href="/he/pricing.html" class="underline">לשדרוג המנוי</a>', 'warning');
     
     const file = event.target.files[0];
     if (!file) return;
@@ -493,14 +414,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     c.appendChild(t);
     setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 400); }, 5000);
   }
-  window.showToast = showToast;
-
-  // Listen for native toast events
-  window.addEventListener('app-toast', (e) => {
-    if (e.detail && e.detail.msg) {
-        showToast(e.detail.msg);
-    }
-  });
 
   // ── Onboarding ────────────────────────────────────────
   let obStep = 0;
@@ -520,7 +433,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     document.querySelectorAll('.ob-dot').forEach((el, i) => {
       el.style.background = i === obStep ? '#F9A825' : 'rgba(255,255,255,0.2)';
     });
-    document.getElementById('ob-next-btn').textContent = obStep === OB_STEPS - 1 ? "Let's Go! 🌙" : 'Next →';
+    document.getElementById('ob-next-btn').textContent = obStep === OB_STEPS - 1 ? "שנצא לדרך? 🌙" : 'Next →';
   }
 
   window.nextOnboardingStep = function() {
@@ -582,19 +495,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         isUserPro = true;
         document.getElementById('pro-badge').classList.remove('hidden');
         document.getElementById('upgrade-btn').classList.add('hidden');
-        document.getElementById('usage-text').textContent = '✨ Pro Plan — Unlimited dream analyses';
+        document.getElementById('usage-text').textContent = '✨ מסלול ה-Pro – גישה מלאה לניתוחי חלומות ללא כל הגבלה';
         document.getElementById('usage-bar').style.width = '100%';
       } else {
         isUserPro = false;
         const used = data.monthlyUsage || 0;
         document.getElementById('usage-bar').style.width = Math.min(100, (used / 3) * 100) + '%';
-        document.getElementById('usage-text').textContent = `Free Plan: ${used}/3 analyses used this month`;
+        document.getElementById('usage-text').textContent = `תחת המסלול החינמי: ${used}/3 ניתוחי חלומות שנוצלו במהלך החודש הנוכחי`;
         if (used >= 3) document.getElementById('upgrade-btn').classList.remove('hidden');
       }
   }
 
   window.submitDream = async function() {
-    if (!currentUser) { location.href = '/login.html'; return; }
+    if (!currentUser) { location.href = '/he/login.html'; return; }
     const description = document.getElementById('description').value.trim();
     const dreamDate   = document.getElementById('dreamDate').value;
     const name        = document.getElementById('name').value.trim();
@@ -625,7 +538,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       document.getElementById('dreamForm').classList.remove('hidden');
       const msg = err.message || 'Analysis failed. Please try again.';
       if (msg.includes('limit')) {
-        showToast(`${msg} <a href="/pricing.html" style="text-decoration:underline;margin-left:6px;">Upgrade →</a>`, 'warning');
+        showToast(`${msg} <a href="/he/pricing.html" style="text-decoration:underline;margin-left:6px;">Upgrade →</a>`, 'warning');
       } else {
         showToast(msg, 'error');
       }

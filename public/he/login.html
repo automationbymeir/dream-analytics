@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="he" dir="rtl">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -12,10 +12,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>DreamCoach – Sign In</title>
+<title>התחברות – DreamCoach פלטפורמה רשמית</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Manrope:wght@300;400;500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
 <script id="tailwind-config">
   tailwind.config = {
     darkMode: "class",
@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           amber: { 400: '#F9A825' }
         },
         borderRadius: { "DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px" },
-        fontFamily: { "headline": ["EB Garamond", "serif"], "body": ["Newsreader", "serif"], "label": ["Manrope", "sans-serif"] }
+        fontFamily: { "headline": ["Open Sans", "sans-serif"], "body": ["Open Sans", "sans-serif"], "label": ["Open Sans", "sans-serif"], "display": ["Open Sans", "sans-serif"] }
       }
     }
   }
@@ -54,13 +54,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="absolute inset-0 bg-gradient-to-r from-transparent to-indigo-950 z-10"></div>
     <div class="relative z-20 flex flex-col justify-center px-16 max-w-2xl">
-      <h2 class="font-headline text-6xl text-amber-400 mb-6 leading-tight italic">Decipher the language of your subconscious.</h2>
+      <h2 class="font-headline text-6xl text-amber-400 mb-6 leading-tight italic">גלו מה תת-המודע שלכם מנסה לומר לכם.</h2>
       <p class="text-xl text-indigo-200/80 leading-relaxed max-w-md font-body">
-        Analyze the patterns of your nocturnal journeys with DreamCoach. Discover the hidden symbols that shape your waking life.
+        נתחו את החלומות שלכם עם DreamCoach, וגלו את הסמלים הנסתרים שמשפיעים על חיי היום-יום שלכם.
       </p>
       <div class="mt-12 flex items-center gap-4">
         <div class="w-12 h-[1px] bg-amber-400/50"></div>
-        <span class="font-label text-xs uppercase tracking-[0.2em] text-amber-400/70">Journey into the cosmic subconscious</span>
+        <span class="font-label text-xs uppercase tracking-[0.2em] text-amber-400/70">מסע אל מעמקי הנפש</span>
       </div>
     </div>
   </section>
@@ -69,7 +69,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="w-full lg:w-1/2 flex flex-col items-center justify-center p-6 md:p-12 nebula-gradient">
     <div class="w-full max-w-md">
       <header class="mb-10 text-center lg:text-left">
-        <a href="/" class="font-headline text-4xl font-bold tracking-tighter text-indigo-50 hover:text-amber-400 transition-colors">
+        <a href="/he/" class="font-headline text-4xl font-bold tracking-tighter text-indigo-50 hover:text-amber-400 transition-colors">
           DreamCoach <span class="text-amber-400 italic">Analytics</span>
         </a>
       </header>
@@ -78,14 +78,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="glass-panel p-8 rounded-xl shadow-2xl">
         <!-- Tabs -->
         <div class="flex border-b border-indigo-200/10 mb-8">
-          <button id="tab-signin" onclick="switchTab('signin')" class="flex-1 pb-4 text-sm font-label uppercase tracking-widest transition-colors tab-active">Sign In</button>
-          <button id="tab-signup" onclick="switchTab('signup')" class="flex-1 pb-4 text-sm font-label uppercase tracking-widest transition-colors tab-inactive">Create Account</button>
+          <button id="tab-signin" onclick="switchTab('signin')" class="flex-1 pb-4 text-sm font-label uppercase tracking-widest transition-colors tab-active">התחברות</button>
+          <button id="tab-signup" onclick="switchTab('signup')" class="flex-1 pb-4 text-sm font-label uppercase tracking-widest transition-colors tab-inactive">הרשמה</button>
         </div>
 
         <!-- Sign In Form -->
         <form id="signinForm" class="space-y-6">
           <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">Email Address</label>
+            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">דואר אלקטרוני</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400/50 text-lg">mail</span>
               <input id="si-email" type="email" required placeholder="oracle@dream.com"
@@ -94,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <div class="space-y-2">
             <div class="flex justify-between items-center px-1">
-              <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60">Password</label>
+              <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60">סיסמה שאיתה תוכלו להשאר בטוחים</label>
             </div>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400/50 text-lg">lock</span>
@@ -104,11 +104,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <button type="submit"
             class="w-full bg-amber-400 hover:bg-amber-300 text-indigo-950 font-label font-bold uppercase tracking-widest py-4 rounded-lg shadow-[0_0_20px_rgba(249,168,37,0.2)] transition-all duration-300 active:scale-[0.98]">
-            Enter the Dream
+            המשיכו לחלום (התחברות)
           </button>
           <div class="relative flex items-center py-2">
             <div class="flex-grow border-t border-indigo-200/10"></div>
-            <span class="flex-shrink mx-4 font-label text-[10px] uppercase tracking-widest text-indigo-300/30">Or</span>
+            <span class="flex-shrink mx-4 font-label text-[10px] uppercase tracking-widest text-indigo-300/30">או</span>
             <div class="flex-grow border-t border-indigo-200/10"></div>
           </div>
           <button id="googleBtn" type="button"
@@ -119,22 +119,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
             </svg>
-            Continue with Google
+            התחברות מהירה עם Google
           </button>
         </form>
 
         <!-- Sign Up Form (hidden by default) -->
         <form id="signupForm" class="space-y-6 hidden">
           <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">Your Name</label>
+            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">שם פרטי</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400/50 text-lg">person</span>
-              <input id="su-name" type="text" required placeholder="Dream Traveler"
+              <input id="su-name" type="text" required placeholder="נוסע בזמן (שם משתמש)"
                 class="w-full bg-indigo-900/40 border border-indigo-500/20 rounded-lg py-3 pl-12 pr-4 text-indigo-50 placeholder:text-indigo-300/20 focus:outline-none focus:ring-0 input-glow transition-all duration-300"/>
             </div>
           </div>
           <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">Email Address</label>
+            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">דואר אלקטרוני</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400/50 text-lg">mail</span>
               <input id="su-email" type="email" required placeholder="oracle@dream.com"
@@ -142,7 +142,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
           <div class="space-y-2">
-            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">Password</label>
+            <label class="font-label text-xs uppercase tracking-wider text-indigo-200/60 block px-1">סיסמה שאיתה תוכלו להשאר בטוחים</label>
             <div class="relative">
               <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-indigo-400/50 text-lg">lock</span>
               <input id="su-password" type="password" required placeholder="••••••••" minlength="6"
@@ -151,11 +151,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
           <button type="submit"
             class="w-full bg-violet-600 hover:bg-violet-500 text-white font-label font-bold uppercase tracking-widest py-4 rounded-lg shadow-[0_0_20px_rgba(124,58,237,0.3)] transition-all duration-300 active:scale-[0.98]">
-            Begin Your Journey
+            התחילו במסע מרגש של היכרות עצמית עמוקה
           </button>
           <div class="relative flex items-center py-2">
             <div class="flex-grow border-t border-indigo-200/10"></div>
-            <span class="flex-shrink mx-4 font-label text-[10px] uppercase tracking-widest text-indigo-300/30">Or</span>
+            <span class="flex-shrink mx-4 font-label text-[10px] uppercase tracking-widest text-indigo-300/30">או</span>
             <div class="flex-grow border-t border-indigo-200/10"></div>
           </div>
           <button id="googleBtnSignup" type="button"
@@ -166,14 +166,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
               <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
             </svg>
-            Sign Up with Google
+            הרשמה מהירה עם Google
           </button>
         </form>
       </div>
 
       <div class="mt-8 text-center">
         <p class="font-body text-indigo-300/60 italic text-sm">
-          Experience the ethereal. <span class="text-amber-400/80">3 dreams per month free</span> for every traveler.
+          חוויה של צלילה לנבכי תת-המודע בדרך מהירה ומשתלמת. <span class="text-amber-400/80">3 ניתוחי חלומות בחינם בכל חודש</span> לכל מי שחוקר את עצמו.
         </p>
       </div>
     </div>
@@ -184,7 +184,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex flex-col gap-2 pointer-events-none"></div>
 
 <script type="module">
-  import { initAuthGuard, signInWithGoogle, signInWithEmail, signUpWithEmail } from './js/auth.js';
+  import { initAuthGuard, signInWithGoogle, signInWithEmail, signUpWithEmail } from '/js/auth.js';
 
   // Redirect if already logged in
   initAuthGuard(null);
@@ -227,7 +227,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       'auth/wrong-password':       'Incorrect password.',
       'auth/invalid-credential':   'Incorrect email or password.',
       'auth/email-already-in-use': 'An account with this email already exists.',
-      'auth/weak-password':        'Password must be at least 6 characters.',
+      'auth/weak-password':        'סיסמה שאיתה תוכלו להשאר בטוחים must be at least 6 characters.',
       'auth/invalid-email':        'Please enter a valid email address.',
       'auth/too-many-requests':    'Too many attempts. Please try again later.',
       'auth/popup-closed-by-user': 'Sign-in popup was closed. Please try again.'
@@ -240,7 +240,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       await signInWithGoogle();
       const ret = sessionStorage.getItem('returnUrl');
       sessionStorage.removeItem('returnUrl');
-      location.href = ret || '/dashboard.html';
+      location.href = ret || '/he/dashboard.html';
     } catch (err) {
       showToast(getAuthErrorMessage(err.code), 'error');
     }
@@ -258,10 +258,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       await signInWithEmail(email, password);
       const ret = sessionStorage.getItem('returnUrl');
       sessionStorage.removeItem('returnUrl');
-      location.href = ret || '/dashboard.html';
+      location.href = ret || '/he/dashboard.html';
     } catch (err) {
       showToast(getAuthErrorMessage(err.code), 'error');
-      btn.disabled = false; btn.textContent = 'Enter the Dream';
+      btn.disabled = false; btn.textContent = 'המשיכו לחלום (התחברות)';
     }
   });
 
@@ -274,11 +274,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     btn.disabled = true; btn.textContent = 'Creating your realm…';
     try {
       await signUpWithEmail(email, password, name);
-      showToast('🎉 Welcome to DreamCoach! Entering your dream space…');
-      setTimeout(() => { location.href = '/dashboard.html'; }, 1500);
+      showToast('🎉 ברוכים הבאים ל-DreamCoach (חווית הפרימיום בעברית שוטפת)! Entering your dream space…');
+      setTimeout(() => { location.href = '/he/dashboard.html'; }, 1500);
     } catch (err) {
       showToast(getAuthErrorMessage(err.code), 'error');
-      btn.disabled = false; btn.textContent = 'Begin Your Journey';
+      btn.disabled = false; btn.textContent = 'התחילו במסע מרגש של היכרות עצמית עמוקה';
     }
   });
 </script>

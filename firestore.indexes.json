@@ -1,6 +1,24 @@
 {
   "indexes": [
     {
+      "collectionGroup": "social_posts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "site", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "DESCENDING" },
+        { "fieldPath": "__name__", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "social_posts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "site", "order": "ASCENDING" },
+        { "fieldPath": "createdAt", "order": "ASCENDING" },
+        { "fieldPath": "__name__", "order": "ASCENDING" }
+      ]
+    },
+    {
       "collectionGroup": "dreams",
       "queryScope": "COLLECTION",
       "fields": [
@@ -14,6 +32,14 @@
       "fields": [
         { "fieldPath": "userId", "order": "ASCENDING" },
         { "fieldPath": "dreamDate", "order": "DESCENDING" }
+      ]
+    },
+    {
+      "collectionGroup": "dreams",
+      "queryScope": "COLLECTION",
+      "fields": [
+        { "fieldPath": "userId", "order": "ASCENDING" },
+        { "fieldPath": "dreamDate", "order": "ASCENDING" }
       ]
     }
   ],

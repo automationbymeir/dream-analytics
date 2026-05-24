@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="he" dir="rtl">
 <head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -16,8 +16,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-low":"#1b192d","on-surface-variant":"#ccc3d8","primary-fixed":"#eaddff","surface-dim":"#131124",primary:"#7C3AED","on-surface":"#e4dffb","outline-variant":"#4a4455","surface-container-high":"#2a283c","on-background":"#e4dffb","secondary-container":"#af8d11","primary-fixed-dim":"#d2bbff","tertiary-container":"#844abe",tertiary:"#ddb8ff","surface-tint":"#d2bbff","on-primary-fixed":"#25005a","surface-container":"#1f1d31","on-secondary":"#3c2f00","surface-bright":"#39374c","on-secondary-container":"#342800","inverse-primary":"#732ee4","error-container":"#93000a",outline:"#958da1",surface:"#131124","primary-container":"#7c3aed",background:"#131124","tertiary-fixed":"#f0dbff","secondary-fixed-dim":"#e9c349","surface-container-highest":"#353247","on-primary-container":"#ede0ff","inverse-on-surface":"#302e43","on-tertiary-container":"#f2e0ff",error:"#ffb4ab","on-primary-fixed-variant":"#5a00c6","surface-container-lowest":"#0e0c1f","on-error":"#690005","surface-variant":"#353247","inverse-surface":"#e4dffb","on-primary":"#3f008e","on-error-container":"#ffdad6",secondary:"#e9c349","secondary-fixed":"#ffe088"},borderRadius:{DEFAULT:"0.5rem",lg:"1rem",xl:"1.5rem",full:"9999px"},fontFamily:{headline:["EB Garamond","serif"],body:["Newsreader","serif"],label:["Manrope","sans-serif"],display:["EB Garamond","serif"]}}}}</script>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface-container-low":"#1b192d","on-surface-variant":"#ccc3d8","primary-fixed":"#eaddff","surface-dim":"#131124",primary:"#7C3AED","on-surface":"#e4dffb","outline-variant":"#4a4455","surface-container-high":"#2a283c","on-background":"#e4dffb","secondary-container":"#af8d11","primary-fixed-dim":"#d2bbff","tertiary-container":"#844abe",tertiary:"#ddb8ff","surface-tint":"#d2bbff","on-primary-fixed":"#25005a","surface-container":"#1f1d31","on-secondary":"#3c2f00","surface-bright":"#39374c","on-secondary-container":"#342800","inverse-primary":"#732ee4","error-container":"#93000a",outline:"#958da1",surface:"#131124","primary-container":"#7c3aed",background:"#131124","tertiary-fixed":"#f0dbff","secondary-fixed-dim":"#e9c349","surface-container-highest":"#353247","on-primary-container":"#ede0ff","inverse-on-surface":"#302e43","on-tertiary-container":"#f2e0ff",error:"#ffb4ab","on-primary-fixed-variant":"#5a00c6","surface-container-lowest":"#0e0c1f","on-error":"#690005","surface-variant":"#353247","inverse-surface":"#e4dffb","on-primary":"#3f008e","on-error-container":"#ffdad6",secondary:"#e9c349","secondary-fixed":"#ffe088"},borderRadius:{DEFAULT:"0.5rem",lg:"1rem",xl:"1.5rem",full:"9999px"},fontFamily: { "headline": ["Open Sans", "sans-serif"], "body": ["Open Sans", "sans-serif"], "label": ["Open Sans", "sans-serif"], "display": ["Open Sans", "sans-serif"] }}}}</script>
 <style>
   .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
   .glass-card { background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
@@ -37,18 +37,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- Navbar -->
 <nav class="fixed top-0 w-full z-50 bg-[#131124]/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-6 md:px-8 h-16">
   <div class="flex items-center gap-6 md:gap-8">
-    <a href="/" class="text-xl font-bold italic text-[#d2bbff] font-headline">🌙 DreamCoach</a>
+    <a href="/he/" class="text-xl font-bold italic text-[#d2bbff] font-headline">🌙 DreamCoach</a>
     <div class="hidden md:flex items-center gap-5">
-      <a href="/dashboard.html" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">Dashboard</a>
-      <a href="/" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">New Dream</a>
-      <a href="/analysis.html" class="text-[#d2bbff] border-b-2 border-[#d2bbff] pb-0.5 font-label text-sm">Analysis</a>
-      <a href="/pricing.html" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">Pricing</a>
-      <a href="/settings.html" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">Settings</a>
+      <a href="/he/dashboard.html" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">לוח בקרה</a>
+      <a href="/he/" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">חלום חדש</a>
+      <a href="/he/analysis.html" class="text-[#d2bbff] border-b-2 border-[#d2bbff] pb-0.5 font-label text-sm">טרנד</a>
+      <a href="/he/pricing.html" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">מסלולים</a>
+      <a href="/he/settings.html" class="text-[#e4dffb]/60 font-label text-sm hover:text-[#d2bbff] transition-colors">הגדרות</a>
     </div>
   </div>
   <div class="flex items-center gap-3">
     <button id="logoutBtn" class="text-[#e4dffb]/50 hover:text-amber-400 font-label text-sm transition-colors px-3 py-1 rounded-lg hover:bg-white/5">
-      <span class="material-symbols-outlined text-base align-middle mr-1">logout</span>Sign Out
+      <span class="material-symbols-outlined text-base align-middle mr-1">logout</span>התנתקות בטוחה מהחשבון
     </button>
   </div>
 </nav>
@@ -59,10 +59,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <header class="mb-12 flex flex-col items-center text-center">
     <div class="flex items-center gap-3 mb-3">
       <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
-      <h1 class="text-4xl md:text-6xl font-display text-on-surface italic font-medium tracking-tight">Dream Pattern Analysis</h1>
+      <h1 class="text-4xl md:text-6xl font-display text-on-surface italic font-medium tracking-tight">ניתוח דפוסי חלומות</h1>
       <span class="material-symbols-outlined text-secondary" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
     </div>
-    <p class="text-on-surface-variant font-label max-w-2xl text-sm md:text-base">Decrypting the persistent echoes of your subconscious through celestial alignment and emotional resonance.</p>
+    <p class="text-on-surface-variant font-label max-w-2xl text-sm md:text-base">מציאת ההקשרים הנסתרים של תת-המודע באמצעות זיהוי רגשות ומוטיבים חוזרים.</p>
   </header>
 
   <!-- ═══ FREE PAYWALL ═══ -->
@@ -73,15 +73,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="w-16 h-16 mx-auto mb-6 rounded-2xl bg-secondary/10 flex items-center justify-center">
           <span class="material-symbols-outlined text-secondary text-3xl" style="font-variation-settings:'FILL' 1;">lock</span>
         </div>
-        <span class="inline-block mb-4 font-label text-[10px] uppercase tracking-widest bg-secondary text-on-secondary px-3 py-1 rounded-full font-bold">Pro Only</span>
-        <h2 class="font-headline text-3xl italic text-on-surface mb-3">Unlock Deep Pattern Insights</h2>
+        <span class="inline-block mb-4 font-label text-[10px] uppercase tracking-widest bg-secondary text-on-secondary px-3 py-1 rounded-full font-bold">למנויי Pro</span>
+        <h2 class="font-headline text-3xl italic text-on-surface mb-3">בניית תובנות עמוקות ורחבות</h2>
         <p class="text-on-surface-variant font-label text-sm mb-8 leading-relaxed max-w-sm mx-auto">
-          Analyze recurring themes, emotional patterns, and dream symbols across weeks and months of your journal — powered by advanced Jungian AI.
+          זיהוי נושאים שחוזרים על עצמם, דפוסי רגש וסמלים בחלומות על פני שבועות וחודשים - מבוסס על בינה פסיכולוגית לפי תורת יונג.
         </p>
-        <a href="/pricing.html" class="inline-block w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label font-bold rounded-full shadow-[0_20px_40px_rgba(124,58,237,0.25)] hover:scale-[1.02] active:scale-95 transition-all">
-          Upgrade to Pro from $20/mo
+        <a href="/he/pricing.html" class="inline-block w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label font-bold rounded-full shadow-[0_20px_40px_rgba(124,58,237,0.25)] hover:scale-[1.02] active:scale-95 transition-all">
+          שדרוג ל-Pro החל מ-$20 בלבד
         </a>
-        <p class="mt-4 text-on-surface-variant/50 font-label text-xs italic">30-day money-back guarantee</p>
+        <p class="mt-4 text-on-surface-variant/50 font-label text-xs italic">אחריות כספית מלאה ל-30 ימים</p>
       </div>
     </div>
   </div>
@@ -93,15 +93,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <aside class="lg:col-span-4 space-y-8">
       <section class="glass-card ghost-border rounded-2xl p-6 space-y-5">
         <h3 class="font-headline text-xl text-primary italic flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">calendar_month</span>Date Range
+          <span class="material-symbols-outlined text-base">calendar_month</span>טווח תאריכים לבדיקה
         </h3>
         <div class="grid grid-cols-2 gap-3">
           <div>
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">From</label>
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">מתאריך</label>
             <input id="dateFrom" type="date" class="w-full input-dream rounded-xl p-3 font-label text-sm transition-all"/>
           </div>
           <div>
-            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">To</label>
+            <label class="font-label text-xs uppercase tracking-widest text-on-surface-variant block mb-2">עד תאריך</label>
             <input id="dateTo" type="date" class="w-full input-dream rounded-xl p-3 font-label text-sm transition-all"/>
           </div>
         </div>
@@ -109,30 +109,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <section class="glass-card ghost-border rounded-2xl p-6 space-y-5">
         <h3 class="font-headline text-xl text-primary italic flex items-center gap-2">
-          <span class="material-symbols-outlined text-base">psychology_alt</span>Analysis Inquiry
+          <span class="material-symbols-outlined text-base">psychology_alt</span>מה ברצונך לשאול?
         </h3>
         <div class="flex flex-wrap gap-2">
           <button class="prompt-template font-label text-xs px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/40 transition-all"
-            data-prompt="What are the most recurring themes and symbols in my dreams?">Recurring Themes</button>
+            data-prompt="מהם הסמלים והנושאים שהכי חוזרים בחלומות שלי?">נושאים שחוזרים על עצמם</button>
           <button class="prompt-template font-label text-xs px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/40 transition-all"
-            data-prompt="What emotions appear most frequently in my dreams and what might they indicate?">Emotional Patterns</button>
+            data-prompt="אילו רגשות מופיעים הכי הרבה בחלומות שלי, ומה המשמעות שלהם?">הבנת דפוסים רגשיים</button>
           <button class="prompt-template font-label text-xs px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/40 transition-all"
-            data-prompt="From a Jungian perspective, what archetypes and shadow elements appear in my dreams?">Jungian Archetypes</button>
+            data-prompt="איזה אלמנטים פסיכולוגיים ("הצל" באנליזה יונגיאנית) מופיעים בחלומות שלי?">ניתוח פסיכולוגי עמוק (ארכיטיפים)</button>
           <button class="prompt-template font-label text-xs px-3 py-1.5 rounded-full bg-surface-container-high border border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-primary/40 transition-all"
-            data-prompt="What personal growth opportunities do my dreams suggest?">Growth Insights</button>
+            data-prompt="כיצד החלומות שלי יכולים לעזור לי לצמוח באופן אישי?">תובנות לצמיחה אישית</button>
         </div>
-        <textarea id="analysisPrompt" rows="4" placeholder="Or write your own question about your dream patterns…"
+        <textarea id="analysisPrompt" rows="4" placeholder="או שפשוט תשאלו שאלה חופשית על החלומות שלכם..."
           class="w-full input-dream rounded-2xl p-4 font-body text-sm resize-none transition-all placeholder:italic"></textarea>
         <button id="runBtn"
           class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-label font-bold rounded-full shadow-[0_20px_40px_rgba(124,58,237,0.2)] hover:scale-[1.02] active:scale-95 transition-all disabled:opacity-50 disabled:cursor-not-allowed">
           <span class="material-symbols-outlined align-middle mr-2 text-sm" style="font-variation-settings:'FILL' 1;">auto_awesome</span>
-          Analyze Patterns
+          הפעילו ניתוח חכם
         </button>
         <button id="exportBtn" class="hidden w-full py-3 glass-card ghost-border rounded-full font-label text-sm text-on-surface-variant hover:text-on-surface transition-colors">
-          <span class="material-symbols-outlined align-middle mr-1 text-sm">download</span>Export Analysis
+          <span class="material-symbols-outlined align-middle mr-1 text-sm">download</span>הורדת קובץ לסיכום
         </button>
         <button id="newAnalysisBtn" class="hidden w-full py-3 font-label text-sm text-primary hover:underline transition-colors">
-          ← New Analysis
+          ← ניתוח חדש
         </button>
       </section>
     </aside>
@@ -145,7 +145,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="absolute -top-20 -right-20 w-56 h-56 bg-primary/5 rounded-full blur-[80px]"></div>
         <div class="relative z-10">
           <div class="flex items-center justify-between mb-4">
-            <h3 class="font-headline text-2xl text-on-surface italic">Monthly Trends</h3>
+            <h3 class="font-headline text-2xl text-on-surface italic">מגמות חודשיות</h3>
             <span class="material-symbols-outlined text-secondary">monitoring</span>
           </div>
           <div class="w-full h-64">
@@ -161,8 +161,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div class="absolute inset-2 rounded-full bg-primary/30 animate-pulse"></div>
           <span class="material-symbols-outlined absolute inset-0 flex items-center justify-center text-4xl text-primary" style="font-variation-settings:'FILL' 1;">bedtime</span>
         </div>
-        <h3 class="font-headline text-2xl italic text-on-surface mb-2">Consulting the collective unconscious…</h3>
-        <p class="font-body text-on-surface-variant italic text-sm">This may take a moment</p>
+        <h3 class="font-headline text-2xl italic text-on-surface mb-2">מעבד את עולמות התוכן בראשך...</h3>
+        <p class="font-body text-on-surface-variant italic text-sm">תהליך הניתוח לוקח מספר שניות</p>
       </div>
 
       <!-- Results -->
@@ -170,7 +170,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="absolute -top-20 -right-20 w-56 h-56 bg-primary/5 rounded-full blur-[80px]"></div>
         <div class="relative z-10">
           <div class="flex items-center gap-2 text-primary font-label text-xs uppercase tracking-[0.2em] mb-4">
-            <span class="w-6 h-[1px] bg-primary/40"></span>AI Pattern Analysis
+            <span class="w-6 h-[1px] bg-primary/40"></span>ניתוח חכם של חלומות
           </div>
           <p id="resultsMeta" class="font-label text-xs text-on-surface-variant mb-6 italic"></p>
           <div class="bg-surface-container-lowest/50 rounded-2xl p-6 border border-outline-variant/20">
@@ -182,8 +182,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Empty state placeholder -->
       <div id="emptyResults" class="glass-card ghost-border rounded-3xl p-12 text-center">
         <span class="material-symbols-outlined text-5xl text-primary/30 block mb-4" style="font-variation-settings:'FILL' 1;">search_insights</span>
-        <h3 class="font-headline text-2xl italic text-on-surface mb-2">Ready to explore your patterns</h3>
-        <p class="font-body text-on-surface-variant text-sm italic">Select a date range and inquiry, then run the analysis to reveal the hidden currents of your subconscious.</p>
+        <h3 class="font-headline text-2xl italic text-on-surface mb-2">מוכנים להכיר את עצמכם טוב יותר?</h3>
+        <p class="font-body text-on-surface-variant text-sm italic">בחרו טווח תאריכים ושאלה, ואז הפעילו את הניתוח לגלות את המוטיבים הנסתרים מתת-המודע שלכם.</p>
       </div>
     </div>
   </div>
@@ -198,8 +198,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex flex-col gap-2 pointer-events-none"></div>
 
 <script type="module">
-  import { fns, db } from './js/firebase-config.js';
-  import { initAuthGuard, logout, isPro, getUserData } from './js/auth.js';
+  import { fns, db } from '/js/firebase-config.js';
+  import { initAuthGuard, logout, isPro, getUserData } from '/js/auth.js';
   import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
   import { collection, query, where, getDocs } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js';
 
@@ -251,7 +251,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const counts = {};
     for (let i = 0; i < 6; i++) {
       const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+      const key = d.toLocaleString('he-IL', { month: 'short', year: '2-digit' });
       counts[key] = 0;
     }
     
@@ -260,11 +260,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       const dateStr = data.dreamDate;
       if (dateStr) {
         const d = new Date(dateStr);
-        const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+        const key = d.toLocaleString('he-IL', { month: 'short', year: '2-digit' });
         if (counts[key] !== undefined) counts[key]++;
       } else if (data.timestamp) {
         const d = data.timestamp.toDate();
-        const key = d.toLocaleString('default', { month: 'short', year: '2-digit' });
+        const key = d.toLocaleString('he-IL', { month: 'short', year: '2-digit' });
         if (counts[key] !== undefined) counts[key]++;
       }
     });
@@ -280,7 +280,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       data: {
         labels: labels,
         datasets: [{
-          label: 'Dreams Recorded',
+          label: 'חלומות שתועדו',
           data: data,
           borderColor: '#d2bbff',
           backgroundColor: 'rgba(210, 187, 255, 0.1)',
@@ -293,6 +293,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         }]
       },
       options: {
+        rtl: true,
         responsive: true,
         maintainAspectRatio: false,
         scales: {
@@ -365,7 +366,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   document.getElementById('exportBtn').addEventListener('click', () => {
     if (!lastResult) return;
-    const content = `DreamCoach – Trend Analysis\n${'='.repeat(40)}\nDreams analyzed: ${lastResult.dreamCount}\nDate range: ${lastResult.dateRange}\n${'='.repeat(40)}\n\n${lastResult.analysis}`;
+    const content = `DreamCoach – Trend Analysis\n${'='.repeat(40)}\nכמות החלומות שנותחו במערכת: ${lastResult.dreamCount}\nDate range: ${lastResult.dateRange}\n${'='.repeat(40)}\n\n${lastResult.analysis}`;
     const blob = new Blob([content], { type: 'text/plain' });
     const url  = URL.createObjectURL(blob);
     const a    = document.createElement('a');
@@ -391,14 +392,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
     <div class="text-center md:text-left">
       <div class="text-lg font-bold text-amber-200 font-headline italic">🌙 DreamCoach Analytics</div>
-      <p class="text-xs text-violet-300/40 font-label mt-1">A product of <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
+      <p class="text-xs text-violet-300/40 font-label mt-1">מוצר מבית הצוות של <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
     </div>
-    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. Navigate your subconscious.</p>
+    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. כלים פשוטים להבנת עולמות תת-המודע.</p>
     <div class="flex flex-wrap gap-4 justify-center">
-      <a href="/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">About</a>
-      <a href="/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Support</a>
-      <a href="/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Privacy</a>
-      <a href="/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Terms</a>
+      <a href="/he/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">אודות</a>
+      <a href="/he/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תמיכה</a>
+      <a href="/he/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">פרטיות</a>
+      <a href="/he/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">תנאי שימוש</a>
     </div>
   </div>
 </footer>

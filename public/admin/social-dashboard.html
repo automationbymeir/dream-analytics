@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DreamCoach – Social Media Admin</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        surface: "#0F0D1F",
+        "surface-card": "rgba(255,255,255,0.04)",
+        primary: "#7C3AED",
+        amber: { 400: "#fbbf24", 500: "#f59e0b" },
+        violet: { 300: "#c4b5fd", 400: "#a78bfa", 900: "#4C1D95" }
+      },
+      fontFamily: { headline: ["EB Garamond","serif"], label: ["Manrope","sans-serif"] }
+    }
+  }
+}
+</script>
+<style>
+  body { background-color: #0F0D1F; background-image: radial-gradient(at 0% 0%, rgba(76,29,149,0.12) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(251,191,36,0.04) 0px, transparent 50%); }
+  .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); border: 1px solid rgba(167,139,250,0.12); }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  #passwordGate { position:fixed;inset:0;z-index:9999;background:#0F0D1F;display:flex;align-items:center;justify-content:center; }
+  .status-success  { color: #4ade80; }
+  .status-error    { color: #f87171; }
+  .status-started  { color: #fbbf24; }
+  .status-rendering{ color: #60a5fa; }
+  .platform-yt  { background: rgba(255,0,0,0.15);  border-color: rgba(255,0,0,0.3); }
+  .platform-ig  { background: rgba(193,53,132,0.15); border-color: rgba(193,53,132,0.3); }
+  .platform-fb  { background: rgba(24,119,242,0.15); border-color: rgba(24,119,242,0.3); }
+  .platform-tw  { background: rgba(29,161,242,0.15); border-color: rgba(29,161,242,0.3); }
+  .slot-morning { border-left: 3px solid #fbbf24; }
+  .slot-evening { border-left: 3px solid #a78bfa; }
+  .pulse { animation: pulse 2s infinite; }
+  .active-vtype { border-color: rgba(139,92,246,0.8) !important; background: rgba(124,58,237,0.25) !important; color: #e4dffb !important; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+</style>
+</head>
+<body class="font-label text-slate-200 min-h-screen">
+
+<!-- Password Gate -->
+<div id="passwordGate">
+  <div class="glass rounded-2xl p-10 w-full max-w-sm mx-4 text-center space-y-6">
+    <div class="text-6xl">🌙</div>
+    <h1 class="font-headline text-3xl italic text-amber-400">Admin Access</h1>
+    <p class="text-violet-300/60 text-sm">Enter the admin password to continue</p>
+    <div class="space-y-3">
+      <input id="gateInput" type="password" placeholder="Password" autofocus
+        class="w-full bg-slate-900 border border-violet-900/40 rounded-xl px-4 py-3 text-violet-200 text-center text-lg tracking-widest focus:outline-none focus:border-violet-500"
+        onkeydown="if(event.key==='Enter') checkPassword()"/>
+      <p id="gateError" class="text-red-400 text-sm h-4"></p>
+      <button onclick="checkPassword()" class="w-full bg-violet-700 hover:bg-violet-600 active:scale-95 transition-all py-3 rounded-xl font-bold text-white">
+        Enter
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10">
+  <div class="flex justify-between items-center px-6 md:px-8 py-3">
+    <div class="flex items-center gap-6">
+      <a href="/" class="text-xl font-bold text-amber-400 italic font-headline">🌙 DreamCoach</a>
+      <div class="hidden md:flex items-center gap-4 text-sm">
+        <a href="/dashboard.html" class="text-violet-300/70 hover:text-violet-100 px-2 py-1 rounded-lg hover:bg-white/5 transition-all">User Dashboard</a>
+        <a href="/admin/social-dashboard.html" class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold">Social Admin</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-3">
+      <span id="lastRefresh" class="text-xs text-violet-300/40"></span>
+      <button onclick="loadData()" class="text-violet-200/60 hover:text-amber-400 text-sm transition-colors px-3 py-1 rounded-lg hover:bg-white/5">
+        <span class="material-symbols-outlined text-base mr-1">refresh</span>Refresh
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-7xl mx-auto px-4 md:px-6 py-8 space-y-8">
+
+  <!-- Header -->
+  <header class="space-y-1">
+    <h1 class="font-headline text-4xl md:text-5xl text-amber-400 italic">Social Media Command Center</h1>
+    <p class="text-violet-300/60 text-lg italic font-headline">Monitor automated posts across all platforms</p>
+  </header>
+
+  <!-- Site selector tabs -->
+  <div class="flex gap-2 flex-wrap">
+    <button onclick="setSite('dream-analytics')" id="tab-dream" class="tab-btn active px-5 py-2 rounded-full text-sm font-bold border transition-all">
+      🌙 DreamCoach
+    </button>
+    <button onclick="setSite('trendingtechdaily')" id="tab-ttd" class="tab-btn px-5 py-2 rounded-full text-sm font-bold border transition-all">
+      ⚡ TrendingTechDaily
+    </button>
+  </div>
+
+  <!-- Stats grid -->
+  <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="glass rounded-xl p-5 space-y-2">
+      <div class="flex justify-between items-start">
+        <span class="text-xs uppercase tracking-widest text-violet-300/50">Posts Today</span>
+        <span class="material-symbols-outlined text-amber-500 text-xl">today</span>
+      </div>
+      <p id="statToday" class="text-3xl font-headline text-slate-100">—</p>
+    </div>
+    <div class="glass rounded-xl p-5 space-y-2">
+      <div class="flex justify-between items-start">
+        <span class="text-xs uppercase tracking-widest text-violet-300/50">This Week</span>
+        <span class="material-symbols-outlined text-violet-400 text-xl">date_range</span>
+      </div>
+      <p id="statWeek" class="text-3xl font-headline text-slate-100">—</p>
+    </div>
+    <div class="glass rounded-xl p-5 space-y-2">
+      <div class="flex justify-between items-start">
+        <span class="text-xs uppercase tracking-widest text-violet-300/50">Success Rate</span>
+        <span class="material-symbols-outlined text-green-400 text-xl">check_circle</span>
+      </div>
+      <p id="statRate" class="text-3xl font-headline text-slate-100">—</p>
+    </div>
+    <div class="glass rounded-xl p-5 space-y-2">
+      <div class="flex justify-between items-start">
+        <span class="text-xs uppercase tracking-widest text-violet-300/50">Next Post</span>
+        <span class="material-symbols-outlined text-amber-400 text-xl">schedule</span>
+      </div>
+      <p id="statNext" class="text-3xl font-headline text-slate-100">—</p>
+      <p id="statNextLabel" class="text-xs text-violet-300/50"></p>
+    </div>
+  </div>
+
+  <!-- Platform breakdown -->
+  <section class="glass rounded-2xl p-6 space-y-4">
+    <h2 class="font-headline text-2xl text-violet-300 italic">Platform Breakdown (last 30 posts)</h2>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" id="platformStats">
+      <div class="platform-yt rounded-xl border p-4 text-center space-y-1">
+        <div class="text-2xl">▶️</div>
+        <div class="font-bold text-sm">YouTube</div>
+        <div id="ytCount" class="text-2xl font-headline">—</div>
+        <div id="ytFail" class="text-xs text-red-400"></div>
+      </div>
+      <div class="platform-ig rounded-xl border p-4 text-center space-y-1">
+        <div class="text-2xl">📸</div>
+        <div class="font-bold text-sm">Instagram</div>
+        <div id="igCount" class="text-2xl font-headline">—</div>
+        <div id="igFail" class="text-xs text-red-400"></div>
+      </div>
+      <div class="platform-fb rounded-xl border p-4 text-center space-y-1">
+        <div class="text-2xl">👥</div>
+        <div class="font-bold text-sm">Facebook</div>
+        <div id="fbCount" class="text-2xl font-headline">—</div>
+        <div id="fbFail" class="text-xs text-red-400"></div>
+      </div>
+      <div class="platform-tw rounded-xl border p-4 text-center space-y-1">
+        <div class="text-2xl">𝕏</div>
+        <div class="font-bold text-sm">Twitter / X</div>
+        <div id="twCount" class="text-2xl font-headline">—</div>
+        <div id="twFail" class="text-xs text-red-400"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live progress tracker -->
+  <section id="liveSection" class="hidden glass rounded-2xl p-6 space-y-4 border border-violet-500/30">
+    <div class="flex items-center gap-3">
+      <span class="relative flex h-3 w-3">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3 w-3 bg-violet-500"></span>
+      </span>
+      <h2 class="font-headline text-2xl text-violet-300 italic">Live Pipeline</h2>
+      <span id="liveSlot" class="text-xs font-bold px-2 py-0.5 rounded-full bg-white/5 text-violet-300/70"></span>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3" id="liveSteps">
+      <!-- filled by JS -->
+    </div>
+
+    <!-- Fact preview -->
+    <div id="liveFact" class="hidden text-sm italic text-violet-200/70 border-l-2 border-violet-500/40 pl-4"></div>
+
+    <!-- Platform results -->
+    <div id="liveResults" class="hidden flex flex-wrap gap-2"></div>
+
+    <!-- Error -->
+    <div id="liveError" class="hidden text-sm text-red-400 bg-red-900/20 rounded-lg px-4 py-2"></div>
+  </section>
+
+  <!-- Manual trigger -->
+  <section class="glass rounded-2xl p-6 space-y-4">
+    <h2 class="font-headline text-2xl text-violet-300 italic">Manual Trigger</h2>
+    <p class="text-sm text-violet-300/60">Force a video post immediately (admin key required)</p>
+
+    <!-- Video type grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pb-2">
+      <button onclick="setVideoType('fact')" id="vt-fact" class="vtype-btn active-vtype rounded-xl px-3 py-2 text-xs font-bold border border-violet-700/60 bg-violet-900/40 text-violet-200 flex flex-col items-center gap-1">
+        <span>🌙</span><span>Dream Fact</span><span class="text-violet-400/50 font-normal">EN</span>
+      </button>
+      <button onclick="setVideoType('promo')" id="vt-promo" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-violet-700/30 bg-slate-900/60 text-violet-300/60 flex flex-col items-center gap-1">
+        <span>✨</span><span>Promo</span><span class="text-violet-400/50 font-normal">EN</span>
+      </button>
+      <button onclick="setVideoType('illustration')" id="vt-illustration" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-violet-700/30 bg-slate-900/60 text-violet-300/60 flex flex-col items-center gap-1">
+        <span>🎬</span><span>Illustration</span><span class="text-violet-400/50 font-normal">EN</span>
+      </button>
+      <button onclick="setVideoType('illustration_he')" id="vt-illustration_he" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-violet-700/30 bg-slate-900/60 text-violet-300/60 flex flex-col items-center gap-1">
+        <span>🎬</span><span>Illustration</span><span class="text-violet-400/50 font-normal">HE 🇮🇱</span>
+      </button>
+      <button onclick="setVideoType('freud')" id="vt-freud" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-amber-700/30 bg-slate-900/60 text-amber-300/60 flex flex-col items-center gap-1">
+        <span>🎩</span><span>Freud</span><span class="text-amber-400/50 font-normal">EN</span>
+      </button>
+      <button onclick="setVideoType('freud_he')" id="vt-freud_he" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-amber-700/30 bg-slate-900/60 text-amber-300/60 flex flex-col items-center gap-1">
+        <span>🎩</span><span>Freud</span><span class="text-amber-400/50 font-normal">HE 🇮🇱</span>
+      </button>
+      <button onclick="setVideoType('jung')" id="vt-jung" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-blue-700/30 bg-slate-900/60 text-blue-300/60 flex flex-col items-center gap-1">
+        <span>🔮</span><span>Jung</span><span class="text-blue-400/50 font-normal">EN</span>
+      </button>
+      <button onclick="setVideoType('jung_he')" id="vt-jung_he" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-blue-700/30 bg-slate-900/60 text-blue-300/60 flex flex-col items-center gap-1">
+        <span>🔮</span><span>Jung</span><span class="text-blue-400/50 font-normal">HE 🇮🇱</span>
+      </button>
+      <button onclick="setVideoType('carousel')" id="vt-carousel" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-fuchsia-700/30 bg-slate-900/60 text-fuchsia-300/60 flex flex-col items-center gap-1">
+        <span>🎴</span><span>IG Carousel</span><span class="text-fuchsia-400/50 font-normal">HE 🇮🇱</span>
+      </button>
+      <button onclick="setVideoType('carousel_en')" id="vt-carousel_en" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-fuchsia-700/30 bg-slate-900/60 text-fuchsia-300/60 flex flex-col items-center gap-1">
+        <span>🎴</span><span>IG Carousel</span><span class="text-fuchsia-400/50 font-normal">EN 🇺🇸</span>
+      </button>
+      <button onclick="setVideoType('character')" id="vt-character" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-violet-700/30 bg-slate-900/60 text-violet-300/60 flex flex-col items-center gap-1">
+        <span>🧑‍🎤</span><span>AI Character</span><span class="text-violet-400/50 font-normal">HE 🇮🇱</span>
+      </button>
+      <button onclick="setVideoType('character_en')" id="vt-character_en" class="vtype-btn rounded-xl px-3 py-2 text-xs font-bold border border-violet-700/30 bg-slate-900/60 text-violet-300/60 flex flex-col items-center gap-1">
+        <span>🧑‍🎤</span><span>AI Character</span><span class="text-violet-400/50 font-normal">EN 🇺🇸</span>
+      </button>
+    </div>
+
+    <!-- AI character archetype selector (only visible when 'character' selected) -->
+    <div id="characterArchWrap" class="hidden flex items-center gap-2 mt-2">
+      <label class="text-xs text-violet-300/60 uppercase tracking-wide">Character</label>
+      <select id="characterArchetype" class="bg-slate-900 border border-violet-900/40 rounded-lg px-3 py-2 text-sm text-violet-200">
+        <option value="">Random (rotates each run)</option>
+        <option value="young-woman-creative">Young creative woman (late 20s)</option>
+        <option value="middle-aged-man-thoughtful">Middle-aged thoughtful man</option>
+        <option value="teen-girl-curious">Curious teenage girl</option>
+        <option value="elderly-woman-warm">Warm elderly woman</option>
+        <option value="young-man-introspective">Introspective young man</option>
+        <option value="middle-eastern-woman-mother">Middle Eastern mother</option>
+      </select>
+    </div>
+
+    <!-- Carousel theme selector (only visible when 'carousel' selected) -->
+    <div id="carouselThemeWrap" class="hidden flex items-center gap-2">
+      <label class="text-xs text-fuchsia-300/60 uppercase tracking-wide">Theme</label>
+      <select id="carouselTheme" class="bg-slate-900 border border-fuchsia-900/40 rounded-lg px-3 py-2 text-sm text-fuchsia-200">
+        <option value="">Today's theme (auto)</option>
+        <option value="dream-symbols">Dream symbols</option>
+        <option value="dream-psychology">Dream psychology</option>
+        <option value="sleep-science">Sleep science</option>
+        <option value="dream-quotes">Dream quotes</option>
+        <option value="cultural-myths">Cultural myths</option>
+        <option value="recurring-dreams">Recurring dreams</option>
+        <option value="remember-dreams">Remember dreams</option>
+      </select>
+    </div>
+
+    <div class="flex flex-wrap gap-3 items-end">
+      <div class="space-y-1">
+        <label class="text-xs text-violet-300/50 uppercase tracking-wide">Admin Key</label>
+        <input id="adminKey" type="password" placeholder="••••••••" class="bg-slate-900 border border-violet-900/40 rounded-lg px-3 py-2 text-sm text-violet-200 w-48"/>
+      </div>
+      <button onclick="triggerPost()" class="bg-violet-700 hover:bg-violet-600 active:scale-95 transition-all px-6 py-2 rounded-lg text-sm font-bold">
+        <span class="material-symbols-outlined text-base mr-1">play_arrow</span>Trigger Now
+      </button>
+      <span id="triggerMsg" class="text-sm text-violet-300/60"></span>
+    </div>
+
+    <!-- Duration hint -->
+    <p id="durationHint" class="text-xs text-violet-300/40">🕐 Dream Fact: ~3 min · Illustration/Freud/Jung: ~10–15 min (60-second videos)</p>
+  </section>
+
+  <!-- Post history -->
+  <section class="space-y-4">
+    <div class="flex justify-between items-center">
+      <h2 class="font-headline text-2xl text-violet-300 italic">Post History</h2>
+      <span id="historyCount" class="text-xs text-violet-300/40"></span>
+    </div>
+    <div id="postHistory" class="space-y-3">
+      <div class="glass rounded-xl p-6 text-center text-violet-300/40">
+        <span class="material-symbols-outlined text-4xl pulse">hourglass_empty</span>
+        <p class="mt-2 text-sm">Loading post history…</p>
+      </div>
+    </div>
+    <button id="loadMoreBtn" onclick="loadMore()" class="hidden w-full glass rounded-xl py-3 text-sm text-violet-300/60 hover:text-violet-200 transition-colors">
+      Load more ↓
+    </button>
+  </section>
+
+</main>
+
+<!-- Firebase SDK -->
+<script type="module">
+// ── Password gate ───────────────────────────────────────────────────────────
+const ADMIN_HASH = "8e4ac24610f94d10162bb18bc0ae0ed2f7837d2f198e7c5a8cdc8479a4b0c02d"; // sha256 of Nthr195@
+async function sha256(str) {
+  const buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(str));
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,"0")).join("");
+}
+window.checkPassword = async () => {
+  const val = document.getElementById("gateInput").value;
+  const hash = await sha256(val);
+  if (hash === ADMIN_HASH) {
+    sessionStorage.setItem("adminAuth","1");
+    sessionStorage.setItem("adminKey", val);  // store raw key for trigger use
+    document.getElementById("passwordGate").style.display = "none";
+    // Auto-fill the trigger key field
+    const keyField = document.getElementById("adminKey");
+    if (keyField) keyField.value = val;
+  } else {
+    document.getElementById("gateError").textContent = "Incorrect password";
+    document.getElementById("gateInput").value = "";
+    document.getElementById("gateInput").focus();
+  }
+};
+// Auto-unlock if already authenticated this session
+if (sessionStorage.getItem("adminAuth") === "1") {
+  document.getElementById("passwordGate").style.display = "none";
+  // Auto-fill trigger key field on page load
+  window.addEventListener("DOMContentLoaded", () => {
+    const keyField = document.getElementById("adminKey");
+    if (keyField) keyField.value = sessionStorage.getItem("adminKey") || "";
+  });
+}
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+import { getFirestore, collection, query, where, orderBy, limit, startAfter, getDocs, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBUmGhmZkktNU-_QwFtERl-T6oRf-_sAgQ",
+  authDomain: "dreamanalysis-39322.firebaseapp.com",
+  projectId: "dreamanalysis-39322",
+  storageBucket: "dreamanalysis-39322.firebasestorage.app",
+  messagingSenderId: "222523234712",
+  appId: "1:222523234712:web:b508d345729d98ad4133ed",
+};
+
+const app  = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db   = getFirestore(app);
+
+let currentSite = "dream-analytics";
+let lastDoc     = null;
+const PAGE_SIZE = 20;
+
+// ── Auth guard ──────────────────────────────────────────────────────────────
+onAuthStateChanged(auth, (user) => {
+  if (!user) { window.location.href = "/login.html?redirect=/admin/social-dashboard.html"; return; }
+  loadData();
+});
+
+// ── Site tab switching ──────────────────────────────────────────────────────
+window.setSite = (site) => {
+  currentSite = site;
+  document.querySelectorAll(".tab-btn").forEach(b => {
+    b.classList.remove("active", "bg-violet-800", "border-violet-500", "text-white");
+    b.classList.add("border-violet-900/30", "text-violet-300/60");
+  });
+  const active = document.getElementById(site === "dream-analytics" ? "tab-dream" : "tab-ttd");
+  active.classList.add("bg-violet-800", "border-violet-500", "text-white");
+  active.classList.remove("border-violet-900/30", "text-violet-300/60");
+  lastDoc = null;
+  loadData();
+};
+document.getElementById("tab-dream").classList.add("bg-violet-800","border-violet-500","text-white");
+document.getElementById("tab-ttd").classList.add("border-violet-900/30","text-violet-300/60");
+
+// ── Next post timer ─────────────────────────────────────────────────────────
+function updateNextPostTimer() {
+  const now = new Date();
+  const nowUTC = new Date(now.toUTCString());
+  const h = nowUTC.getUTCHours();
+  const m = nowUTC.getUTCMinutes();
+  const s = nowUTC.getUTCSeconds();
+  const totalSecs = h * 3600 + m * 60 + s;
+
+  let label, secsUntil;
+  if (totalSecs < 8 * 3600) {
+    secsUntil = 8 * 3600 - totalSecs;
+    label = "morning post";
+  } else if (totalSecs < 20 * 3600) {
+    secsUntil = 20 * 3600 - totalSecs;
+    label = "evening post";
+  } else {
+    secsUntil = (24 * 3600 - totalSecs) + 8 * 3600;
+    label = "morning post";
+  }
+
+  const hh = Math.floor(secsUntil / 3600);
+  const mm = Math.floor((secsUntil % 3600) / 60);
+  const ss = secsUntil % 60;
+  document.getElementById("statNext").textContent =
+    `${String(hh).padStart(2,"0")}:${String(mm).padStart(2,"0")}:${String(ss).padStart(2,"0")}`;
+  document.getElementById("statNextLabel").textContent = `until ${label}`;
+}
+setInterval(updateNextPostTimer, 1000);
+updateNextPostTimer();
+
+// ── Load post data ──────────────────────────────────────────────────────────
+window.loadData = async () => {
+  lastDoc = null;
+  document.getElementById("lastRefresh").textContent = "Refreshing…";
+  await Promise.all([loadStats(), loadPosts(false)]);
+  document.getElementById("lastRefresh").textContent = "Updated " + new Date().toLocaleTimeString();
+};
+
+async function loadStats() {
+  try {
+    const col = collection(db, "social_posts");
+    const now = new Date();
+    const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
+    const weekStart  = new Date(now - 7 * 864e5).toISOString();
+    const siteFilter = currentSite !== "all" ? [where("site", "==", currentSite)] : [];
+
+    // Fetch last 100 docs and count in-memory — avoids composite index requirement
+    const snap = await getDocs(query(col, ...siteFilter, orderBy("createdAt", "desc"), limit(100)));
+
+    let today=0, week=0, success=0;
+    let ytOk=0, igOk=0, fbOk=0, twOk=0;
+    let ytFail=0, igFail=0, fbFail=0, twFail=0;
+
+    snap.forEach(d => {
+      const doc = d.data();
+      if (doc.createdAt >= todayStart) today++;
+      if (doc.createdAt >= weekStart)  week++;
+      if (doc.status === "success") success++;
+      if (doc.results) {
+        if (doc.results.youtube?.url)   ytOk++;  else if (doc.results.youtube?.error)   ytFail++;
+        if (doc.results.instagram?.url) igOk++;  else if (doc.results.instagram?.error) igFail++;
+        if (doc.results.facebook?.url)  fbOk++;  else if (doc.results.facebook?.error)  fbFail++;
+        if (doc.results.twitter?.url)   twOk++;  else if (doc.results.twitter?.error)   twFail++;
+      }
+    });
+
+    const total = snap.size;
+    const rate  = total ? Math.round((success / total) * 100) : 0;
+
+    document.getElementById("statToday").textContent = today;
+    document.getElementById("statWeek").textContent  = week;
+    document.getElementById("statRate").textContent  = rate + "%";
+    document.getElementById("ytCount").textContent   = ytOk;
+    document.getElementById("igCount").textContent   = igOk;
+    document.getElementById("fbCount").textContent   = fbOk;
+    document.getElementById("twCount").textContent   = twOk;
+    document.getElementById("ytFail").textContent    = ytFail  ? `${ytFail} failed` : "";
+    document.getElementById("igFail").textContent    = igFail  ? `${igFail} failed` : "";
+    document.getElementById("fbFail").textContent    = fbFail  ? `${fbFail} failed` : "";
+    document.getElementById("twFail").textContent    = twFail  ? `${twFail} failed` : "";
+
+  } catch (e) { console.error("Stats error", e); }
+}
+
+window.loadMore = () => loadPosts(true);
+
+async function loadPosts(append) {
+  try {
+    const col        = collection(db, "social_posts");
+    const siteFilter = currentSite !== "all" ? [where("site","==",currentSite)] : [];
+    let q = query(col, ...siteFilter, orderBy("createdAt","desc"), limit(PAGE_SIZE));
+    if (append && lastDoc) q = query(col, ...siteFilter, orderBy("createdAt","desc"), startAfter(lastDoc), limit(PAGE_SIZE));
+
+    const snap = await getDocs(q);
+    if (!snap.empty) lastDoc = snap.docs[snap.docs.length - 1];
+
+    const container = document.getElementById("postHistory");
+    if (!append) container.innerHTML = "";
+
+    if (snap.empty && !append) {
+      container.innerHTML = `<div class="glass rounded-xl p-8 text-center text-violet-300/40"><span class="material-symbols-outlined text-5xl">inbox</span><p class="mt-2">No posts yet for this site.</p></div>`;
+      document.getElementById("historyCount").textContent = "";
+      document.getElementById("loadMoreBtn").classList.add("hidden");
+      return;
+    }
+
+    snap.forEach(d => container.appendChild(buildPostCard(d.data())));
+    document.getElementById("historyCount").textContent = `Showing ${container.children.length} posts`;
+    document.getElementById("loadMoreBtn").classList.toggle("hidden", snap.size < PAGE_SIZE);
+
+  } catch (e) { console.error("Posts error", e); }
+}
+
+function buildPostCard(doc) {
+  const div     = document.createElement("div");
+  const isSlot  = doc.slot === "morning" ? "slot-morning" : "slot-evening";
+  const statusCls = `status-${doc.status?.split("_")[0] || "started"}`;
+  const date    = doc.createdAt ? new Date(doc.createdAt).toLocaleString() : "—";
+
+  const platforms = buildPlatformPills(doc.results);
+
+  div.className = `glass rounded-xl p-5 ${isSlot} hover:border-violet-700/40 transition-colors`;
+  div.innerHTML = `
+    <div class="flex flex-wrap justify-between items-start gap-3 mb-3">
+      <div class="flex items-center gap-3 flex-wrap">
+        <span class="text-xs uppercase tracking-widest text-violet-300/50">${date}</span>
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-white/5 text-violet-300/70">${doc.slot || "—"}</span>
+        <span class="text-xs font-bold px-2 py-0.5 rounded-full bg-white/5 text-violet-300/70">${doc.videoType || "—"}</span>
+      </div>
+      <span class="text-xs font-bold uppercase ${statusCls}">${doc.status || "—"}</span>
+    </div>
+    ${doc.fact ? `<p class="text-sm text-violet-200/80 italic mb-3 line-clamp-2">"${doc.fact}"</p>` : ""}
+    <div class="flex flex-wrap gap-2">${platforms}</div>
+    ${doc.error ? `<p class="mt-2 text-xs text-red-400">⚠ ${doc.error}</p>` : ""}
+    ${doc.videoUrl ? `<a href="${doc.videoUrl}" target="_blank" class="inline-block mt-2 text-xs text-violet-400 hover:text-violet-200 underline">🎬 View rendered video</a>` : ""}
+  `;
+  return div;
+}
+
+function buildPlatformPills(results) {
+  if (!results) return '<span class="text-xs text-violet-300/30">No platform data yet</span>';
+  const platforms = [
+    { key:"youtube",   label:"▶ YouTube",  cls:"platform-yt" },
+    { key:"instagram", label:"📸 IG",       cls:"platform-ig" },
+    { key:"facebook",  label:"👥 FB",       cls:"platform-fb" },
+    { key:"twitter",   label:"𝕏 Twitter",  cls:"platform-tw" },
+  ];
+  return platforms.map(p => {
+    const r = results[p.key];
+    if (!r) return "";
+    const hasUrl = r.url && !r.error;
+    const inner  = hasUrl
+      ? `<a href="${r.url}" target="_blank" class="hover:underline">${p.label} ✓</a>`
+      : `${p.label} ✗`;
+    return `<span class="text-xs font-bold px-3 py-1 rounded-full border ${p.cls} ${hasUrl ? "" : "opacity-50"}">${inner}</span>`;
+  }).join("");
+}
+
+// ── Live pipeline tracker ───────────────────────────────────────────────────
+const PIPELINE_STEPS = [
+  { key: "started",        label: "🚀 Started",         desc: "Pipeline kicked off" },
+  { key: "content_ready",  label: "✍️ Content",         desc: "Fact & image generated" },
+  { key: "video_rendered", label: "🎬 Video",           desc: "Remotion render done" },
+  { key: "uploading",      label: "📤 Uploading",       desc: "Posting to platforms" },
+  { key: "success",        label: "✅ Done",            desc: "All platforms posted" },
+  { key: "error",          label: "❌ Failed",          desc: "Check error below" },
+];
+
+let liveUnsub = null;
+
+function watchRun(runId) {
+  if (liveUnsub) liveUnsub(); // stop previous listener
+
+  const section = document.getElementById("liveSection");
+  section.classList.remove("hidden");
+  section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  const { doc: fsDoc } = window.__fsImports;
+  const docRef = fsDoc(db, "social_posts", runId);
+
+  liveUnsub = onSnapshot(docRef, (snap) => {
+    if (!snap.exists()) return;
+    const data = snap.data();
+    renderLiveTracker(data);
+
+    // Auto-refresh history when done
+    if (data.status === "success" || data.status === "error") {
+      setTimeout(loadData, 1500);
+    }
+  });
+}
+
+function renderLiveTracker(data) {
+  document.getElementById("liveSlot").textContent = data.slot || "";
+
+  // Steps
+  const currentIdx = PIPELINE_STEPS.findIndex(s => s.key === data.status);
+  const stepsEl = document.getElementById("liveSteps");
+  stepsEl.innerHTML = PIPELINE_STEPS.map((step, i) => {
+    let state = "pending";
+    if (data.status === "error" && step.key === "error") state = "active";
+    else if (i < currentIdx) state = "done";
+    else if (i === currentIdx) state = data.status === "error" ? "error" : "active";
+
+    const colors = {
+      done:    "bg-green-900/40 border-green-500/50 text-green-300",
+      active:  "bg-violet-900/50 border-violet-400/60 text-violet-200 animate-pulse",
+      error:   "bg-red-900/40 border-red-500/50 text-red-300",
+      pending: "bg-white/3 border-white/10 text-violet-300/30",
+    };
+    return `<div class="rounded-xl border p-3 text-center space-y-1 ${colors[state]}">
+      <div class="text-lg">${step.label}</div>
+      <div class="text-xs">${step.desc}</div>
+    </div>`;
+  }).join("");
+
+  // Fact preview
+  if (data.fact) {
+    const factEl = document.getElementById("liveFact");
+    factEl.textContent = `"${data.fact}"`;
+    factEl.classList.remove("hidden");
+  }
+
+  // Platform results
+  if (data.results) {
+    const resEl = document.getElementById("liveResults");
+    resEl.classList.remove("hidden");
+    resEl.innerHTML = buildPlatformPills(data.results);
+  }
+
+  // Error
+  if (data.error) {
+    const errEl = document.getElementById("liveError");
+    errEl.textContent = "⚠ " + data.error;
+    errEl.classList.remove("hidden");
+  }
+}
+
+// Store Firestore doc import for use in watchRun
+import { doc as fsDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+window.__fsImports = { doc: fsDoc };
+
+// ── Video type selector ──────────────────────────────────────────────────────
+let _selectedVideoType = "fact";
+window.setVideoType = (type) => {
+  _selectedVideoType = type;
+  document.querySelectorAll(".vtype-btn").forEach(b => {
+    b.classList.remove("active-vtype", "!border-violet-500", "!bg-violet-900/60", "!text-violet-200");
+  });
+  const btn = document.getElementById(`vt-${type}`);
+  if (btn) btn.classList.add("active-vtype", "!border-violet-500", "!bg-violet-900/60", "!text-violet-200");
+  const hints = {
+    fact: "~3 min", promo: "~3 min",
+    illustration: "~10–15 min (60-sec video, Pexels b-roll)",
+    illustration_he: "~10–15 min (Hebrew, 60-sec video)",
+    freud: "~8–12 min (45-sec Freud video)",
+    freud_he: "~8–12 min (Hebrew Freud video)",
+    jung: "~8–12 min (45-sec Jung video)",
+    jung_he: "~8–12 min (Hebrew Jung video)",
+    carousel: "~1 min (6-slide IG carousel, Hebrew, Nano Banana backgrounds)",
+    carousel_en: "~1 min (6-slide IG carousel, English, Nano Banana backgrounds)",
+    character: "~8–12 min (50-sec AI character video, Hebrew TTS via Google)",
+    character_en: "~8–12 min (50-sec AI character video, English TTS via ElevenLabs)",
+  };
+  const hint = document.getElementById("durationHint");
+  if (hint) hint.textContent = `🕐 Estimated time: ${hints[type] || "~5 min"}`;
+
+  // Toggle carousel theme selector visibility (for either language)
+  const themeWrap = document.getElementById("carouselThemeWrap");
+  if (themeWrap) {
+    if (type === "carousel" || type === "carousel_en") themeWrap.classList.remove("hidden");
+    else themeWrap.classList.add("hidden");
+  }
+
+  // Toggle character archetype selector visibility
+  const charWrap = document.getElementById("characterArchWrap");
+  if (charWrap) {
+    if (type === "character" || type === "character_en") charWrap.classList.remove("hidden");
+    else charWrap.classList.add("hidden");
+  }
+};
+
+// ── Manual trigger ──────────────────────────────────────────────────────────
+window.triggerPost = async () => {
+  const videoType = _selectedVideoType || "fact";
+  const slot = (videoType === "fact" || videoType === "promo") ? videoType === "promo" ? "evening" : "morning" : "morning";
+  const key  = document.getElementById("adminKey").value || sessionStorage.getItem("adminKey") || "";
+  const btn  = document.querySelector("button[onclick='triggerPost()']");
+  const msg  = document.getElementById("triggerMsg");
+  if (!key) { msg.textContent = "Admin key required"; msg.className = "text-sm text-red-400"; return; }
+
+  const approxRunId = `${Date.now()}-${videoType}-${videoType.endsWith("_he") ? "he" : "en"}`;
+
+  btn.disabled = true;
+  btn.classList.add("opacity-50", "cursor-not-allowed");
+  msg.innerHTML = `<span class="pulse">⏳ Pipeline running… watch Live Tracker below for real-time progress</span>`;
+  msg.className = "text-sm text-amber-400";
+
+  // Subscribe to the most recent social_posts doc appearing right now
+  // (pipeline writes "started" to Firestore as its first step)
+  const startTime = new Date().toISOString();
+  let liveStarted = false;
+  const unsubEarly = onSnapshot(
+    query(
+      collection(db, "social_posts"),
+      where("site", "==", "dream-analytics"),
+      where("createdAt", ">=", startTime),
+      orderBy("createdAt", "desc"),
+      limit(1)
+    ),
+    (snap) => {
+      if (!snap.empty && !liveStarted) {
+        liveStarted = true;
+        watchRun(snap.docs[0].id);
+        if (unsubEarly) unsubEarly();
+      }
+    }
+  );
+
+  try {
+    // Carousel + AI character video each have their own Cloud Function URL.
+    let endpoint, body;
+    if (videoType === "carousel" || videoType === "carousel_en") {
+      endpoint = "https://triggerdreamcoachcarousel-pjstfumdkq-uc.a.run.app";
+      const themeId = (document.getElementById("carouselTheme") || {}).value || "";
+      const language = videoType === "carousel_en" ? "en" : "he";
+      body = { language, ...(themeId ? { themeId } : {}) };
+    } else if (videoType === "character" || videoType === "character_en") {
+      endpoint = "https://triggerdreamcharactervideo-pjstfumdkq-uc.a.run.app";
+      const archetypeId = (document.getElementById("characterArchetype") || {}).value || "";
+      const language = videoType === "character_en" ? "en" : "he";
+      body = { language, ...(archetypeId ? { archetypeId } : {}) };
+    } else {
+      endpoint = "https://triggerdreamvideo-pjstfumdkq-uc.a.run.app";
+      body = { slot, videoType };
+    }
+    const res  = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-admin-key": key },
+      body: JSON.stringify(body),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      if (videoType === "carousel" || videoType === "carousel_en") {
+        const langLabel = videoType === "carousel_en" ? "EN" : "HE";
+        msg.innerHTML = data.mediaId
+          ? `✓ Posted to Instagram (${langLabel}) — <a href="https://www.instagram.com/p/${data.mediaId}/" target="_blank" class="underline">view post</a>`
+          : data.previewOnly
+            ? `✓ Slides rendered (preview only — IG tokens not set)`
+            : `✓ Carousel run complete`;
+      } else if (videoType === "character" || videoType === "character_en") {
+        const langLabel = videoType === "character_en" ? "EN" : "HE";
+        msg.innerHTML = data.videoUrl
+          ? `✓ Video ready (${langLabel}) — <a href="${data.videoUrl}" target="_blank" class="underline">view MP4</a>`
+          : `✓ Character video run complete — see Post History`;
+      } else {
+        msg.textContent = `✓ Pipeline complete — ${data.videoType || data.slot} run`;
+      }
+      msg.className   = "text-sm text-green-400";
+      if (data.runId && !liveStarted) watchRun(data.runId);
+    } else {
+      throw new Error(data.error || "Pipeline failed");
+    }
+  } catch (e) {
+    msg.textContent = "✗ " + e.message;
+    msg.className   = "text-sm text-red-400";
+  } finally {
+    btn.disabled = false;
+    btn.classList.remove("opacity-50", "cursor-not-allowed");
+    if (unsubEarly) try { unsubEarly(); } catch(_) {}
+  }
+};
+</script>
+<script src="/js/native-overrides.js"></script>
+</body>
+</html>

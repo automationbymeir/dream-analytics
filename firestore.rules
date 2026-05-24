@@ -33,5 +33,10 @@ service cloud.firestore {
     match /config/{doc} {
       allow read: if isAuth();
     }
+
+    // Social posts log — read-only for authenticated users (admin dashboard)
+    match /social_posts/{postId} {
+      allow read: if isAuth();
+    }
   }
 }

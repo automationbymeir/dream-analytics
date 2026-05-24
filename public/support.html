@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5QQXB6LT');</script>
+<!-- End Google Tag Manager -->
+<meta name="google-site-verification" content="rxlrzAGYJ8qp3rSjZ-z_YzOgJtC9WUFFjq22l1RJMqw" />
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Support – DreamCoach</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Manrope:wght@200..800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: { extend: {
+      colors: { indigo: { 950: "#0F0D1F" }, amber: { 400: "#FFD700", 500: "#F9A825" }, violet: { 400: "#A78BFA", 900: "#4C1D95" } },
+      borderRadius: { DEFAULT: "0.5rem", lg: "1rem", xl: "1.5rem", full: "9999px" },
+      fontFamily: { headline: ["EB Garamond","serif"], body: ["Newsreader","serif"], label: ["Manrope","sans-serif"] }
+    }}
+  }
+</script>
+<style>
+  body { background-color: #0F0D1F; background-image: radial-gradient(at 0% 0%, rgba(76,29,149,0.15) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(249,168,37,0.05) 0px, transparent 50%); }
+  .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; vertical-align: middle; }
+  .glass-card { background: rgba(255,255,255,0.03); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border: 1px solid rgba(167,139,250,0.1); }
+  .input-dream { background: rgba(15,13,31,0.8); border: 1px solid rgba(167,139,250,0.15); color: #e2e8f0; }
+  .input-dream:focus { outline: none; border-color: rgba(167,139,250,0.5); box-shadow: 0 0 12px rgba(124,58,237,0.15); }
+  .input-dream::placeholder { color: rgba(167,139,250,0.3); }
+  .chat-bubble-user { background: rgba(124,58,237,0.25); border: 1px solid rgba(124,58,237,0.2); }
+  .chat-bubble-ai { background: rgba(255,255,255,0.04); border: 1px solid rgba(167,139,250,0.1); }
+  .typing-dot { animation: typingBounce 1.2s infinite; }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce { 0%, 80%, 100% { transform: translateY(0); opacity: 0.4; } 40% { transform: translateY(-4px); opacity: 1; } }
+</style>
+</head>
+<body class="font-body text-slate-200 min-h-screen flex flex-col">
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5QQXB6LT"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+<!-- Navbar -->
+<nav class="bg-slate-950/80 backdrop-blur-xl sticky top-0 z-50 border-b border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)]">
+  <div class="flex justify-between items-center w-full px-6 md:px-8 py-3">
+    <div class="flex items-center gap-6 md:gap-8">
+      <a href="/" class="text-xl font-bold text-amber-500 italic font-headline">🌙 DreamCoach</a>
+      <div class="hidden md:flex items-center gap-4 font-label text-sm tracking-wide">
+        <a href="/dashboard.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Dashboard</a>
+        <a href="/pricing.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">Pricing</a>
+        <a href="/about.html" class="text-violet-200/70 hover:text-violet-100 hover:bg-white/5 rounded-lg px-2 py-1 transition-all">About</a>
+        <a href="/support.html" class="text-amber-400 border-b-2 border-amber-400 pb-1 font-semibold">Support</a>
+      </div>
+    </div>
+    <a href="/login.html" class="font-label text-sm font-semibold text-violet-400 border border-violet-400/30 px-4 py-2 rounded-full hover:bg-violet-400/10 transition-all">Sign In</a>
+  </div>
+</nav>
+
+<main class="flex-1 max-w-4xl mx-auto px-4 md:px-6 py-16 space-y-16">
+
+  <!-- Hero -->
+  <header class="text-center space-y-4">
+    <h1 class="font-headline text-5xl md:text-6xl text-amber-400 italic">Support Center</h1>
+    <p class="font-body text-violet-200/60 text-lg">Find answers, or chat with our AI guide who knows DreamCoach inside and out.</p>
+  </header>
+
+  <!-- Analysis Methods -->
+  <section class="mt-16 mb-16 space-y-8">
+    <div class="text-center">
+      <h2 class="font-headline text-3xl md:text-4xl italic text-white mb-2">The Pioneers of Dream Analysis</h2>
+      <p class="font-body text-violet-200/60 text-sm max-w-2xl mx-auto">Discover the foundational frameworks our AI uses to map the landscapes of your subconscious mind.</p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Carl Jung -->
+      <div class="glass-card rounded-3xl p-6 border border-violet-500/15 shadow-2xl flex flex-col md:flex-row gap-6 items-center">
+        <img src="/img/jung.png" alt="Carl Jung" class="w-32 h-32 rounded-full border-4 border-amber-500/20 shadow-[0_0_20px_rgba(249,168,37,0.3)] object-cover flex-shrink-0" />
+        <div>
+          <h3 class="font-headline text-2xl italic text-amber-300 mb-1">Carl Jung</h3>
+          <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3 block">Analytical Psychology</p>
+          <p class="font-body text-slate-300 leading-relaxed text-sm">Jung believed dreams are the window to the "collective unconscious"—a shared psychological heritage. His method focuses on universally recognized symbols, called <strong>archetypes</strong> (like The Shadow, The Hero, or The Anima). Jungian analysis treats dreams as forward-looking tools designed to help us achieve "individuation," the journey of becoming our most authentic selves.</p>
+        </div>
+      </div>
+      
+      <!-- Sigmund Freud -->
+      <div class="glass-card rounded-3xl p-6 border border-violet-500/15 shadow-2xl flex flex-col md:flex-row gap-6 items-center">
+        <img src="/img/freud.png" alt="Sigmund Freud" class="w-32 h-32 rounded-full border-4 border-amber-500/20 shadow-[0_0_20px_rgba(249,168,37,0.3)] object-cover flex-shrink-0" />
+        <div>
+          <h3 class="font-headline text-2xl italic text-amber-300 mb-1">Sigmund Freud</h3>
+          <p class="font-label text-xs uppercase tracking-widest text-violet-300/50 mb-3 block">Psychoanalysis</p>
+          <p class="font-body text-slate-300 leading-relaxed text-sm">Dubbed the "royal road to the unconscious," Freud saw dreams as expressions of deeply repressed wishes, desires, and unresolved childhood conflicts. His method separates the "manifest content" (what literally happens in the dream) from the "latent content" (the hidden, symbolic truth). Freudian analysis aims to dig up the past to resolve current emotional knots.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Quick Links -->
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <a href="#getting-started" class="glass-card rounded-xl p-5 text-center space-y-2 hover:border-violet-400/30 transition-all group">
+      <span class="material-symbols-outlined text-2xl text-amber-400 group-hover:scale-110 transition-transform inline-block" style="font-variation-settings:'FILL' 1;">rocket_launch</span>
+      <p class="font-label text-xs text-violet-200/70">Getting Started</p>
+    </a>
+    <a href="#account" class="glass-card rounded-xl p-5 text-center space-y-2 hover:border-violet-400/30 transition-all group">
+      <span class="material-symbols-outlined text-2xl text-amber-400 group-hover:scale-110 transition-transform inline-block" style="font-variation-settings:'FILL' 1;">manage_accounts</span>
+      <p class="font-label text-xs text-violet-200/70">Account</p>
+    </a>
+    <a href="#billing" class="glass-card rounded-xl p-5 text-center space-y-2 hover:border-violet-400/30 transition-all group">
+      <span class="material-symbols-outlined text-2xl text-amber-400 group-hover:scale-110 transition-transform inline-block" style="font-variation-settings:'FILL' 1;">payments</span>
+      <p class="font-label text-xs text-violet-200/70">Billing</p>
+    </a>
+    <a href="#ai-chat" class="glass-card rounded-xl p-5 text-center space-y-2 hover:border-violet-400/30 transition-all group">
+      <span class="material-symbols-outlined text-2xl text-amber-400 group-hover:scale-110 transition-transform inline-block" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+      <p class="font-label text-xs text-violet-200/70">AI Guide</p>
+    </a>
+  </div>
+
+  <!-- Getting Started FAQ -->
+  <section id="getting-started">
+    <h2 class="font-headline text-3xl italic text-white mb-6">Getting Started</h2>
+    <div class="space-y-3">
+      <details class="glass-card rounded-xl group" open>
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I record my first dream?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm space-y-2">
+          <p>Sign in to DreamCoach and you'll see the dream entry form on the home page. Fill in the date (defaults to today), an optional name, and a description of your dream — aim for at least 20 characters. Click <strong class="text-white">Analyze Dream</strong> and our AI will generate a full Jungian analysis within seconds.</p>
+          <p>Tip: record your dream immediately after waking up while the details are fresh!</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">What does the free plan include?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>The free plan gives you <strong class="text-white">3 dream analyses per month</strong>, access to your full dream journal history on the Dashboard, and Jungian AI analysis. You can upgrade to Pro for unlimited analyses, pattern trend analysis, and export features.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I use the Pattern Analysis feature?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Pattern Analysis is a Pro feature. Go to the <strong class="text-white">Analysis</strong> page, select a date range, choose or type a prompt (e.g. "What recurring themes appear in my dreams?"), and click <strong class="text-white">Run Analysis</strong>. The AI will analyze up to 50 dreams from that period and return thematic insights.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I set up a daily dream reminder?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>On the <strong class="text-white">Dashboard</strong>, find the "Set a Dream Reminder" card. Choose your preferred time and click <strong class="text-white">Daily</strong> or <strong class="text-white">Weekly</strong> — this opens Google Calendar with a pre-filled recurring reminder event ready for you to save.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Account FAQ -->
+  <section id="account">
+    <h2 class="font-headline text-3xl italic text-white mb-6">Account</h2>
+    <div class="space-y-3">
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I change my display name?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Go to <strong class="text-white">Settings → Profile</strong>, update your display name, and click Save Profile.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I delete my account?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Go to <strong class="text-white">Settings → Account → Delete Account</strong>. Type "DELETE" in the confirmation field and confirm. All your dreams and personal data will be permanently removed. This action cannot be undone.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">Is my dream data private?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Yes. Your dream journal is protected by Firebase Security Rules — only you can access your entries. We never sell or share your dream data. See our <a href="/privacy.html" class="text-amber-400 underline">Privacy Policy</a> for full details.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- Billing FAQ -->
+  <section id="billing">
+    <h2 class="font-headline text-3xl italic text-white mb-6">Billing &amp; Subscription</h2>
+    <div class="space-y-3">
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I upgrade to Pro?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Go to the <a href="/pricing.html" class="text-amber-400 underline">Pricing page</a>, choose Monthly ($20/mo) or Yearly ($192/yr), and complete checkout via PayPal. Your account is upgraded instantly — no waiting required.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">Do you have a coupon or promo code?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Yes! If you have a coupon code, enter it in the "Have a Coupon?" section on the <a href="/pricing.html" class="text-amber-400 underline">Pricing page</a> to unlock free Pro access.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">How do I cancel my subscription?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>Go to <strong class="text-white">Settings → Subscription → Cancel Plan</strong>. You'll retain Pro access until the end of your current billing period. No penalties or hidden fees.</p>
+        </div>
+      </details>
+
+      <details class="glass-card rounded-xl group">
+        <summary class="flex justify-between items-center p-5 cursor-pointer list-none">
+          <span class="font-label font-semibold text-sm text-violet-100">What is the 30-Day Moonphase Guarantee?</span>
+          <span class="material-symbols-outlined text-amber-400 group-open:rotate-180 transition-transform text-lg">expand_more</span>
+        </summary>
+        <div class="px-5 pb-5 font-body text-violet-200/60 leading-relaxed text-sm">
+          <p>If you don't gain meaningful insight within your first 30 days on a Pro plan, contact us at <a href="mailto:service@dream-analytics.com" class="text-amber-400 underline">service@dream-analytics.com</a> and we'll issue a full refund. No questions asked.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- AI Chat -->
+  <section id="ai-chat">
+    <div class="glass-card rounded-3xl p-6 md:p-8 border border-violet-500/15">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-10 h-10 rounded-xl bg-violet-600/30 border border-violet-500/20 flex items-center justify-center">
+          <span class="material-symbols-outlined text-amber-400 text-xl" style="font-variation-settings:'FILL' 1;">smart_toy</span>
+        </div>
+        <div>
+          <h2 class="font-headline text-2xl italic text-white">Dream Guide AI</h2>
+          <p class="font-label text-xs text-violet-300/50">Knows everything about DreamCoach · Powered by Gemini</p>
+        </div>
+      </div>
+
+      <!-- Chat messages -->
+      <div id="chatMessages" class="space-y-4 mb-6 max-h-[400px] overflow-y-auto pr-1" style="min-height:120px;">
+        <div class="chat-bubble-ai rounded-2xl p-4 max-w-[85%]">
+          <p class="font-body text-violet-200/80 text-sm leading-relaxed">Hello! I'm your DreamCoach guide. Ask me anything about how to use the app, your subscription, dream analysis features, or anything else you'd like to know. How can I help?</p>
+        </div>
+      </div>
+
+      <!-- Input -->
+      <div class="flex gap-3">
+        <input id="chatInput" type="text" placeholder="Ask anything about DreamCoach…"
+          class="flex-1 input-dream rounded-xl px-4 py-3 font-label text-sm transition-all"
+          onkeydown="if(event.key==='Enter' && !event.shiftKey){ event.preventDefault(); sendChat(); }"/>
+        <button onclick="sendChat()" id="chatSendBtn"
+          class="px-5 py-3 rounded-xl bg-violet-600 text-white font-label text-sm font-bold hover:bg-violet-500 transition-all flex items-center gap-1.5 disabled:opacity-50">
+          <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1;">send</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="glass-card rounded-2xl p-8 flex flex-col sm:flex-row items-center gap-6 border border-violet-500/15">
+    <div class="w-14 h-14 flex-shrink-0 rounded-2xl bg-violet-600/20 border border-violet-500/20 flex items-center justify-center">
+      <span class="material-symbols-outlined text-2xl text-amber-400" style="font-variation-settings:'FILL' 1;">headset_mic</span>
+    </div>
+    <div class="flex-1 text-center sm:text-left">
+      <h3 class="font-headline text-xl italic text-white mb-1">Still need help?</h3>
+      <p class="font-body text-violet-200/50 text-sm">Our customer service team at Automation By Meir is here for you.</p>
+    </div>
+    <a href="mailto:service@dream-analytics.com"
+      class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber-500 text-indigo-950 font-label font-bold text-sm hover:bg-amber-400 transition-all whitespace-nowrap shadow-lg shadow-amber-500/20">
+      <span class="material-symbols-outlined text-base">mail</span>
+      Email Support
+    </a>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="w-full py-10 border-t border-white/5 mt-auto">
+  <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+    <div class="text-center md:text-left">
+      <div class="text-lg font-bold text-amber-200 font-headline italic">🌙 DreamCoach Analytics</div>
+      <p class="text-xs text-violet-300/40 font-label mt-1">A product of <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
+    </div>
+    <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. Navigate your subconscious.</p>
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">About</a>
+      <a href="/support.html" class="text-xs text-amber-400 font-label font-semibold">Support</a>
+      <a href="/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Privacy</a>
+      <a href="/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Terms</a>
+    </div>
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast-container" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9999] flex flex-col gap-2 pointer-events-none"></div>
+
+<script type="module">
+  import { fns } from './js/firebase-config.js';
+  import { httpsCallable } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-functions.js';
+
+  let chatHistory = [];
+
+  function showToast(msg, type = 'default') {
+    const c = document.getElementById('toast-container');
+    const t = document.createElement('div');
+    t.className = `pointer-events-auto px-6 py-3 rounded-full font-label text-sm font-medium shadow-xl backdrop-blur-sm transition-all duration-300 max-w-sm text-center ${
+      type === 'error' ? 'bg-red-500/90 text-white' : 'bg-violet-700/90 text-white border border-violet-500/30'
+    }`;
+    t.innerHTML = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 400); }, 5000);
+  }
+
+  function appendMessage(role, text) {
+    const container = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    const isUser = role === 'user';
+    div.className = `${isUser ? 'chat-bubble-user ml-auto' : 'chat-bubble-ai'} rounded-2xl p-4 max-w-[85%]`;
+    div.innerHTML = `<p class="font-body text-${isUser ? 'white' : 'violet-200/80'} text-sm leading-relaxed">${text.replace(/\n/g, '<br/>')}</p>`;
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+    return div;
+  }
+
+  function showTyping() {
+    const container = document.getElementById('chatMessages');
+    const div = document.createElement('div');
+    div.id = 'typingIndicator';
+    div.className = 'chat-bubble-ai rounded-2xl p-4 max-w-[85%] flex items-center gap-1.5';
+    div.innerHTML = '<span class="typing-dot w-2 h-2 rounded-full bg-violet-400 inline-block"></span><span class="typing-dot w-2 h-2 rounded-full bg-violet-400 inline-block"></span><span class="typing-dot w-2 h-2 rounded-full bg-violet-400 inline-block"></span>';
+    container.appendChild(div);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  function hideTyping() {
+    document.getElementById('typingIndicator')?.remove();
+  }
+
+  async function sendChat() {
+    const input = document.getElementById('chatInput');
+    const btn   = document.getElementById('chatSendBtn');
+    const text  = input.value.trim();
+    if (!text) return;
+
+    input.value = '';
+    input.disabled = true;
+    btn.disabled   = true;
+
+    appendMessage('user', text);
+    chatHistory.push({ role: 'user', text });
+    showTyping();
+
+    try {
+      const fn = httpsCallable(fns, 'supportChat');
+      const res = await fn({ message: text, history: chatHistory.slice(-8) });
+      hideTyping();
+      const reply = res.data.reply || "I'm sorry, I couldn't process that. Please try again.";
+      appendMessage('ai', reply);
+      chatHistory.push({ role: 'model', text: reply });
+    } catch (err) {
+      hideTyping();
+      appendMessage('ai', "I'm having trouble connecting right now. Please try again or email us at service@dream-analytics.com.");
+    } finally {
+      input.disabled = false;
+      btn.disabled   = false;
+      input.focus();
+    }
+  }
+
+  window.sendChat = sendChat;
+</script>
+  <script src="/js/mobile-nav.js?v=2" type="module"></script>
+<script src="/js/native-overrides.js"></script>
+</body>
+</html>

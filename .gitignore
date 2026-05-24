@@ -5,7 +5,20 @@ firestore-debug.log
 ui-debug.log
 functions/.env
 functions/.env.local
+functions/.runtimeconfig.json
 *.local
 .DS_Store
 *.json.bak
 dreamanalysis-39322-*.json
+
+# Credentials & secrets
+functions/dreamcoach_yt_secret.json
+functions/dreamcoach_yt_secret.json.json
+functions/dreamcoach_yt_tokens.json
+
+# Large build artifacts
+video-generator/
+android/
+
+# Claude Code
+.claude/
