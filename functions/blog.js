@@ -101,6 +101,13 @@ function renderContent(tiptap) {
   try { return renderNode(tiptap); } catch { return ""; }
 }
 
+
+// Hebrew/RTL support: posts containing Hebrew text render right-to-left.
+const HEBREW_RE = /[\u0590-\u05FF]/;
+function rtlAttr(...texts) {
+  return texts.some((t) => typeof t === "string" && HEBREW_RE.test(t)) ? ' dir="rtl" lang="he"' : "";
+}
+
 // ---- Page template (mirrors the static site shell) ----
 function page({ title, description, canonical, ogImage, jsonLd, body }) {
   return `<!DOCTYPE html>
@@ -196,7 +203,8 @@ async function renderIndex() {
   }
   const cards = data.data.map((p) => {
     const img = imageUrl(p.titleFile);
-    return `<div class="card">${img ? `<a href="/blog/${esc(p.slug)}"><img src="${esc(img)}" alt="${esc(p.titleFile.altText || p.title)}" loading="lazy"></a>` : ""}<div class="pad"><div class="meta">${esc(fmtDate(p.firstPublishedAt))}${p.category ? " · " + esc(p.category.name) : ""}</div><h2><a href="/blog/${esc(p.slug)}">${esc(p.title)}</a></h2><p>${esc(p.description || "")}</p></div></div>`;
+    const dir = rtlAttr(p.title, p.description);
+    return `<div class="card"${dir}>${img ? `<a href="/blog/${esc(p.slug)}"><img src="${esc(img)}" alt="${esc(p.titleFile.altText || p.title)}" loading="lazy"></a>` : ""}<div class="pad"><div class="meta">${esc(fmtDate(p.firstPublishedAt))}${p.category ? " · " + esc(p.category.name) : ""}</div><h2><a href="/blog/${esc(p.slug)}">${esc(p.title)}</a></h2><p>${esc(p.description || "")}</p></div></div>`;
   }).join("");
   return page({
     title: "Blog | DreamCoach",
@@ -233,7 +241,7 @@ async function renderPost(slug) {
     canonical: `${SITE}/blog/${post.slug}`,
     ogImage: hero,
     jsonLd,
-    body: `<article><h1>${esc(post.title)}</h1><div class="meta">${esc(fmtDate(post.firstPublishedAt))}${post.author ? " · " + esc(post.author.name) : ""}${post.category ? " · " + esc(post.category.name) : ""}</div>${hero ? `<img class="hero" src="${esc(hero)}" alt="${esc((post.titleFile && post.titleFile.altText) || post.title)}">` : ""}<div class="content">${contentHtml}</div>${faq}</article>`,
+    body: `<article${rtlAttr(post.title, post.metaDescription || post.description)}><h1>${esc(post.title)}</h1><div class="meta">${esc(fmtDate(post.firstPublishedAt))}${post.author ? " · " + esc(post.author.name) : ""}${post.category ? " · " + esc(post.category.name) : ""}</div>${hero ? `<img class="hero" src="${esc(hero)}" alt="${esc((post.titleFile && post.titleFile.altText) || post.title)}">` : ""}<div class="content">${contentHtml}</div>${faq}</article>`,
   });
 }
 
