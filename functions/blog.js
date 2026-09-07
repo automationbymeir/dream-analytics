@@ -108,75 +108,111 @@ function rtlAttr(...texts) {
   return texts.some((t) => typeof t === "string" && HEBREW_RE.test(t)) ? ' dir="rtl" lang="he"' : "";
 }
 
-// ---- Page template (mirrors the static site shell) ----
+// ---- Page template (matches dream-analytics.com design: same Tailwind config, fonts, nav, footer) ----
+const TW_CONFIG = `tailwind.config = {darkMode:"class",theme:{extend:{colors:{"secondary-container":"#dc9000","on-secondary-container":"#4f3100",surface:"#131124","on-tertiary":"#460283",outline:"#958da1","error-container":"#93000a","on-surface-variant":"#ccc3d8","outline-variant":"#4a4455",background:"#131124","surface-container-highest":"#353247",error:"#ffb4ab","surface-container":"#1f1d31","surface-container-low":"#1b192d","surface-dim":"#131124","on-secondary":"#462b00","tertiary-fixed-dim":"#dab9ff",tertiary:"#dab9ff","surface-container-high":"#2a283c","surface-tint":"#d2bbff","on-background":"#e4dffb","secondary-fixed-dim":"#ffb957","on-primary-fixed":"#25005a","inverse-on-surface":"#302e43","tertiary-container":"#804cbe","on-primary-container":"#ede0ff","on-tertiary-container":"#f1e0ff","surface-variant":"#353247","secondary-fixed":"#ffddb5","primary-fixed-dim":"#d2bbff",secondary:"#ffb957","surface-container-lowest":"#0e0c1f","primary-fixed":"#eaddff",primary:"#7C3AED","primary-container":"#7c3aed","on-error":"#690005","on-error-container":"#ffdad6","tertiary-fixed":"#eedbff","on-surface":"#e4dffb","on-primary":"#3f008e","surface-bright":"#39374c","inverse-surface":"#e4dffb","inverse-primary":"#732ee4"},borderRadius:{DEFAULT:"0.5rem",lg:"1rem",xl:"1.5rem",full:"9999px"},fontFamily:{headline:["EB Garamond","serif"],body:["Newsreader","serif"],label:["Manrope","sans-serif"],display:["EB Garamond","serif"]}}}}`;
+
+const SITE_STYLE = `.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+  body { background-color: #131124; color: #e4dffb; }
+  .glass-card { background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+  .nebula-gradient { background: linear-gradient(135deg, #d2bbff 0%, #7c3aed 100%); }
+  .moon-glow { box-shadow: 0 0 80px rgba(255,185,87,0.15); }
+  .input-dream { background: rgba(30,22,64,0.6); border: 1px solid rgba(124,58,237,0.25); color: #e4dffb; }
+  .input-dream:focus { outline: none; border-color: rgba(167,139,250,0.6); box-shadow: 0 0 15px rgba(124,58,237,0.2); }
+  .input-dream::placeholder { color: rgba(204,195,216,0.35); }`;
+
+const SITE_NAV = `<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-10 py-4 bg-[#131124]/60 backdrop-blur-xl border-b border-violet-900/20 shadow-lg">
+  <a href="/" class="text-xl md:text-2xl font-headline italic text-violet-100">🌙 DreamCoach</a>
+  <div class="hidden md:flex items-center gap-5">
+    <a id="nav-dashboard-link" href="/dashboard.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Dashboard</a>
+    <a id="nav-analysis-link" href="/analysis.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Analysis</a>
+    <a href="/pricing.html" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Pricing</a>
+    <a id="nav-settings-link" href="/settings.html" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Settings</a>
+    <a id="nav-login-link" href="/login.html" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Sign In</a>
+    <a id="nav-logout-link" href="#" style="display:none" class="text-violet-300/70 font-label text-sm tracking-wide hover:text-amber-300 transition-colors">Sign Out</a>
+  </div>
+  <a id="nav-get-started" href="/login.html" class="hidden md:inline-block nebula-gradient px-6 py-2 rounded-full text-white font-label font-bold text-sm hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">Get Started</a>
+</nav>`;
+
+const SITE_FOOTER = `<footer class="w-full py-10 border-t border-white/5">
+      <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="text-center md:text-left">
+          <div class="text-lg font-bold text-amber-200 font-headline italic">🌙 DreamCoach Analytics</div>
+          <p class="text-xs text-violet-300/40 font-label mt-1">A product of <a href="https://www.automationbymeir.com" target="_blank" class="hover:text-amber-300 transition-colors underline underline-offset-2">Automation By Meir</a></p>
+        </div>
+        <p class="text-xs text-violet-300/40 font-label">© 2024 DreamCoach. Navigate your subconscious.</p>
+        <div class="flex flex-wrap gap-4 justify-center">
+          <a href="/about.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">About</a>
+          <a href="/support.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Support</a>
+          <a href="/privacy.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Privacy</a>
+          <a href="/terms.html" class="text-xs text-violet-300/50 hover:text-amber-200 transition-colors font-label">Terms</a>
+        </div>
+      </div>
+    </footer>`;
+
+const BLOG_CSS = `
+    main.blog-wrap { max-width: 780px; margin: 0 auto; padding: 120px 24px 96px; min-height: 60vh; }
+    .blog-index h1 { font-family: 'EB Garamond', serif; font-size: 2.8rem; color: #ede0ff; margin-bottom: 8px; }
+    .sub { color: rgba(204,179,216,0.6); font-family: 'Manrope', sans-serif; font-size: 0.9rem; letter-spacing: 0.04em; margin-bottom: 40px; }
+    .cards { display: grid; gap: 32px; }
+    .card { border: 1px solid rgba(255,255,255,0.06); border-radius: 1.5rem; overflow: hidden; transition: border-color 0.25s; }
+    .card:hover { border-color: rgba(124,58,237,0.35); }
+    .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+    .card .pad { padding: 24px 26px 28px; }
+    .card h2 { margin: 0 0 10px; font-family: 'EB Garamond', serif; font-size: 1.6rem; line-height: 1.25; }
+    .card h2 a { color: #ede0ff; text-decoration: none; }
+    .card h2 a:hover { color: #ffb957; }
+    .meta { color: rgba(204,179,216,0.5); font-family: 'Manrope', sans-serif; font-size: 0.78rem; letter-spacing: 0.05em; margin-bottom: 10px; }
+    .card p { color: #ccc3d8; margin: 0; line-height: 1.6; font-size: 0.95rem; }
+    article h1 { font-family: 'EB Garamond', serif; font-size: 2.4rem; line-height: 1.2; color: #ede0ff; margin-bottom: 10px; }
+    article img.hero { width: 100%; border-radius: 1.5rem; margin: 32px 0; box-shadow: 0 0 80px rgba(255,185,87,0.12); }
+    article .content { line-height: 1.85; color: #e4dffb; font-size: 1.08rem; }
+    article .content p { margin: 0 0 1.3rem; }
+    article .content h2 { font-family: 'EB Garamond', serif; font-size: 1.8rem; color: #ede0ff; margin: 2.6rem 0 1rem; }
+    article .content h3 { font-family: 'EB Garamond', serif; font-size: 1.4rem; color: #ede0ff; margin: 2rem 0 0.75rem; }
+    article .content a { color: #ffb957; text-decoration: underline; text-underline-offset: 3px; }
+    article .content ul, article .content ol { margin: 0 0 1.3rem; padding-inline-start: 1.5rem; }
+    article .content li { margin-bottom: 0.5rem; }
+    article .content blockquote { border-inline-start: 3px solid #7c3aed; margin: 1.6rem 0; padding: 0.4rem 1.3rem; color: #ccc3d8; font-style: italic; }
+    article .content pre { background: #0e0c1f; border: 1px solid rgba(124,58,237,0.25); padding: 1rem; border-radius: 0.75rem; overflow-x: auto; }
+    article .content code { background: rgba(124,58,237,0.15); padding: 2px 6px; border-radius: 6px; font-size: 0.9em; }
+    article .content pre code { padding: 0; background: none; }
+    article .content figure { margin: 2rem 0; }
+    article .content figure img { width: 100%; border-radius: 1rem; }
+    .faq { margin-top: 56px; }
+    .faq h2 { font-family: 'EB Garamond', serif; color: #ede0ff; font-size: 1.8rem; margin-bottom: 18px; }
+    .faq details { background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 1rem; padding: 16px 20px; margin-bottom: 14px; }
+    .faq summary { cursor: pointer; font-family: 'Manrope', sans-serif; font-weight: 600; color: #ede0ff; font-size: 0.95rem; }
+    .faq details p { color: #ccc3d8; margin: 10px 0 0; line-height: 1.6; font-size: 0.95rem; }
+    .empty { color: #ccc3d8; background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); border: 1px dashed rgba(124,58,237,0.3); border-radius: 1.5rem; padding: 48px 24px; text-align: center; }
+`;
+
 function page({ title, description, canonical, ogImage, jsonLd, body }) {
   return `<!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>${esc(title)}</title>
-  <meta name="description" content="${esc(description)}">
-  <link rel="canonical" href="${esc(canonical)}">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="DreamCoach">
-  <meta property="og:title" content="${esc(title)}">
-  <meta property="og:description" content="${esc(description)}">
-  <meta property="og:url" content="${esc(canonical)}">
-  ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}">` : ""}
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="icon" type="image/svg+xml" href="/logos/favicon.svg">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+  <meta name="description" content="${esc(description)}"/>
+  <link rel="canonical" href="${esc(canonical)}"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:site_name" content="DreamCoach"/>
+  <meta property="og:title" content="${esc(title)}"/>
+  <meta property="og:description" content="${esc(description)}"/>
+  <meta property="og:url" content="${esc(canonical)}"/>
+  ${ogImage ? `<meta property="og:image" content="${esc(ogImage)}"/>` : ""}
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">${TW_CONFIG}</script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Newsreader:opsz,wght@6..72,300;6..72,400;6..72,500&family=Manrope:wght@200..800&display=swap" rel="stylesheet"/>
   ${jsonLd ? `<script type="application/ld+json">${jsonLd}</script>` : ""}
-  <style>
-    body { font-family: 'IBM Plex Sans', Helvetica, Arial, sans-serif; background: #fafafa; margin: 0; padding: 16px; color: #1a2e2b; }
-    a { color: #00695c; }
-    nav { max-width: 1100px; margin: 24px auto; padding: 0 16px; }
-    nav > ul { list-style: none; display: flex; gap: 24px; flex-wrap: wrap; padding: 0; }
-    nav a { color: #1a2e2b; text-decoration: none; font-weight: 500; }
-    nav a:hover { color: #00897b; }
-    main { max-width: 860px; margin: 0 auto; padding: 24px 16px 64px; }
-    .blog-index h1 { font-size: 2.4rem; margin-bottom: 8px; }
-    .sub { color: #4a5a57; margin-bottom: 40px; }
-    .cards { display: grid; gap: 24px; }
-    .card { background: #ffffff; border: 1px solid #dfe7e5; border-radius: 14px; overflow: hidden; }
-    .card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
-    .card .pad { padding: 20px 22px 24px; }
-    .card h2 { margin: 0 0 8px; font-size: 1.35rem; }
-    .card h2 a { color: #1a2e2b; text-decoration: none; }
-    .card h2 a:hover { color: #00897b; }
-    .meta { color: #7d8c89; font-size: 0.85rem; margin-bottom: 10px; }
-    .card p { color: #4a5a57; margin: 0; line-height: 1.55; }
-    article h1 { font-size: 2.2rem; line-height: 1.2; margin-bottom: 8px; }
-    article img.hero { width: 100%; border-radius: 14px; margin: 24px 0; }
-    article .content { line-height: 1.75; color: #2a3a37; font-size: 1.05rem; }
-    article .content h2 { margin-top: 40px; }
-    article .content h3 { margin-top: 32px; }
-    article .content pre { background: #eef3f2; border: 1px solid #dfe7e5; padding: 16px; border-radius: 10px; overflow-x: auto; }
-    article .content code { background: #eef3f2; padding: 2px 6px; border-radius: 6px; }
-    article .content pre code { padding: 0; background: none; }
-    article .content blockquote { border-inline-start: 3px solid #00897b; margin: 24px 0; padding: 4px 20px; color: #4a5a57; }
-    .faq { margin-top: 48px; }
-    .faq details { background: #ffffff; border: 1px solid #dfe7e5; border-radius: 10px; padding: 14px 18px; margin-bottom: 12px; }
-    .faq summary { cursor: pointer; font-weight: 600; }
-    .empty { color: #4a5a57; background: #ffffff; border: 1px dashed #dfe7e5; border-radius: 14px; padding: 48px 24px; text-align: center; }
-  </style>
+  <style>${SITE_STYLE}${BLOG_CSS}</style>
 </head>
-<body>
-  <nav>
-    <ul>
-      <li><a href="/">DreamCoach</a></li>
-      <li><a href="/about.html">About</a></li>
-      <li><a href="/pricing.html">Pricing</a></li>
-      <li><a href="/blog">Blog</a></li>
-      <li><a href="/he/">עב</a></li>
-    </ul>
-  </nav>
-  <main>${body}</main>
-  
+<body class="font-body selection:bg-primary/30">
+${SITE_NAV}
+<main class="blog-wrap">${body}</main>
+${SITE_FOOTER}
 </body>
 </html>`;
 }
