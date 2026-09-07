@@ -18,14 +18,8 @@
       {
         "source": "**",
         "headers": [
-          {
-            "key": "X-Content-Type-Options",
-            "value": "nosniff"
-          },
-          {
-            "key": "X-Frame-Options",
-            "value": "SAMEORIGIN"
-          }
+          { "key": "X-Content-Type-Options", "value": "nosniff" },
+          { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
         ]
       }
     ],
@@ -33,14 +27,6 @@
       {
         "source": "/sitemap.xml",
         "function": "sitemapXml"
-      },
-      {
-        "source": "/blog",
-        "function": "blog"
-      },
-      {
-        "source": "/blog/**",
-        "function": "blog"
       }
     ]
   },
@@ -48,20 +34,10 @@
     "rules": "storage.rules"
   },
   "emulators": {
-    "auth": {
-      "port": 9099
-    },
-    "firestore": {
-      "port": 8080
-    },
-    "functions": {
-      "port": 5001
-    },
-    "hosting": {
-      "port": 5000
-    },
-    "ui": {
-      "enabled": true
-    }
+    "auth": { "port": 9099 },
+    "firestore": { "port": 8080 },
+    "functions": { "port": 5001 },
+    "hosting": { "port": 5000 },
+    "ui": { "enabled": true }
   }
 }

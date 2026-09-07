@@ -1093,6 +1093,3 @@ exports.triggerDreamCoachCarousel = onRequest({
   }
 });
 
-
-// Opinly-powered public blog (SSR) - see blog.js
-Object.assign(exports, require('./blog.js'));
