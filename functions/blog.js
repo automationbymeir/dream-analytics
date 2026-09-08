@@ -87,6 +87,10 @@ function renderNode(node) {
     case "blockquote": return `<blockquote>${kids}</blockquote>`;
     case "codeBlock": return `<pre><code>${kids}</code></pre>`;
     case "horizontalRule": return "<hr>";
+    case "table": return `<table>${kids}</table>`;
+    case "tableRow": return `<tr>${kids}</tr>`;
+    case "tableCell": return `<td>${kids}</td>`;
+    case "tableHeader": return `<th>${kids}</th>`;
     case "image": {
       const src = safeUrl((node.attrs && node.attrs.src) || imageUrl(node.attrs) || "");
       if (!src) return "";
@@ -204,6 +208,9 @@ const BLOG_CSS = `
     .faq details { background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.06); border-radius: 1rem; padding: 16px 20px; margin-bottom: 14px; }
     .faq summary { cursor: pointer; font-family: 'Manrope', sans-serif; font-weight: 600; color: #ede0ff; font-size: 0.95rem; }
     .faq details p { color: #ccc3d8; margin: 10px 0 0; line-height: 1.6; font-size: 0.95rem; }
+    article .content table { border-collapse: collapse; width: 100%; margin: 2rem 0; font-size: 0.95rem; }
+    article .content th, article .content td { border: 1px solid rgba(255,255,255,0.12); padding: 10px 14px; text-align: start; }
+    article .content th { background: rgba(53,50,71,0.5); color: #ede0ff; }
     .empty { color: #ccc3d8; background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); border: 1px dashed rgba(124,58,237,0.3); border-radius: 1.5rem; padding: 48px 24px; text-align: center; }
 `;
 
