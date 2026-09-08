@@ -107,6 +107,27 @@ const HEBREW_RE = /[\u0590-\u05FF]/;
 function rtlAttr(...texts) {
   return texts.some((t) => typeof t === "string" && HEBREW_RE.test(t)) ? ' dir="rtl" lang="he"' : "";
 }
+function isHebrew(...texts) {
+  return texts.some((t) => typeof t === "string" && HEBREW_RE.test(t));
+}
+
+// Chrome strings per language: Hebrew chrome shows when Hebrew posts are shown.
+const UI = {
+  en: {
+    blog: "Blog",
+    sub: "Dream interpretation guides, dream science and lucid dreaming techniques.",
+    empty: "First posts are on the way. Check back soon.",
+    faq: "FAQ",
+    locale: "en-US",
+  },
+  he: {
+    blog: "בלוג",
+    sub: "מדריכי פירוש חלומות, מדע החלום וטכניקות חלימה צלולה.",
+    empty: "הפוסטים הראשונים בדרך. בקרו שוב בקרוב.",
+    faq: "שאלות נפוצות",
+    locale: "he-IL",
+  },
+};
 
 // ---- Page template (matches dream-analytics.com design: same Tailwind config, fonts, nav, footer) ----
 const TW_CONFIG = `tailwind.config = {darkMode:"class",theme:{extend:{colors:{"secondary-container":"#dc9000","on-secondary-container":"#4f3100",surface:"#131124","on-tertiary":"#460283",outline:"#958da1","error-container":"#93000a","on-surface-variant":"#ccc3d8","outline-variant":"#4a4455",background:"#131124","surface-container-highest":"#353247",error:"#ffb4ab","surface-container":"#1f1d31","surface-container-low":"#1b192d","surface-dim":"#131124","on-secondary":"#462b00","tertiary-fixed-dim":"#dab9ff",tertiary:"#dab9ff","surface-container-high":"#2a283c","surface-tint":"#d2bbff","on-background":"#e4dffb","secondary-fixed-dim":"#ffb957","on-primary-fixed":"#25005a","inverse-on-surface":"#302e43","tertiary-container":"#804cbe","on-primary-container":"#ede0ff","on-tertiary-container":"#f1e0ff","surface-variant":"#353247","secondary-fixed":"#ffddb5","primary-fixed-dim":"#d2bbff",secondary:"#ffb957","surface-container-lowest":"#0e0c1f","primary-fixed":"#eaddff",primary:"#7C3AED","primary-container":"#7c3aed","on-error":"#690005","on-error-container":"#ffdad6","tertiary-fixed":"#eedbff","on-surface":"#e4dffb","on-primary":"#3f008e","surface-bright":"#39374c","inverse-surface":"#e4dffb","inverse-primary":"#732ee4"},borderRadius:{DEFAULT:"0.5rem",lg:"1rem",xl:"1.5rem",full:"9999px"},fontFamily:{headline:["EB Garamond","serif"],body:["Newsreader","serif"],label:["Manrope","sans-serif"],display:["EB Garamond","serif"]}}}}`;
@@ -186,9 +207,9 @@ const BLOG_CSS = `
     .empty { color: #ccc3d8; background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); border: 1px dashed rgba(124,58,237,0.3); border-radius: 1.5rem; padding: 48px 24px; text-align: center; }
 `;
 
-function page({ title, description, canonical, ogImage, jsonLd, body }) {
+function page({ title, description, canonical, ogImage, jsonLd, body, he }) {
   return `<!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark" lang="${he ? "he" : "en"}"${he ? ' dir="rtl"' : ""}>
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -217,13 +238,15 @@ ${SITE_FOOTER}
 </html>`;
 }
 
-function fmtDate(iso) {
+function fmtDate(iso, locale) {
   try {
-    return new Date(iso).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    return new Date(iso).toLocaleDateString(locale || "en-US", { year: "numeric", month: "long", day: "numeric" });
   } catch { return ""; }
 }
 
-const EMPTY_BODY = `<div class="blog-index"><h1>Blog</h1><p class="sub">Dream interpretation guides and sleep science notes from DreamCoach.</p><div class="empty"><p>First posts are on the way. Check back soon.</p></div></div>`;
+function emptyBody(ui) {
+  return `<div class="blog-index"><h1>${ui.blog}</h1><p class="sub">${ui.sub}</p><div class="empty"><p>${ui.empty}</p></div></div>`;
+}
 
 async function renderIndex() {
   const data = await cached("posts", CACHE_TTL_MS, () =>
@@ -234,19 +257,22 @@ async function renderIndex() {
       title: "Blog | DreamCoach",
       description: "Dream interpretation guides, dream science and lucid dreaming techniques.",
       canonical: `${SITE}/blog`,
-      body: EMPTY_BODY,
+      body: emptyBody(UI.en),
     });
   }
+  const he = isHebrew(data.data[0].title, data.data[0].description);
+  const ui = he ? UI.he : UI.en;
   const cards = data.data.map((p) => {
     const img = imageUrl(p.titleFile);
     const dir = rtlAttr(p.title, p.description);
-    return `<div class="card"${dir}>${img ? `<a href="/blog/${esc(p.slug)}"><img src="${esc(img)}" alt="${esc(p.titleFile.altText || p.title)}" loading="lazy"></a>` : ""}<div class="pad"><div class="meta">${esc(fmtDate(p.firstPublishedAt))}${p.category ? " · " + esc(p.category.name) : ""}</div><h2><a href="/blog/${esc(p.slug)}">${esc(p.title)}</a></h2><p>${esc(p.description || "")}</p></div></div>`;
+    return `<div class="card"${dir}>${img ? `<a href="/blog/${esc(p.slug)}"><img src="${esc(img)}" alt="${esc(p.titleFile.altText || p.title)}" loading="lazy"></a>` : ""}<div class="pad"><div class="meta">${esc(fmtDate(p.firstPublishedAt, dir ? UI.he.locale : UI.en.locale))}${p.category ? " · " + esc(p.category.name) : ""}</div><h2><a href="/blog/${esc(p.slug)}">${esc(p.title)}</a></h2><p>${esc(p.description || "")}</p></div></div>`;
   }).join("");
   return page({
     title: "Blog | DreamCoach",
     description: "Dream interpretation guides, dream science and lucid dreaming techniques.",
     canonical: `${SITE}/blog`,
-    body: `<div class="blog-index"><h1>Blog</h1><p class="sub">Dream interpretation guides, dream science and lucid dreaming techniques.</p><div class="cards">${cards}</div></div>`,
+    he,
+    body: `<div class="blog-index"><h1>${ui.blog}</h1><p class="sub">${ui.sub}</p><div class="cards">${cards}</div></div>`,
   });
 }
 
@@ -257,8 +283,10 @@ async function renderPost(slug) {
   if (!post || post.__nokey || post.__error || !post.slug) return null;
   const hero = imageUrl(post.titleFile);
   const contentHtml = renderContent(post.content);
+  const he = isHebrew(post.title, post.metaDescription || post.description);
+  const ui = he ? UI.he : UI.en;
   const faq = Array.isArray(post.faqs) && post.faqs.length
-    ? `<section class="faq"><h2>FAQ</h2>${post.faqs.map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`).join("")}</section>`
+    ? `<section class="faq"><h2>${ui.faq}</h2>${post.faqs.map((f) => `<details><summary>${esc(f.question)}</summary><p>${esc(f.answer)}</p></details>`).join("")}</section>`
     : "";
   const jsonLd = JSON.stringify({
     "@context": "https://schema.org",
@@ -277,7 +305,8 @@ async function renderPost(slug) {
     canonical: `${SITE}/blog/${post.slug}`,
     ogImage: hero,
     jsonLd,
-    body: `<article${rtlAttr(post.title, post.metaDescription || post.description)}><h1>${esc(post.title)}</h1><div class="meta">${esc(fmtDate(post.firstPublishedAt))}${post.author ? " · " + esc(post.author.name) : ""}${post.category ? " · " + esc(post.category.name) : ""}</div>${hero ? `<img class="hero" src="${esc(hero)}" alt="${esc((post.titleFile && post.titleFile.altText) || post.title)}">` : ""}<div class="content">${contentHtml}</div>${faq}</article>`,
+    he,
+    body: `<article${rtlAttr(post.title, post.metaDescription || post.description)}><h1>${esc(post.title)}</h1><div class="meta">${esc(fmtDate(post.firstPublishedAt, ui.locale))}${post.author ? " · " + esc(post.author.name) : ""}${post.category ? " · " + esc(post.category.name) : ""}</div>${hero ? `<img class="hero" src="${esc(hero)}" alt="${esc((post.titleFile && post.titleFile.altText) || post.title)}">` : ""}<div class="content">${contentHtml}</div>${faq}</article>`,
   });
 }
 
