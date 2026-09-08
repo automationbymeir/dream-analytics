@@ -211,6 +211,7 @@ const BLOG_CSS = `
     article .content table { border-collapse: collapse; width: 100%; margin: 2rem 0; font-size: 0.95rem; }
     article .content th, article .content td { border: 1px solid rgba(255,255,255,0.12); padding: 10px 14px; text-align: start; }
     article .content th { background: rgba(53,50,71,0.5); color: #ede0ff; }
+    article .content th p, article .content td p { margin: 0; }
     .empty { color: #ccc3d8; background: rgba(53,50,71,0.4); backdrop-filter: blur(20px); border: 1px dashed rgba(124,58,237,0.3); border-radius: 1.5rem; padding: 48px 24px; text-align: center; }
 `;
 
